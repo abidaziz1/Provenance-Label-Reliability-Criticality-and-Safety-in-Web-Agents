@@ -163,3 +163,18 @@ def test_dated_model_ids_use_the_undated_price(tmp_path):
 def test_redact_new_google_key_format():
     fake = "AQ" + "." + "Ab8" + "q" * 47
     assert L.redact("bad key " + fake) == "bad key [REDACTED]"
+
+
+def test_failed_submission_is_logged_and_reserves_nothing(tmp_path, monkeypatch):
+    monkeypatch.setenv("GEMINI_API_KEY", "placeholder")
+    class Refuse:
+        class batches:
+            @staticmethod
+            def create(model, src, config=None):
+                raise RuntimeError("400 FAILED_PRECONDITION key " + "AQ" + "." + "z" * 45)
+    m = _mk(tmp_path, Refuse())
+    with pytest.raises(RuntimeError):
+        m.submit_batch("gemini-3-flash-preview", _reqs(2))
+    rec = json.loads((tmp_path / "llm_calls.jsonl").read_text().splitlines()[-1])
+    assert rec["kind"] == "batch_submit" and "FAILED_PRECONDITION" in rec["error"] and "[REDACTED]" in rec["error"]
+    assert m.reserved() == 0 and not (tmp_path / "batches.json").exists()

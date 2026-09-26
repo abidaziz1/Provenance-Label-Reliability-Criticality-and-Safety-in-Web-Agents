@@ -24,8 +24,10 @@ request's prompt length and max_tokens, checks it against the budget minus what 
 reserved, submits, and records the batch in <run_dir>/batches.json so a later session can collect
 it. `collect_batch` returns None until the provider reports the batch finished; then it logs every
 request's tokens and cost, writes the texts to <run_dir>/batch_<id>.jsonl and releases the
-reservation. Anthropic and Gemini batches were tested live on 26 Sep 2026; the OpenAI path is
-tested with a mock only (no key yet).
+reservation. A failed submission is logged with its (redacted) error and raises.
+Live tests on 26 Sep 2026 (experiments/2026-09-26_1.15_api-smoke-test): an Anthropic batch was
+submitted, collected and costed. Google refused a batch on the free-tier Gemini key
+(FAILED_PRECONDITION), so the Gemini path, like the OpenAI path, is tested with mocks only.
 """
 from __future__ import annotations
 import hashlib, json, os, re, time
@@ -204,7 +206,11 @@ class LLM:
         if self.dry:
             rec.update(dry_run=True); self._log(rec); return None
         prov = provider_of(model); c = self._client(prov)
-        batch_id = self._submit(prov, c, model, requests, tag)
+        try:
+            batch_id = self._submit(prov, c, model, requests, tag)
+        except Exception as e:
+            rec.update(error=redact(e)[:300]); self._log(rec)
+            raise
         b = self._batches()
         b[batch_id] = dict(provider=prov, model=model, tag=tag, n_requests=len(requests), est_usd=round(est, 6),
                            submitted=rec["ts"], status="submitted", custom_ids=ids)
