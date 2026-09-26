@@ -28,3 +28,24 @@ Untrusted Content Masking (arXiv:2607.05277) ships MIT code and makes the same s
 - Repo built with code, results, context, guardrails, skills and subagents. Tests pass; secret scan clean; `scripts/descendant_only.py` rerun from the repo reproduces its committed results byte for byte.
 - Alam's direction: the primary focus is finding the true novelty and contribution. Phase 0 (novelty audit) added ahead of Phase 3 spend; Gate N on Oct 11.
 - An external AI review suggested eight extensions; all parked for triage in N0.4 except the random-gate control, which goes into the pre-registration (`research/BACKLOG_IDEAS.md`).
+
+## 2026-09-25: Phase 0 in a Cowork session (Claude)
+- The repo could not be reached from the session: its git proxy refused pushes (HTTP 403) and GitHub API calls. Work was committed locally on `claude/cowork-run-1`.
+- 0.2: `reconcile.py` and `descendant_only.py` reran byte-identical. N0.1: one test per claims row K1 to K12; `scripts/ablation_contrasts.py` gave the K9 and K11 intervals, [91.8, 100.0] and [15.0, 55.7].
+- N0.2 novelty audit: C1 withdrawn (Prismata states one definition); C2 withdrawn as a claim about Prismata (the oracle was ours); C7 and C8 NOVEL AS MEASUREMENT; C9 and C10 INCREMENTAL.
+- N0.3 adversarial review: the leaf-level "reproduction" of the 1.2% is a labeler artifact (808 of 808 critical leaves exist only through relabeled nav, menu, header or footer children); the 9.19% and 7.71% figures are mostly first-party false positives; C1' survives as descriptive; C4 is fatal as stated (its narrow envelope is the oracle target).
+- 1.8: the archive keeps 21 attribute names; no site `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites.
+- C7: 92% of UCM's hand and 96% of its LLM Booking selectors use `data-*`; on 131 archived Booking pages, 24 of 25 hand and 68 of 68 LLM selectors that match UCM's captures match nothing.
+
+## 2026-09-26: reset, recovery, C7c, C7b, the code tasks (Claude)
+- The workspace was reset overnight; the 12 local commits of 25 Sep were lost before any push. Everything whose text survived in the session was rebuilt, sent to Alam as a zip and saved to the claude.ai project. Reading the pasted keys back out of the transcript was refused by the permission system and not retried; Alam supplied the kit zip and the keys again.
+- The session can clone the repo with Alam's token but still cannot push or call the GitHub API (open issue anthropics/claude-code#96075). Work is delivered as a git bundle; Alam pushes it (H8).
+- 0.1 preflight: Anthropic and Gemini keys authorized (200); OpenAI 401 (no key); 2 CPUs, 8 GB RAM. 0.2: baseline byte-identical at 9b8c760 (`v2.0-baseline`).
+- Every 25 Sep number was rerun and reproduces exactly: K16 to K25, and the adversarial review's Table 1 through the now-committed `scripts/labeler_sensitivity.py`.
+- Fact checks through an extraction model: UCM Table 2 gives Reddit 0.997, Booking 0.879, GitLab 0.840; Claude Sonnet 4.5 wrote its selectors; the paper gives no capture date and does not discuss archives. Prismata does not state its Mind2Web data format, link rule, instance definition or per-corpus split.
+- C7c (pre-registered in the project at 12:46 UTC): on the same live Booking DOM, stripping to the archive's attributes disables 53 of 57 working UCM selectors (hand 11 of 13). The homepage was blocked (HTTP 403).
+- C7b (pre-registered at 8577256): requiring an `href` for links halves Prismata-style criticality on the archive, G3 19.57% to 9.40% (ratio 0.48; exploratory interval [0.32, 0.64]). It does not explain the 1.2% alone.
+- 1.15 and 1.4 (guardrail PR): Batch API in `src/llm.py`; verified prices; AQ.-format Google keys now caught by the secret scanner. Smoke test: $0.000272 logged; an Anthropic batch ran end to end; Google refused a batch on the free-tier key.
+- 1.13, 1.16, 1.3, 1.4 (notebooks): git convention, calls through `src/llm.py`, notebook 03 as one batch job, coupling power and go/no-go in notebook 02; a test rebuilds all three notebooks byte for byte.
+- Drafts for Alam: N0.4 triage, N0.5 contribution statement, emails 1.1 and 1.2, the pre-registration (1.6), the annotation guide and page (1.7).
+- Untrusted content: no page text was printed; the live captures stay in `data/`.

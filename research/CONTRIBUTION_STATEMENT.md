@@ -4,7 +4,7 @@ Status: DRAFT by Claude, 26 Sep 2026, task N0.5. Alam approves or rewrites it at
 
 ## The paper in one paragraph
 
-Structural defenses against prompt injection in web agents decide trust from the DOM. UCM masks untrusted regions with CSS selectors. Prismata gates each action by the ancestor chain of the element it touches. Both, and every evaluation of them, depend on which page representation the defense reads. We measure that dependence, and it is large. The archive behind Mind2Web, a widely used web-agent dataset, deletes the attributes these defenses read: no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites. That deletion alone disables 93% of UCM's working Booking selectors on the same live page. We then separate the two ways a provenance error hurts under a gate: exposure and admission. Finally, we report how often agents meet actionable controls inside untrusted content, per page and per task. That is the quantity a per-node statistic hides.
+Structural defenses against prompt injection in web agents decide trust from the DOM. UCM masks untrusted regions with CSS selectors. Prismata gates each action by the ancestor chain of the element it touches. Both, and every evaluation of them, depend on which page representation the defense reads. We measure that dependence, and it is large. The archive behind Mind2Web, a widely used web-agent dataset, deletes the attributes these defenses read: no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites. That deletion alone disables 93% of UCM's working Booking selectors on the same live page, and it halves Prismata-style criticality if a link must carry an `href`. We then separate the two ways a provenance error hurts under a gate: exposure and admission. Finally, we report how often agents meet actionable controls inside untrusted content, per page and per task. That is the quantity a per-node statistic hides.
 
 ## Primary contributions
 
@@ -12,23 +12,23 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 ### P1. Page archives and site drift remove what structural defenses read (C7 with C8)
 
-**Sentence.** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (K21). On the same live Booking DOM, reducing attributes to that set disables 53 of the 57 UCM selectors that work live (K25). Selectors written for Booking also break over time: 19% to 23% on one page (C8, exploratory).
+**Sentence.** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (K21). On the same live Booking DOM, reducing attributes to that set disables 53 of the 57 UCM selectors that work live (K25). On the archive, whether a link needs an `href` halves Prismata-style criticality (19.57% to 9.40% per visible untrusted node, K26). Selectors written for Booking also break over time: 19% to 23% on one page (C8, exploratory).
 
 - **Audit verdict.** NOVEL AS MEASUREMENT for both C7 and C8. Online-Mind2Web and WebCanvas measure task drift, not dropped defense inputs. Wrapper breakage itself is known (Kushmerick 2000; Lerman et al. 2003).
 - **Evidence now.**
   - K21, attribute census. Rerun 26 Sep, identical.
   - K22 and K23: 24 of 25 hand and 68 of 68 LLM selectors match nothing on 131 archived Booking pages.
   - K25: stripping alone, same DOM (C7c).
+  - K26 (C7b, pre-registered): requiring an `href` gives a G3 ratio of 0.48, exploratory site interval [0.32, 0.64]; trusting the stored `is_clickable` flag restores the tag-rule numbers.
 - **Reader who acts on it.**
   - A benchmark builder, who must say which defense inputs a corpus keeps.
   - A defense evaluator, who must not reuse selectors or actionability rules across representations.
   - The reviewer of the next paper like Prismata, who should ask which DOM the headline number came from.
 - **Falsification tests.**
-  - (a) C7b, pre-registered 26 Sep. If requiring an `href` for links moves Prismata-style per-node criticality by less than 20%, P1 loses its Prismata side and speaks about selector-based defenses only.
+  - (a) C7b, pre-registered 26 Sep. If requiring an `href` for links moved Prismata-style per-node criticality by less than 20%, P1 would lose its Prismata side. **Run 26 Sep: ratio 0.48, so the test passed** (exploratory interval [0.32, 0.64] rules out the drop branch; "at least 2x" is not certain).
   - (b) Task 2.8. UCM's own generator may write selectors on archived Booking pages whose F1 against human labels is within 0.05 of its live F1. Then the practical damage is limited to reusing selectors, and P1 must say so in its first sentence.
   - (c) Task 2.7. If fewer than a quarter of the captured live sites carry `data-*` attributes inside the regions UCM's generator selects, Booking is an outlier. P1 then becomes a case study, not a general result.
 - **Tasks that complete it.**
-  - C7b ($0, needs the kit).
   - 2.7 live capture (Colab; Booking's homepage returned HTTP 403 to this sandbox).
   - 2.8 ($3 to $13).
   - 3.5 selector breakage across sites (about $11).
