@@ -19,4 +19,16 @@ This is a plumbing check with no hypothesis. The prompt is "Reply with the singl
 
 ## Results
 
-(filled after the run)
+Run 26 Sep 2026, 13:37 to 13:42 UTC. The files are the record: `llm_calls.jsonl`, `cost.json`, `batches.json` and `batch_msgbatch_0132hQRDrg797fPUk7s8uC3i.jsonl`.
+
+| Call | Model returned | Reply | Input tokens | Output tokens | Logged cost |
+| --- | --- | --- | ---: | ---: | ---: |
+| direct | `claude-sonnet-5` | OK | 16 | 4 | $0.000072 |
+| direct | `gemini-3-flash-preview` | OK | 8 | 54 (thinking included) | $0.000166 at list price; free tier, likely $0 charged |
+| batch `smoke1` | `claude-haiku-4-5-20251001` | OK | 14 | 4 | $0.000017 (batch price) |
+| batch `smoke2` | `claude-haiku-4-5-20251001` | OK | 14 | 4 | $0.000017 (batch price) |
+
+- **Anthropic Batch API.** The batch was submitted at 13:39:21 and collected at 13:41:47. Its reservation ($0.000051, estimated from `max_tokens`) was released at collection, and the logged cost ($0.000034) came from the returned usage.
+- **Gemini Batch API.** Google refused it with `400 FAILED_PRECONDITION` on this free-tier key. Nothing was charged or reserved. `src/llm.py` did not log failed submissions at the time; it does now (commit a5e1c04).
+- **Spend.** $0.000272 logged, of which $0.000166 is Gemini at list price. Actual charge: about $0.0001 on the Claude key.
+- **Verdict.** Both keys work, the model IDs from 1.4 exist, and the Anthropic batch path works end to end. The Gemini batch path waits for a paid-tier key; the Gemini arm (task 2.3) can use direct calls on the free tier within its rate limits.
