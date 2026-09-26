@@ -1,5 +1,5 @@
 """Prismata-style criticality when links need an href (task C7b, pre-registered in
-experiments/2026-09-25_C7b_actionability-on-archive/).
+experiments/2026-09-26_C7b_actionability-on-archive/).
 
 Prismata §3 counts a descendant as actionable if it is "a non-hidden form control, a link, a label
 target, an element with an interactive ARIA role, an onclick handler, an editable region, or a
@@ -25,7 +25,7 @@ import pipeline_v2 as P
 import c1_robustness as C
 from lxml import html as LH
 
-OUT = ROOT / "experiments" / "2026-09-25_C7b_actionability-on-archive" / "results" / "actionability_on_archive.json"
+OUT = ROOT / "experiments" / "2026-09-26_C7b_actionability-on-archive" / "results" / "actionability_on_archive.json"
 SEED, B = 20260925, 10_000
 RULES = ("R0_tag", "R1_href_required", "R2_href_or_flag")
 UNITS = ("G0_region", "G3_node", "G4_leafpath")
@@ -180,6 +180,18 @@ def main():
     res['R1_over_R0'] = {g: (round(r1[f'{g}_crit_visunits_pct'] / r0[f'{g}_crit_visunits_pct'], 3)
                              if r0[f'{g}_crit_visunits_pct'] else None) for g in UNITS}
     res['R1_over_R0']['page_exposed'] = round(r1['page_exposed_pct'] / r0['page_exposed_pct'], 3)
+    # Exploratory, added after the pre-registered run (README, deviations): a site-cluster interval
+    # for the primary ratio, resampling sites and recomputing both rates on the same draw.
+    num0, num1 = collections.Counter(), collections.Counter()
+    for r in rows:
+        num0[r['site']] += r['R']['R0_tag']['G3_node'][0]
+        num1[r['site']] += r['R']['R1_href_required']['G3_node'][0]
+    sites = sorted(num0)
+    a0 = np.array([num0[s] for s in sites], float); a1 = np.array([num1[s] for s in sites], float)
+    ix = np.random.default_rng(SEED).integers(0, len(sites), size=(B, len(sites)))
+    ratio = a1[ix].sum(1) / np.maximum(a0[ix].sum(1), 1)
+    res['exploratory_G3_ratio_ci95_site'] = [round(float(np.percentile(ratio, 2.5)), 3),
+                                             round(float(np.percentile(ratio, 97.5)), 3)]
     OUT.parent.mkdir(parents=True, exist_ok=True)
     json.dump(res, open(OUT, 'w'), indent=1)
     print(json.dumps(res, indent=1))
