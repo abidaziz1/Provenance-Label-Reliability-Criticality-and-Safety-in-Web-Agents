@@ -1,0 +1,20 @@
+CELL 03 ok
+CELL 04 ok
+CELL 09 ok
+48 trajectories (published frame)
+
+984 trials
+
+envelope  attack                 policy                n      L1      L2      L3  L4 EFFECT
+narrow    A1_containment         P_correct            82   22.0%    0.0%    0.0%       0.0%
+narrow    A1_containment         P_err1               82  100.0%  100.0%  100.0%     100.0%
+narrow    A1_containment         P_err1_fixedgate     82  100.0%    0.0%    0.0%       0.0%
+narrow    A2_influence_escape    P_correct            82   22.0%    1.2%    1.2%       0.0%
+narrow    A2_influence_escape    P_err1               82  100.0%    1.2%    1.2%       0.0%
+narrow    A2_influence_escape    P_err1_fixedgate     82  100.0%    1.2%    1.2%       0.0%
+page      A1_containment         P_correct            82   22.0%    0.0%    0.0%       0.0%
+page      A1_containment         P_err1               82  100.0%  100.0%  100.0%     100.0%
+page      A1_containment         P_err1_fixedgate     82  100.0%    0.0%    0.0%       0.0%
+page      A2_influence_escape    P_correct            82   22.0%   22.0%   22.0%      19.5%
+page      A2_influence_escape    P_err1               82  100.0%  100.0%  100.0%      70.7%
+page      A2_influence_escape    P_err1_fixedgate     82  100.0%  100.0%  100.0%      70.7%

@@ -1,0 +1,8 @@
+chars per token (o200k proxy): agent observation 2.87   sanitized HTML 3.98
+   sample sizes: 17 observations, 12 sanitized pages
+
+items needed for 80% power on the coupling test (one-sided, alpha .05, DEFF 2.68):
+ per-vendor error  kappa 1.5  kappa 2.0  kappa 3.0
+               5%      30075       9084       2975
+              10%       7047       2192        626
+              20%       1409        469        156

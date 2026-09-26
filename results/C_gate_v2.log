@@ -1,0 +1,51 @@
+[v2] frame 145 trajectories / 57 sites
+  [25/145] obs=225 (23s)
+  [50/145] obs=485 (46s)
+  [75/145] obs=656 (59s)
+  [100/145] obs=823 (80s)
+  [125/145] obs=1022 (105s)
+
+[v2] 57-site frame: 1163 obs
+   regions   total 5,317   critical 3,811   = 71.68%
+   C per observation : mean 3.3  median 1.0  p90 9  max 69  zero 530
+   C per trajectory  : mean 26.3  median 6.0  p90 72  max 355  zero 36  (n=145)   <- the published C aggregation
+
+[v2] 16-site published frame: 341 obs
+   regions   total 2,054   critical 1,570   = 76.44%
+   C per observation : mean 4.6  median 3.0  p90 9  max 69  zero 108
+   C per trajectory  : mean 32.7  median 14.0  p90 107  max 220  zero 8  (n=48)   <- the published C aggregation
+
+[v2] GATE-WIDTH SWEEP, 57-site frame  (critical regions / all untrusted regions)
+           K   critical     total   fraction
+           1         87     5,086      1.71%
+           2         87     5,086      1.71%
+           3         87     5,086      1.71%
+           5         89     5,086      1.75%
+           8         95     5,086      1.87%
+          13        118     5,086      2.32%
+          21        178     5,086      3.50%
+          34        259     5,086      5.09%
+          55        406     5,086      7.98%
+          89        895     5,086     17.60%
+         144      1,400     5,086     27.53%
+         233      1,951     5,086     38.36%
+         377      2,399     5,086     47.17%
+   unbounded      3,625     5,086     71.27%
+
+[v2] GATE-WIDTH SWEEP, 16-site published frame  (critical regions / all untrusted regions)
+           K   critical     total   fraction
+           1         14     1,974      0.71%
+           2         14     1,974      0.71%
+           3         14     1,974      0.71%
+           5         14     1,974      0.71%
+           8         17     1,974      0.86%
+          13         26     1,974      1.32%
+          21         54     1,974      2.74%
+          34         96     1,974      4.86%
+          55        141     1,974      7.14%
+          89        368     1,974     18.64%
+         144        575     1,974     29.13%
+         233        728     1,974     36.88%
+         377        913     1,974     46.25%
+   unbounded      1,500     1,974     75.99%
+[v2] done in 119s

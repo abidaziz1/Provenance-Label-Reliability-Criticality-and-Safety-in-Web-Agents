@@ -1,0 +1,9 @@
+  [30/145] (51s)
+  [60/145] (102s)
+  [90/145] (142s)
+  [120/145] (199s)
+
+[v2] criticality, descendants-only vs including the region root
+frame       regions  desc(ours)  desc(theirs)  +root(ours)  +root(theirs)
+57-site       5,317      49.88%        49.93%       71.68%         71.43%
+16-site       2,054      41.33%        41.58%       76.44%         75.85%

@@ -1,0 +1,25 @@
+name: Needs Alam
+description: A step only Alam can do (Colab run, key, account, decision, annotation, outreach email).
+title: "[needs-human] "
+labels: ["needs-human"]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      options: [Run a Colab notebook, Provide or rotate a key, Make a decision, Annotation, Send an email, Account action, Other]
+    validations: { required: true }
+  - type: input
+    id: task
+    attributes: { label: Roadmap task ID, placeholder: "2.3" }
+  - type: textarea
+    id: steps
+    attributes: { label: Exactly what to do, description: Numbered steps. Include links and file paths. }
+    validations: { required: true }
+  - type: textarea
+    id: return
+    attributes: { label: What to send back and where, description: "Branch, file path, or a comment here. Never paste a key here." }
+    validations: { required: true }
+  - type: input
+    id: blocks
+    attributes: { label: What this blocks, placeholder: "Gate 1 on Nov 8" }

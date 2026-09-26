@@ -1,0 +1,40 @@
+frame 145 trajectories / 57 sites
+159 usable trial pages over 27 sites (76s)
+  narrow A1  P_correct         rows=318 (124s)
+  narrow A1  P_err1_fixedgate  rows=636 (171s)
+  narrow A1  P_err1_derived    rows=954 (216s)
+  narrow A1  P_none            rows=1272 (264s)
+  narrow A2  P_correct         rows=1590 (311s)
+  narrow A2  P_err1_fixedgate  rows=1908 (357s)
+  narrow A2  P_err1_derived    rows=2226 (402s)
+  narrow A2  P_none            rows=2544 (446s)
+  page   A1  P_correct         rows=2862 (492s)
+  page   A1  P_err1_fixedgate  rows=3180 (535s)
+  page   A1  P_err1_derived    rows=3498 (583s)
+  page   A1  P_none            rows=3816 (625s)
+  page   A2  P_correct         rows=4134 (668s)
+  page   A2  P_err1_fixedgate  rows=4452 (712s)
+  page   A2  P_err1_derived    rows=4770 (756s)
+  page   A2  P_none            rows=5088 (801s)
+
+5088 rows in 801s
+
+envelope  attack  policy               n      L1      L2      L3      L4  ctl L4  sites
+narrow    A1      P_correct          159   54.7%    0.0%    0.0%    0.0%    0.0%     27
+narrow    A1      P_err1_fixedgate   159   96.9%    0.0%    0.0%    0.0%    0.0%     27
+narrow    A1      P_err1_derived     159   96.9%    0.0%    0.0%    0.0%    0.0%     27
+narrow    A1      P_none             159   96.9%   96.9%   96.9%   96.9%    0.0%     27
+narrow    A2      P_correct          159   54.7%    0.0%    0.0%    0.0%    0.0%     27
+narrow    A2      P_err1_fixedgate   159   96.9%    0.0%    0.0%    0.0%    0.0%     27
+narrow    A2      P_err1_derived     159   96.9%    0.0%    0.0%    0.0%    0.0%     27
+narrow    A2      P_none             159   96.9%   76.7%   76.7%   76.7%    0.0%     27
+page      A1      P_correct          159   54.7%    0.0%    0.0%    0.0%    0.0%     27
+page      A1      P_err1_fixedgate   159   96.9%    0.0%    0.0%    0.0%    0.0%     27
+page      A1      P_err1_derived     159   96.9%   96.9%   96.9%   96.9%    0.0%     27
+page      A1      P_none             159   96.9%   96.9%   96.9%   96.9%    0.0%     27
+page      A2      P_correct          159   54.7%   43.4%   43.4%   43.4%    0.0%     27
+page      A2      P_err1_fixedgate   159   96.9%   76.7%   76.7%   76.7%    0.0%     27
+page      A2      P_err1_derived     159   96.9%   76.7%   76.7%   76.7%    0.0%     27
+page      A2      P_none             159   96.9%   76.7%   76.7%   76.7%    0.0%     27
+
+truncated observations: 106/2544   injection cut off by truncation: 80

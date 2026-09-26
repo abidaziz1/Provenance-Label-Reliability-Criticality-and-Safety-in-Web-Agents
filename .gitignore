@@ -1,0 +1,25 @@
+# secrets: never commit
+.env
+.env.*
+secrets/
+*.pem
+*.key
+*service-account*.json
+*credentials*.json
+.claude/settings.local.json
+CLAUDE.local.md
+
+# data and large artifacts (fetched or rebuilt, never committed)
+data/
+*.parquet
+*.pt
+*.bin
+live_pages/
+*.zip
+
+# python and notebook noise
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+.pytest_cache/

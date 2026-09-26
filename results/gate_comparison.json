@@ -1,0 +1,23 @@
+{
+ "K": 21,
+ "n_obs": 410,
+ "regions": 2596,
+ "crit": {
+  "doc_order": 54,
+  "lexical": 195,
+  "label_aware": 196,
+  "ORACLE": 106
+ },
+ "sites": {
+  "doc_order": 8,
+  "lexical": 23,
+  "label_aware": 23,
+  "ORACLE": 26
+ },
+ "agree": {
+  "doc_order": 2476,
+  "lexical": 2407,
+  "label_aware": 2406,
+  "ORACLE": 2596
+ }
+}

@@ -1,0 +1,7 @@
+NB1 pages: 26  sites present: ['airbnb', 'amazon', 'booking', 'kohls', 'rentalcars', 'seatgeek', 'sports.yahoo']
+   sanitized chars sent: mean 183,278  max 200,000  pages truncated at 200k: 18
+NB3 trial pages: 159
+   ('narrow', 'P_correct'): mean 22,446 chars  p90 42,376  max 60,000
+   ('page', 'P_correct'): mean 24,732 chars  p90 47,131  max 60,000
+   ('narrow', 'P_none'): mean 26,846 chars  p90 49,337  max 60,000
+   ('page', 'P_none'): mean 26,846 chars  p90 49,337  max 60,000

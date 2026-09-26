@@ -1,0 +1,23 @@
+task: "<task id>"
+slug: "<short-slug>"
+created: "<YYYY-MM-DD>"
+prereg_commit: ""          # fill after the prereg commit
+data:
+  dataset: osunlp/Mind2Web
+  revision: 17ece8eb89862368edc0cc806acee6fca5163474
+  shards: [train_0.json, train_1.json, train_10.json]
+  frame: "57-site"         # or 16-site; name it every time
+models: []                 # exact IDs, e.g. claude-sonnet-5
+settings:
+  temperature: 0
+  max_tokens: 256
+  batch_api: true
+seeds: [0]
+sizes:
+  n_items: 0
+  trials_per_condition: 0
+budget_usd: 0.0            # src/llm.py enforces this cap
+dry_run_estimate_usd: null # from IDEA3_DRY_RUN=1
+scripts:
+  run: ""
+  analyse: ""
