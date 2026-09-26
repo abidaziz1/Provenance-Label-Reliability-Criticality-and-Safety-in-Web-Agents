@@ -1,0 +1,4 @@
+{"ts": "2026-09-26T13:39:03Z", "model": "claude-sonnet-5", "tag": "smoke-direct", "prompt_sha256": "ef7e7ff96d04cdcd", "prompt_chars": 30, "system_chars": 0, "max_tokens": 8, "dry_run": true, "est_cost_usd": 0.000101}
+{"ts": "2026-09-26T13:39:03Z", "model": "gemini-3-flash-preview", "tag": "smoke-direct", "prompt_sha256": "ef7e7ff96d04cdcd", "prompt_chars": 30, "system_chars": 0, "max_tokens": 256, "dry_run": true, "est_cost_usd": 0.000773}
+{"ts": "2026-09-26T13:39:03Z", "kind": "batch_submit", "model": "claude-haiku-4-5", "tag": "smoke-batch", "n_requests": 2, "est_cost_usd": 5.1e-05, "prompts_sha256": "d6faebfef972ea92", "dry_run": true}
+{"ts": "2026-09-26T13:39:03Z", "kind": "batch_submit", "model": "gemini-3-flash-preview", "tag": "smoke-batch", "n_requests": 2, "est_cost_usd": 0.000773, "prompts_sha256": "d6faebfef972ea92", "dry_run": true}
