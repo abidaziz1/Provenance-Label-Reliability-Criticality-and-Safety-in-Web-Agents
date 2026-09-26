@@ -1,0 +1,49 @@
+{
+ "batch": "demo",
+ "items": [
+  {
+   "id": "D001",
+   "site": "example-shop",
+   "region": {
+    "tag": "div",
+    "class": "reviews-list",
+    "id": "",
+    "share_of_dom": 0.06,
+    "text_excerpt": "Great product, arrived fast. Review by J. on 3 May."
+   },
+   "control": {
+    "tag": "button",
+    "text": "Helpful",
+    "role": null
+   },
+   "path": [
+    "html",
+    "body",
+    "main",
+    "section.reviews",
+    "div.reviews-list"
+   ]
+  },
+  {
+   "id": "D002",
+   "site": "example-travel",
+   "region": {
+    "tag": "div",
+    "class": "promo-ad-banner",
+    "id": "hero",
+    "share_of_dom": 0.12,
+    "text_excerpt": "Save 20% with our own travel card."
+   },
+   "control": {
+    "tag": "a",
+    "text": "Learn more",
+    "role": null
+   },
+   "path": [
+    "html",
+    "body",
+    "div#hero"
+   ]
+  }
+ ]
+}
