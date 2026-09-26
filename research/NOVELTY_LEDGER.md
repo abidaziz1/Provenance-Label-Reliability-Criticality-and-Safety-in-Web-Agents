@@ -28,7 +28,7 @@ The bar set by the 19 Sep independent audit: the measurements must "predict or e
 1. **The workspace reset lost the 25 Sep commits before any push.** The free C7 measurements were rerun from public data and reproduce exactly (K21, K22, K23). The pre-registration commits for the 25 Sep experiments are gone, so those experiments count as exploratory.
 2. **C7's confound is resolved for the stripping side (C7c).** On the same live Booking DOM, reducing attributes to the archive's 21 names disables 53 of the 57 UCM selectors that match live (93.0%; hand 11 of 13). Stripping alone suffices.
 3. **A C7 claim was too broad.** Reused selectors fail on archives, but UCM writes selectors from the page it sees, so "UCM masks nothing on archives" is not shown. Task 2.8 tests UCM's generator on archived pages.
-4. **First decay datapoint for C8.** On Booking's hotel page, 13 of 16 hand selectors and 46 of 60 LLM selectors that matched UCM's capture still match on 26 Sep 2026. The interval is unknown: UCM records no capture date.
+4. **First decay datapoint for C8.** On Booking's hotel page, 13 of 16 hand selectors and 46 of 60 LLM selectors (43 of 57 without the 3 that duplicate hand selectors) that matched UCM's capture still match on 26 Sep 2026. The interval is unknown: UCM records no capture date.
 
 ## Candidates
 
@@ -36,7 +36,7 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 
 ### C1'. Per page and per task, agents meet untrusted content around actionable elements far more often than a per-node statistic suggests
 
-- **Status after adversarial review: survives only as a reduced, descriptive result.** Under stricter heuristic labels, 24% to 31% of Mind2Web pages (about 17% after excluding five sites whose "ads" are first-party promotions) and 39% to 48% of tasks have a visible control inside ad, user or hosted content. Prismata reports no per-page or per-task rate.
+- **Status after adversarial review: survives only as a reduced, descriptive result.** Under stricter heuristic labels, 24% to 31% of Mind2Web pages (about 17% after excluding five sites whose "ads" are first-party promotions, per a review snippet that was never committed) and 39% to 48% of tasks have a visible control inside ad, user or hosted content. Prismata reports no per-page or per-task rate.
 - **Withdrawn parts.** "The 1.2% reproduces at leaf granularity" (a labeler artifact: all 808 critical leaves exist because nested nav, menu, header or footer nodes are relabeled trusted); "the 1.2% is a per-leaf rate" (Prismata's unit is an LLM-flagged untrusted node, 23.10 per page, against our 143.55); the 18x and 28x ratios (they change unit and criterion at once; at a fixed criterion, node to page is 1.9x to 2.4x); the 9.19% element and 7.71% target rates as stated (mostly first-party false positives; stricter labels give 1.2% to 2.5% and 0.5% to 2.7%).
 - **Open question it leaves.** Prismata's 1.2% ranges over 1.6% to 19.6% of our untrusted units depending on the unit, so whether it reproduces depends on the density of nodes its labeler flags. Only Prismata's labels (task 1.1) or human labels settle it.
 - **Evidence.** `experiments/2026-09-25_N0.2_c1-robustness/`, `experiments/2026-09-25_N0.2_unit-ladder/`, `research/audit/2026-09-25_adversarial_C1prime_C4.md`.
@@ -87,7 +87,7 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 ### C8. Selector-based masking costs and decays
 
 - **First signal (25 Sep, free).** All 23 hashed class tokens in UCM's Booking selectors occur 0 times in the 2023 Booking archive; confounded with archive stripping for Booking. The live half needs 2.7 and 3.5.
-- **Live datapoint (26 Sep, exploratory).** 16 of those 23 tokens occur on today's Booking pages. On the hotel page, 3 of 16 hand selectors and 14 of 60 LLM selectors that matched UCM's capture no longer match (19% to 23%), over an interval UCM does not record. One site, one page; the homepage capture was blocked (HTTP 403).
+- **Live datapoint (26 Sep, exploratory).** 16 of those 23 tokens occur on today's Booking pages. On the hotel page, 3 of 16 hand selectors and 14 of 60 LLM selectors (14 of 57 without hand duplicates) that matched UCM's capture no longer match (19% to 25%), over an interval UCM does not record. One site, one page; the homepage capture was blocked (HTTP 403).
 - **Verdict.** NOVEL AS MEASUREMENT; breakage itself is KNOWN (Kushmerick 2000; Lerman et al. 2003; Hammoudi et al. 2016; EasyList studies). A broken masking selector unmasks untrusted content, and UCM also generates selectors with an LLM, so decay must cover both. Task 3.5.
 
 ### C9. Criticality-conditioned verification
@@ -110,7 +110,7 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 | C5 | INCREMENTAL | WASP; RedTeamCUA | Adds exposure and admission layers | method section |
 | C6 | NOVEL AS MEASUREMENT (near INCREMENTAL) | Kohli 2026; Kim et al. 2025 | Joint untrusted-as-trusted errors on DOM regions | optional, on a go |
 | C7 | NOVEL AS MEASUREMENT, measured | Online-Mind2Web; WebCanvas | 24 of 25 UCM Booking selectors match nothing on the archive; stripping alone disables 53 of 57 on the same live DOM | primary contribution P1 (draft statement) |
-| C8 | NOVEL AS MEASUREMENT, first datapoint | Lerman et al. 2003; Kushmerick 2000 | Selector decay unmasks untrusted content; 19% to 23% on one Booking page | part of P1 (3.5) |
+| C8 | NOVEL AS MEASUREMENT, first datapoint | Lerman et al. 2003; Kushmerick 2000 | Selector decay unmasks untrusted content; 19% to 25% on one Booking page | part of P1 (3.5) |
 | C9 | INCREMENTAL | SIEVE; CausalArmor | Only the trigger is new | drop or merge into C6 |
 | C10 | INCREMENTAL | WASP | Bound vs real per defense | needed for credibility, not a contribution |
 

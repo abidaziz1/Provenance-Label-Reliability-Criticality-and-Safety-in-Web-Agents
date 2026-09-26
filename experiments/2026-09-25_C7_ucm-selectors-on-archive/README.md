@@ -24,7 +24,7 @@
 | Site, source | Selectors | Use a `data-*` attribute | Use a hashed-looking class | Either |
 | --- | ---: | ---: | ---: | ---: |
 | Booking, hand | 25 | 92.0% | 32.0% | 92.0% |
-| Booking, LLM (3 runs x 3 pages, deduplicated) | 70 | 95.7% | 60.0% | 98.6% |
+| Booking, LLM (3 runs x 3 pages; 77 distinct, less 7 identical to hand selectors) | 70 | 95.7% | 60.0% | 98.6% |
 | Reddit, hand | 17 | 0.0% | 0.0% | 0.0% |
 | Reddit, LLM | 70 | 15.7% | 0.0% | 15.7% |
 | GitLab, hand | 73 | 13.7% | 2.7% | 16.4% |

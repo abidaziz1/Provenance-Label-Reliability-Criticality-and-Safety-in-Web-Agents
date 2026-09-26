@@ -38,5 +38,5 @@ Detail under V0 (`V0_detail` in the result file):
 
 ## What this changes
 
-- K24 gets a committed script, a result file and a test (`test_K24_labeler_sensitivity_band`). The C1' band (24% to 38% of pages, 39% to 59% of tasks) now reruns from a commit.
+- K24 gets a committed script, a result file and a test (`test_K24_labeler_sensitivity_band`). The C1' band (24% to 31% of pages and 39% to 48% of tasks under stricter labels; 38% and 59% as published) now reruns from a commit.
 - Nothing in the review's conclusions changes.

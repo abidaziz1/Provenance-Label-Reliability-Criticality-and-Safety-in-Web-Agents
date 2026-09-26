@@ -21,5 +21,5 @@ Whether an agent meets a visible actionable element inside untrusted content, pe
 ## After the adversarial review
 
 - The 9.19% and 7.71% figures are mostly first-party false positives from the heuristic labeler. Stricter labels give 1.2% to 2.5% and 0.5% to 2.7%.
-- The page and task rates survive at lower levels under stricter labels: 24% to 31% of pages (about 17% without five first-party-promotion sites) and 39% to 48% of tasks. See `experiments/2026-09-25_N0.3b_labeler-sensitivity/`.
+- The page and task rates survive at lower levels under stricter labels: 24% to 31% of pages (about 17% without five first-party-promotion sites, per a review snippet that was never committed) and 39% to 48% of tasks. See `experiments/2026-09-25_N0.3b_labeler-sensitivity/`.
 - The per-page cap for Prismata's Mind2Web half is 38.35% (1,086 / 2,832) for any critical path and 3.32% (94 / 2,832) for Case 3. The 25 Sep README used the pooled 19.17%; see `research/CORRECTIONS.md`.

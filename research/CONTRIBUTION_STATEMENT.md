@@ -4,7 +4,7 @@ Status: DRAFT by Claude, 26 Sep 2026, task N0.5. Alam approves or rewrites it at
 
 ## The paper in one paragraph
 
-Structural defenses against prompt injection in web agents decide trust from the DOM. UCM masks untrusted regions with CSS selectors. Prismata gates each action by the ancestor chain of the element it touches. Both, and every evaluation of them, depend on which page representation the defense reads. We measure that dependence, and it is large. The archive behind Mind2Web, a widely used web-agent dataset, deletes the attributes these defenses read: no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites. That deletion alone disables 93% of UCM's working Booking selectors on the same live page, and it halves Prismata-style criticality if a link must carry an `href`. We then separate the two ways a provenance error hurts under a gate: exposure and admission. Finally, we report how often agents meet actionable controls inside untrusted content, per page and per task. That is the quantity a per-node statistic hides.
+Structural defenses against prompt injection in web agents decide trust from the DOM. UCM masks untrusted regions with CSS selectors. Prismata gates each action by the ancestor chain of the element it touches. Both, and every evaluation of them, depend on which page representation the defense reads. We measure that dependence, and it is large. The archive behind Mind2Web, a widely used web-agent dataset, deletes the attributes these defenses read: no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites. That deletion alone disables 93% of UCM's working Booking selectors on the same live pages, and it halves Prismata-style criticality if a link must carry an `href`. We then separate the two ways a provenance error hurts under a gate: exposure and admission. Finally, we report how often agents meet actionable controls inside untrusted content, per page and per task. That is the quantity a per-node statistic hides.
 
 ## Primary contributions
 
@@ -12,7 +12,7 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 ### P1. Page archives and site drift remove what structural defenses read (C7 with C8)
 
-**Sentence.** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (K21). On the same live Booking DOM, reducing attributes to that set disables 53 of the 57 UCM selectors that work live (K25). On the archive, whether a link needs an `href` halves Prismata-style criticality (19.57% to 9.40% per visible untrusted node, K26). Selectors written for Booking also break over time: 19% to 23% on one page (C8, exploratory).
+**Sentence.** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (K21). On the same live Booking DOM, reducing attributes to that set disables 53 of the 57 UCM selectors that work live (K25). On the archive, whether a link needs an `href` halves Prismata-style criticality (19.57% to 9.40% per visible untrusted node, K26). Selectors written for Booking also break over time: 19% to 25% on one page (C8, exploratory).
 
 - **Audit verdict.** NOVEL AS MEASUREMENT for both C7 and C8. Online-Mind2Web and WebCanvas measure task drift, not dropped defense inputs. Wrapper breakage itself is known (Kushmerick 2000; Lerman et al. 2003).
 - **Evidence now.**
@@ -51,7 +51,7 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 ### P3 (conditional). How often agents meet actionable controls inside untrusted content, per page and per task (C1')
 
-**Sentence.** A visible actionable control sits inside ad, user or hosted content on 24% to 38% of Mind2Web pages and in 39% to 59% of tasks, depending on labeler strictness (K19; `experiments/2026-09-25_N0.3b_labeler-sensitivity/`). About 17% of pages remain once five sites whose "ads" are first-party promotions are set aside. A per-node statistic cannot show this.
+**Sentence.** Under stricter heuristic labels, a visible actionable control sits inside ad, user or hosted content on 24% to 31% of Mind2Web pages and in 39% to 48% of tasks (K24; the labeler as published gives 38% and 59%, K19). A per-node statistic cannot show this.
 
 - **Audit verdict.** NOVEL AS MEASUREMENT at most, and descriptive. It has had no novelty audit of its own against web-measurement studies of third-party content prevalence (adversarial review, row 12).
 - **Why it is conditional.** The labeler over-labels: the 9.19% control and 7.71% target figures are mostly first-party false positives. The band itself rests on heuristic labels.

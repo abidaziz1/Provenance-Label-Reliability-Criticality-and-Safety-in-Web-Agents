@@ -33,7 +33,7 @@ Run 26 Sep 2026, 12:47 to 12:48 UTC, UCM commit acff2e4. Output: `results/live_s
 | Selectors | Match the live DOM | Of those, match nothing after stripping | Share disabled |
 | --- | ---: | ---: | ---: |
 | Hand (25) | 13 | 11 | 84.6% |
-| LLM (70) | 44 | 42 | 95.5% |
+| LLM (70, not also hand-written) | 44 | 42 | 95.5% |
 | Pooled (95) | 57 | 53 | 93.0% |
 
 Four selectors survive stripping. `div[aria-label='Certification name']` survives because the archive keeps `aria-label` as `aria_label`. The other three rest on classes the archive keeps: `h2.pp-header__title`, `h2.ddb12f4f86.pp-header__title`, and `section[id='questions-answers-desktop'] .aa225776f2.ca9d921c46.f6707cac49`. Of the 57 live-matching selectors, 52 use a `data-*` attribute.
@@ -42,7 +42,7 @@ Four selectors survive stripping. `div[aria-label='Certification name']` survive
 
 **Secondary outcomes.**
 - Hashed class tokens: 16 of the 23 in UCM's Booking selectors occur on today's pages, against 0 of 23 in the 2023 archive. Booking's class names changed between the archive and UCM's capture, and most have lasted from UCM's capture to today.
-- Decay (exploratory; the homepage and search captures failed, so only the hotel page compares like with like). Of the hand selectors that matched UCM's hotel capture, 13 of 16 match today's hotel page. For LLM selectors from UCM's hotel runs, it is 46 of 60. UCM does not record its capture date: its URLs carry a 1 Jul 2025 check-in, and its repo starts on 7 Jul 2026. So this is 19% to 23% breakage over an unknown interval, one page, one site.
+- Decay (exploratory; the homepage and search captures failed, so only the hotel page compares like with like). Of the hand selectors that matched UCM's hotel capture, 13 of 16 match today's hotel page. For LLM selectors from UCM's hotel runs, it is 46 of 60, or 43 of 57 without the 3 that duplicate hand selectors. UCM does not record its capture date: its URLs carry a 1 Jul 2025 check-in, and its repo starts on 7 Jul 2026. So this is 19% to 25% breakage over an unknown interval, one page, one site.
 
 **Reading.** On the same DOM at the same moment, the archive's attribute whitelist disables 53 of the 57 UCM Booking selectors that work live. Anyone who reuses published or live-generated selectors on Mind2Web-style archives masks almost nothing on Booking. This does not show that UCM fails on archives. UCM writes its selectors from the page it sees, so on an archived page it would have to build them from class names. On Booking those class names are hashed and changed between 2023 and UCM's capture. Whether selectors written that way work, and whether they transfer to live pages, is task 2.8.
 

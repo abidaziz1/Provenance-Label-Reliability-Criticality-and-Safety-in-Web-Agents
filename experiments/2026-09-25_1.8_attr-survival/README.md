@@ -40,7 +40,7 @@
   | `aria_description` | 74 |
   | `text_value` | 15 |
 
-- **No site-authored `data-*` survives.** The only `data-*` name is `data_pw_testid_buckeye`, a capture-tool attribute. It appears on all 57 sites, at fewer than 1 per 1,000 nodes on 21 of them.
+- **No site-authored `data-*` survives.** The only `data-*` name is `data_pw_testid_buckeye`, apparently added by the capture tool ("pw" suggests Playwright). It appears on all 57 sites, at fewer than 1 per 1,000 nodes on 21 of them.
 - **Seven defense inputs are absent on every site.** `on*`, `tabindex`, `contenteditable`, `href`, `for`, `hidden` and `style` occur on 0 of 57 sites.
 - **What survives.** `role` survives on 56 sites and `aria-*` (renamed `aria_*`) on 55. `id` and `class` survive on all 57.
 - **Decision.** The archive head-to-head with UCM's `data-*` selectors is dead. `experiments/2026-09-25_C7_ucm-selectors-on-archive/` and `experiments/2026-09-26_C7c_live-strip-vs-drift/` measure the consequence.
