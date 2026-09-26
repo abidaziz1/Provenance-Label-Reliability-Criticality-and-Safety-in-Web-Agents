@@ -20,22 +20,117 @@ META = {
     "colab": {"provenance": []},
 }
 
-SECRETS = '''# Credentials come from the Colab secrets panel (key icon, left sidebar).
-# Never paste a key into a notebook cell.
+SECRETS = '''# [1.16] Keys come from the Colab secrets panel (key icon, left sidebar), under the same
+# names src/llm.py reads. Never paste a key into a cell; the notebook prints only presence.
 import os
-def get_key(name):
+def get_key(name, fallback=None):
     try:
         from google.colab import userdata
-        v = userdata.get(name)
-        if v: return v
+        for n in (name, fallback):
+            if not n: continue
+            try:
+                v = userdata.get(n)
+            except Exception:
+                v = None
+            if v: return v
     except Exception:
         pass
-    return os.environ.get(name)
+    return os.environ.get(name) or (os.environ.get(fallback) if fallback else None)
 
-ANTHROPIC_API_KEY = get_key("ANTHROPIC_API_KEY")
-OPENAI_API_KEY    = get_key("OPENAI_API_KEY")
-print("anthropic key:", "present" if ANTHROPIC_API_KEY else "MISSING")
-print("openai key   :", "present" if OPENAI_API_KEY else "MISSING")'''
+for _name, _fallback in (("RESEARCH_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"),
+                         ("OPENAI_API_KEY", None), ("GEMINI_API_KEY", None)):
+    _v = get_key(_name, _fallback)
+    if _v: os.environ[_name] = _v          # src/llm.py reads the environment
+    print(f"{_name:27s}", "present" if _v else "missing")
+os.environ.pop("ANTHROPIC_API_KEY", None)   # the research key must never double as Claude Code's own key'''
+
+# ------------------------------------------------------------------ [1.13] git convention
+# docs/NOTEBOOK_GIT_CONVENTION.md: config, clone or pull, push() with metric-valued messages,
+# periodic push for long cells, results on colab/<task-id>, token from Colab secrets.
+REPO_SLUG = "abidaziz1/Provenance-Label-Reliability-Criticality-and-Safety-in-Web-Agents"
+
+def git_config(task_id, exp_name):
+    return f'''TASK_ID    = "{task_id}"
+REPO       = "{REPO_SLUG}"
+REPO_DIR   = "/content/idea3"
+BRANCH     = f"colab/{{TASK_ID}}"
+GIT_USER   = "Alam"
+GIT_EMAIL  = "abidaziz1@users.noreply.github.com"   # or the email on your GitHub account
+PUSH_EVERY = 20                                      # minutes, long cells only
+EXP_DIR    = "experiments/{exp_name}"               # Claude creates it, with config.yaml and budget, before any paid run'''
+
+GIT_SETUP = '''import os, subprocess
+try:
+    from google.colab import userdata
+    os.environ["GH_TOKEN_COLAB"] = userdata.get("GH_TOKEN_COLAB")
+except Exception:
+    pass                                             # outside Colab: set GH_TOKEN_COLAB yourself
+askpass = "/content/.git-askpass" if os.path.isdir("/content") else os.path.expanduser("~/.git-askpass")
+with open(askpass, "w") as f:
+    f.write('#!/bin/sh\\ncase "$1" in Username*) echo x-access-token ;; *) echo "$GH_TOKEN_COLAB" ;; esac\\n')
+os.chmod(askpass, 0o700)
+os.environ["GIT_ASKPASS"] = askpass
+os.environ["GIT_TERMINAL_PROMPT"] = "0"
+
+def _git(*args, cwd=None):
+    r = subprocess.run(["git", *args], capture_output=True, text=True, cwd=cwd)   # no shell: messages stay literal
+    if r.returncode: print(r.stderr.strip()[-500:])
+    return r
+
+if not os.path.exists(REPO_DIR):
+    _git("clone", f"https://github.com/{REPO}.git", REPO_DIR)
+os.chdir(REPO_DIR)
+_git("fetch", "origin")
+_git("config", "user.name", GIT_USER); _git("config", "user.email", GIT_EMAIL)
+_git("config", "core.hooksPath", ".githooks")       # the secret scan runs on every commit here too
+on_remote = _git("ls-remote", "--heads", "origin", BRANCH).stdout.strip()
+_git("checkout", "-B", BRANCH, f"origin/{BRANCH}" if on_remote else "origin/main")
+print("ready on", _git("branch", "--show-current").stdout.strip())'''
+
+PUSH_HELPER = '''from datetime import datetime
+
+RESULT_PATHS = [EXP_DIR, "results/data_index.txt"]  # stage only result paths, never -A on the whole tree
+
+def push(msg=None):
+    msg = msg or f"{TASK_ID} checkpoint {datetime.now():%Y-%m-%d %H:%M}"
+    paths = [p for p in RESULT_PATHS if os.path.exists(p)]
+    if paths:
+        _git("add", "-A", "--", *paths)
+    if _git("commit", "-m", msg).returncode == 0:
+        _git("push", "-u", "origin", BRANCH)
+        print("pushed:", msg)'''
+
+# [1.16] every paid call goes through src/llm.py, under the budget in EXP_DIR/config.yaml
+LLM_SETUP = '''import sys
+sys.path.insert(0, os.path.join(REPO_DIR, "src"))
+from llm import LLM
+os.environ["IDEA3_DRY_RUN"] = "1" if DRY_RUN else "0"
+if not os.path.exists(os.path.join(EXP_DIR, "config.yaml")):
+    raise SystemExit(f"{EXP_DIR}/config.yaml is missing. Claude creates the experiment folder, with its "
+                     "pre-registration and budget_usd, before any run (skill: new-experiment).")
+llm = LLM.from_experiment(EXP_DIR)
+print(f"llm ready: budget ${llm.budget:.2f}, spent ${llm.spent:.4f}, reserved ${llm.reserved():.4f}, dry run {DRY_RUN}")'''
+
+def final_push(task_id):
+    return f'''push(f"{{TASK_ID}} notebook complete")
+print("done")'''
+
+def long_cell(body):
+    """Wrap a long-running cell: a background thread pushes every PUSH_EVERY minutes, and the
+    finally clause pushes even if the cell fails."""
+    indented = "\n".join(("    " + ln) if ln.strip() else ln for ln in body.splitlines())
+    return ('''import threading
+_stop = threading.Event()
+def _auto(every):
+    while not _stop.wait(every * 60):
+        push(f"{TASK_ID} checkpoint {datetime.now():%H:%M}")
+threading.Thread(target=_auto, args=(PUSH_EVERY,), daemon=True).start()
+
+try:
+''' + indented + '''
+finally:
+    _stop.set()
+    push(f"{TASK_ID} long cell finished")''')
 
 WRITE_PIPELINE = "%%writefile idea3_pipeline.py\n" + PIPELINE
 WRITE_SCORER = "%%writefile idea3_score.py\n" + SCORER
@@ -81,6 +176,8 @@ def write(nb, path):
     nb['metadata'] = META
     for i, c in enumerate(nb['cells']):   # fixed ids: a rebuild with no source change gives a byte-identical file
         c['id'] = f"cell-{i:03d}"
+    out_dir = os.environ.get('IDEA3_NB_OUT')          # tests build into a temp folder
+    if out_dir: path = os.path.join(out_dir, os.path.basename(path))
     with open(path, 'w') as f:
         nbf.write(nb, f)
     n_code = sum(1 for c in nb['cells'] if c['cell_type'] == 'code')

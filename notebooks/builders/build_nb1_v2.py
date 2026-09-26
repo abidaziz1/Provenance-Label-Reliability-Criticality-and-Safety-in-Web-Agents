@@ -52,10 +52,17 @@ UCM (arXiv:2607.05277) detects untrusted regions from DOM structure alone. It re
 Run top to bottom. `DRY_RUN` is on and no paid call happens until you turn it off."""))
 
 # ---------------------------------------------------------------- config
+a(new_markdown_cell("""## Git and results (task 1.13)
+
+Results go to the branch `colab/<task-id>` of the research repo, never to main; Claude checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model key named in the secrets cell. Part 3's calls go through `src/llm.py` under the budget in `EXP_DIR/config.yaml`. For the live capture alone (task 2.7), set `TASK_ID = "2.7"`."""))
+a(new_code_cell(git_config("2.8", "2026-10-12_2.8_ucm-detector-archive-vs-live")))
+a(new_code_cell(GIT_SETUP))
+a(new_code_cell(PUSH_HELPER))
+
 a(new_code_cell('''# ---------------------------------------------------------------- configuration
 DRY_RUN = True            # no paid API calls while this is True
 N_PAGES_PER_SITE = 2
-MODEL = "claude-sonnet-4-5"
+MODEL = "claude-sonnet-4-5"   # [1.4] UCM's own selector model (UCM §7.1), for the reproduction; every row records it
 MAX_HTML_CHARS = 200_000  # UCM uses CLEAN_HTML_MAX_SIZE = 200000
 
 # Sites chosen by the pre-work measurement, not by convenience.
@@ -88,8 +95,9 @@ REQUIRE_ALL_SITES = True
 print(f"{len(SITES)} sites requested, {N_PAGES_PER_SITE} pages each, DRY_RUN={DRY_RUN}")
 print("shards:", SHARDS if not SMALL_SHARD_ONLY else ["train_10.json"])'''))
 
-a(new_code_cell('''%pip install -q lxml cssselect huggingface_hub numpy scipy anthropic'''))
+a(new_code_cell('''%pip install -q lxml cssselect huggingface_hub numpy scipy anthropic pyyaml'''))
 a(new_code_cell(SECRETS))
+a(new_code_cell(LLM_SETUP))
 a(new_code_cell(WRITE_PIPELINE))
 a(new_code_cell(WRITE_SCORER))
 a(new_code_cell(MANIFEST))
@@ -238,7 +246,7 @@ Uses UCM's own prompt, pulled from their public MIT-licensed repository at run t
 a(new_code_cell('''import re, pathlib, subprocess
 
 UCM_REPO = "https://github.com/ethz-spylab/untrusted-content-masking"
-UCM_PIN = None   # set to a commit sha to pin exactly; None records whatever HEAD is
+UCM_PIN = "acff2e4"   # [1.4] the commit the 25 Sep audit read; None records whatever HEAD is
 
 !rm -rf ucm
 !git clone --quiet {UCM_REPO} ucm 2>/dev/null || echo "CLONE FAILED"
@@ -428,19 +436,16 @@ a(new_code_cell('''def ask_for_selectors(sanitized_html, site_label, prompt_temp
     shape it emits them; idea3_score.py normalizes the known shapes and raises on
     anything it cannot interpret rather than silently scoring it as a miss."""
     require_prompt(prompt_template, UCM_COMMIT)     # [A-5c] no empty-prompt path
-    if DRY_RUN:
-        print(f"  [DRY_RUN] would send {len(sanitized_html):,} chars for {site_label}")
-        return None
-    import anthropic
-    client = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
     prompt = prompt_template + (
         f"\\n\\nSite: {site_label}\\n"
         "Return ONLY a JSON array of CSS selectors identifying untrusted, "
         "third-party or user-generated regions. No prose.\\n\\n"
         f"HTML:\\n{sanitized_html}")
-    r = client.messages.create(model=model, max_tokens=2000,
-                               messages=[{"role": "user", "content": prompt}])
-    txt = r.content[0].text
+    # [1.16] through src/llm.py: budget cap, cost log, model_returned; a dry run logs the estimate only
+    txt = llm.complete(model, prompt, max_tokens=2000, tag=f"{TASK_ID} {site_label}")
+    if txt is None:
+        print(f"  [DRY_RUN] would send {len(sanitized_html):,} chars for {site_label}")
+        return None
     m = re.search(r"\\[.*\\]", txt, re.S)
     if not m:
         return dict(_unparsed=txt[:400])
@@ -453,7 +458,7 @@ est_in = len(PAGES) * (MAX_HTML_CHARS / 3.5)
 print(f"planned: {len(PAGES)} pages, roughly {est_in/1e6:.2f}M input tokens")
 print("set DRY_RUN = False in the config cell when you are ready to spend that.")'''))
 
-a(new_code_cell('''results = []
+a(new_code_cell(long_cell('''results = []
 for i, pg in enumerate(PAGES):
     try:
         tree, regions, _pin_nodes = ground_truth_untrusted(pg["html"], pg["site"])
@@ -462,7 +467,7 @@ for i, pg in enumerate(PAGES):
         continue
     san = sanitize(pg["html"])
     sel = ask_for_selectors(san, pg["site"], UCM_PROMPT)
-    row = dict(corpus=pg["corpus"], site=pg["site"], n_regions=len(regions),
+    row = dict(corpus=pg["corpus"], site=pg["site"], n_regions=len(regions), model=MODEL,
                sanitized_chars=len(san), commit=UCM_COMMIT, sanitizer=SANITIZER)
     if sel is None:
         row["dry_run"] = True
@@ -480,8 +485,12 @@ for i, pg in enumerate(PAGES):
           (f"F1={row.get('f1', float('nan')):.3f} overmask={row.get('overmask_ratio', 0):.2f}"
            if "f1" in row else "(dry run)"))
 
-json.dump(results, open("detection_results.json", "w"), indent=1)
-print(f"\\n{len(results)} rows written to detection_results.json")'''))
+os.makedirs(EXP_DIR, exist_ok=True)
+json.dump(results, open(f"{EXP_DIR}/detection_results.json", "w"), indent=1)
+f1s = [r["f1"] for r in results if "f1" in r and r.get("overmask_ratio", 1) <= 0.8]
+push(f"{TASK_ID} detection: {len(results)} pages, non-degenerate mean F1 "
+     f"{(sum(f1s) / len(f1s)) if f1s else float('nan'):.3f} (n={len(f1s)}), spent ${llm.spent:.2f}")
+print(f"\\n{len(results)} rows written to {EXP_DIR}/detection_results.json")''')))
 
 a(new_code_cell('''import numpy as np
 scored = [r for r in results if "f1" in r]
@@ -522,6 +531,8 @@ a(new_markdown_cell("""## What this notebook can and cannot conclude
 
 **Cannot:** anything about UCM's accuracy. Both labelers here are heuristics with different inputs, and the design has no arbiter. Getting an accuracy number needs independent human ground truth on a sample that includes agreements and heuristic-negatives, not only disagreements. That is the next notebook to write, and it needs people, not a key.
 
-**Carry these three facts into the paper regardless of what Part 3 returns:** the archive strips `data-*` (measured, 0.44 to 1.37 per 1k nodes against 1,469 to 5,925 class attributes); the sanitizer actually used was `SANITIZER`; and the UCM commit was `UCM_COMMIT`."""))
+**Carry these three facts into the paper regardless of what Part 3 returns:** the archive keeps 21 attribute names and no site-authored `data-*` on any of 57 sites (only a capture-tool attribute, `data_pw_testid_buckeye`; K21, `experiments/2026-09-25_1.8_attr-survival/`); the sanitizer actually used was `SANITIZER`; and the UCM commit was `UCM_COMMIT`."""))
+
+a(new_code_cell(final_push("2.8")))
 
 write(nb, f'{ROOT}/notebooks/colab/01_corpus_fidelity_and_structure_only_detection_v2.ipynb')
