@@ -96,3 +96,11 @@ def test_all_mode_skips_gitignored_env():
         assert r.returncode == 0, r.stdout
     finally:
         env.unlink()
+
+def test_scanner_finds_new_google_key_format(tmp_path):
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import scan_secrets as S
+    fake = "AQ" + "." + "Ab8" + "x" * 47          # built at runtime so this file holds no key-shaped literal
+    hits = [name for name, rx in S.RX.items() if rx.search("GEMINI_API_KEY=" + fake)]
+    assert "google_api_key_aq" in hits
+    assert not S.RX["google_api_key_aq"].search("see section AQ.1 of the report")
