@@ -104,3 +104,15 @@ def test_scanner_finds_new_google_key_format(tmp_path):
     hits = [name for name, rx in S.RX.items() if rx.search("GEMINI_API_KEY=" + fake)]
     assert "google_api_key_aq" in hits
     assert not S.RX["google_api_key_aq"].search("see section AQ.1 of the report")
+
+
+def test_scanner_finds_stripe_and_resend_keys():
+    sys.path.insert(0, str(ROOT / "scripts"))
+    import scan_secrets as S
+    # built at runtime so this file holds no key-shaped literal
+    cases = {"stripe_key": "sk" + "_test_" + "51" + "Ab" * 12, "stripe_webhook": "whsec" + "_" + "Z" * 30,
+             "resend_key": "re" + "_" + "AbCdEfGh12" + "_" + "XyZ" * 6}
+    for name, fake in cases.items():
+        assert S.RX[name].search("KEY=" + fake), name
+    assert not S.RX["resend_key"].search("see re_run_all_scripts in the log")
+    assert not S.RX["stripe_key"].search("pk_test_suite")
