@@ -1,0 +1,103 @@
+{
+ "power": {
+  "0.02": [
+   1128,
+   3024
+  ],
+  "0.05": [
+   405,
+   1086
+  ],
+  "0.1": [
+   189,
+   507
+  ],
+  "0.2": [
+   78,
+   210
+  ]
+ },
+ "feasibility": {
+  "3traj_cap60_pages6": {
+   "items": 663,
+   "critical": 73,
+   "sites_with_critical": 13,
+   "top": [
+    [
+     "gamestop",
+     18
+    ],
+    [
+     "tvguide",
+     14
+    ],
+    [
+     "ign",
+     9
+    ],
+    [
+     "redbox",
+     7
+    ],
+    [
+     "viator",
+     6
+    ]
+   ]
+  },
+  "3traj_cap120_pages12": {
+   "items": 987,
+   "critical": 108,
+   "sites_with_critical": 14,
+   "top": [
+    [
+     "gamestop",
+     28
+    ],
+    [
+     "tvguide",
+     16
+    ],
+    [
+     "ebay",
+     13
+    ],
+    [
+     "viator",
+     10
+    ],
+    [
+     "ign",
+     9
+    ]
+   ]
+  },
+  "6traj_cap200_pages20": {
+   "items": 1660,
+   "critical": 229,
+   "sites_with_critical": 18,
+   "top": [
+    [
+     "booking",
+     48
+    ],
+    [
+     "gamestop",
+     30
+    ],
+    [
+     "kbb",
+     25
+    ],
+    [
+     "ebay",
+     17
+    ],
+    [
+     "ign",
+     17
+    ]
+   ]
+  }
+ }
+}

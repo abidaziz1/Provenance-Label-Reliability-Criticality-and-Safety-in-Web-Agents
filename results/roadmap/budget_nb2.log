@@ -1,0 +1,9 @@
+design effect 2.68
+  base  n indep  n clustered  critical needed
+    2%     1128         3024             1008
+    5%      405         1086              362
+   10%      189          507              169
+   20%       78          210               70
+frame 3 traj/site, cap 60, 6 pages/task: items=663 critical=73 sites_with_critical=13 top=[('gamestop', 18), ('tvguide', 14), ('ign', 9), ('redbox', 7)] (98s)
+frame 3 traj/site, cap 120, 12 pages/task: items=987 critical=108 sites_with_critical=14 top=[('gamestop', 28), ('tvguide', 16), ('ebay', 13), ('viator', 10)] (134s)
+frame 6 traj/site, cap 200, 20 pages/task: items=1660 critical=229 sites_with_critical=18 top=[('booking', 48), ('gamestop', 30), ('kbb', 25), ('ebay', 17)] (217s)

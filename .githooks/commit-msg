@@ -1,0 +1,2 @@
+#!/bin/sh
+python3 "$(git rev-parse --show-toplevel)/scripts/scan_secrets.py" --msg "$1" || exit 1

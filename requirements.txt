@@ -1,0 +1,14 @@
+# versions validated for every published Idea 3 number (Sep 2026)
+lxml==6.1.0
+cssselect==1.5.0
+numpy==2.4.4
+scipy==1.17.1
+huggingface_hub==1.28.0
+nbformat==5.11.1
+tiktoken==0.14.0
+pytest>=8
+pyyaml==6.0.3
+# model SDKs: pin to the installed versions on first use and commit the change
+anthropic>=0.40
+openai>=1.50
+# google-genai: only for the Gemini arm (2.3, 3.2); install on first use and pin it here

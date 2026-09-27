@@ -1,0 +1,17 @@
+frame 145 trajectories / 57 sites
+  [25/145] obs=83 (13s)
+  [50/145] obs=151 (26s)
+  [75/145] obs=232 (37s)
+  [100/145] obs=301 (56s)
+  [125/145] obs=347 (67s)
+
+observations with a target, actionables and >=1 actionable-bearing region: 410
+regions considered: 2,596   K = 21
+lexical gate: 5,782 of 8,610 admitted slots had any task-token overlap (67.2%)
+
+gate            target-free   critical   fraction  sites  agrees with oracle
+doc_order               yes         54      2.08%      8               95.4%
+lexical                 yes        195      7.51%     23               92.7%
+label_aware             yes        196      7.55%     23               92.7%
+ORACLE                   no        106      4.08%     26              100.0%
+done in 78s

@@ -1,0 +1,20 @@
+name: ci
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: install
+        run: pip install -r requirements.txt
+      - name: secret scan (tracked files)
+        run: python scripts/scan_secrets.py
+      - name: tests (33 audit regressions, budget guard, secret guards)
+        run: python -m pytest -q tests

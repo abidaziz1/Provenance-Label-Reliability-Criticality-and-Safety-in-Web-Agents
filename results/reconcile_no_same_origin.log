@@ -1,0 +1,17 @@
+[no_same_origin] FRAME: 145 trajectories over 57 sites
+  [10/145] obs=90 (8s)
+  [20/145] obs=172 (19s)
+  [30/145] obs=295 (27s)
+  [40/145] obs=378 (38s)
+  [50/145] obs=485 (50s)
+  [60/145] obs=535 (55s)
+  [70/145] obs=622 (62s)
+  [80/145] obs=695 (74s)
+  [90/145] obs=754 (77s)
+  [100/145] obs=823 (84s)
+  [110/145] obs=919 (103s)
+  [120/145] obs=989 (107s)
+  [130/145] obs=1047 (111s)
+  [140/145] obs=1126 (122s)
+[no_same_origin] deep_parse totals: {'spliced': 1500, 'nodes_added': 54513, 'skipped_literal': 0, 'pages': 1163}
+[no_same_origin] WROTE 1163 observations in 124s
