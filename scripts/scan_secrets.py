@@ -16,6 +16,9 @@ PATTERNS = {
     "openai_key":      r"sk-(?:proj-|svcacct-|admin-)?[A-Za-z0-9_\-]{32,}",
     "google_api_key":  r"AIza[0-9A-Za-z_\-]{35}",
     "google_api_key_aq": r"\bAQ\.[A-Za-z0-9_\-]{40,}",   # newer Google API key format (seen Sep 2026)
+    "stripe_key":      r"\b(?:sk|pk|rk)_(?:test|live)_[A-Za-z0-9]{16,}",
+    "stripe_webhook":  r"\bwhsec_[A-Za-z0-9]{24,}",
+    "resend_key":      r"\bre_[A-Za-z0-9]{8,}_[A-Za-z0-9]{8,}",
     "github_token":    r"(?:gh[pousr]_[A-Za-z0-9]{36,}|github_pat_[A-Za-z0-9_]{22,})",
     "slack_token":     r"xox[baprs]-[A-Za-z0-9\-]{10,}",
     "slack_webhook":   r"https://hooks\.slack\.com/services/[A-Za-z0-9/_\-]{20,}",
