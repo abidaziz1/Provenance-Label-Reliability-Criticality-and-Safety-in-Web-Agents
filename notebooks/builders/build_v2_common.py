@@ -55,7 +55,7 @@ REPO       = "{REPO_SLUG}"
 REPO_DIR   = "/content/idea3"
 BRANCH     = f"colab/{{TASK_ID}}"
 GIT_USER   = "Alam"
-GIT_EMAIL  = "abidaziz1@users.noreply.github.com"   # or the email on your GitHub account
+GIT_EMAIL  = "139110271+abidaziz1@users.noreply.github.com"   # the repo owner's GitHub noreply address
 PUSH_EVERY = 20                                      # minutes, long cells only
 EXP_DIR    = "experiments/{exp_name}"               # Claude creates it, with config.yaml and budget, before any paid run'''
 
