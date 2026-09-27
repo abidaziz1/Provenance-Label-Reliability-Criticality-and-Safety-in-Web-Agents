@@ -2,7 +2,7 @@
 
 A measurement study of how the page a web agent's defense sees changes what that defense can do. It covers two published structural defenses against indirect prompt injection in web agents: Prismata (arXiv:2607.08147) and Untrusted Content Masking (UCM, arXiv:2607.05277). This is work in progress, targeting TMLR in February 2027.
 
-**Every number here is provisional.** A number is final only when `research/CLAIMS_LEDGER.md` marks it `supported`. Nothing in this repo claims that either paper's published results are wrong. Where our measurements differ from a published number, we say which of our choices could explain the difference, and we are asking the authors.
+**Every number here is provisional.** A number is final only when `research/CLAIMS_LEDGER.md` marks it `supported`. Nothing in this repo claims that either paper's published results are wrong. Where our measurements differ from a published number, we say which of our choices could explain the difference and which details only the authors can confirm.
 
 ## Main result so far (P1 in `research/CONTRIBUTION_STATEMENT.md`)
 
@@ -32,7 +32,7 @@ Older documents in `docs/context/`, `docs/history/` and the git history contain 
 
 ```bash
 pip install -r requirements.txt
-python3 -m pytest -q tests              # 47 tests; each claim's test recomputes it from the committed result file
+python3 -m pytest -q tests              # each claim's test recomputes it from the committed result file
 python3 scripts/fetch_mind2web.py       # 1.27 GB, pinned revision
 python3 scripts/attr_survival.py        # K21, a few minutes
 python3 scripts/actionability_on_archive.py   # K26, about 3 minutes
@@ -59,6 +59,8 @@ The UCM selector scripts need a clone of `github.com/ethz-spylab/untrusted-conte
 - **Mind2Web** (osunlp/Mind2Web, revision `17ece8eb`), CC BY 4.0. The data is not redistributed here, except small derived excerpts in `results/legacy/`.
 - **UCM** (ethz-spylab/untrusted-content-masking, commit `acff2e4`), MIT License, copyright 2026 Nikolić, Zverev, Rando, Jagielski, Debenedetti and Tramèr. Its selectors are quoted in our result files.
 - **Prismata.** Only its paper is used; no code has been released.
+
+The full attribution and license notices are in `THIRD_PARTY_NOTICES.md`.
 
 ## License
 

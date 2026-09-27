@@ -1,14 +1,14 @@
 # Status
 
-**Updated:** 26 Sep 2026, Cowork session (Claude).
-**Phase:** 0 (contribution audit) and 1 (lock down). Next gate: Gate N on Oct 11.
+**Updated:** 27 Sep 2026, Cowork session (Claude).
+**Phase:** 1 (lock down P1). Gate N passed on 27 Sep. Next gate: Gate 1 (UCM reproduces), 8 Nov.
 
 ## State
 
 - **Gate N passed on 27 Sep.** P1 is the primary contribution: page archives and site drift remove what structural defenses read. P2 and P3 stay conditional on the real-agent pilot (2.4) and the hand audit (1.7). Dropped: 1.10, 2.3, 2.6, 3.1 and Phase 4; the target is TMLR, with DTRAP as the floor.
 - **The repo is public.**
   - PRs 1 to 3 are merged in order, and CI passed on every run.
-  - A scan of all 261 blobs in its history, including the uploaded zip, found no key or personal contact detail.
+  - A scan of all 261 blobs in its history and the 168 files inside the uploaded zip found no key and no personal contact detail. Commit metadata carries only noreply addresses.
   - The README now states current findings, withdrawn claims and third-party licenses.
 - **Evidence for P1.**
   - K21: the archive keeps 21 attribute names.
@@ -17,7 +17,7 @@
   - K26: requiring an `href` halves Prismata-style criticality.
 - **Open question for P1.** Does UCM's own generator still work on stripped pages? Backlog O4 answers it without annotators, for about $7.
 - **Drafts waiting for Alam.**
-  - The emails: send the Prismata one, and the UCM one is optional.
+  - The emails (`outreach/`): send the Prismata one; the UCM one is optional. Both now link the public repo and leave your name blank for you to fill in.
   - The annotator brief (`annotations/ANNOTATOR_BRIEF.md`), needed only if P3 stays in play.
 
 ## Preflight (26 Sep, this session)
