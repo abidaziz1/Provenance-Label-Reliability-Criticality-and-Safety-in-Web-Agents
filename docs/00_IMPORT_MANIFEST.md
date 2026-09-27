@@ -1,3 +1,5 @@
+> Historical import manifest. Some setup files were retired during reviewer preparation; this records the original kit, not the current tree.
+
 # Import manifest
 
 What was imported into this repo at handoff on 25 Sep 2026, where it came from, and the order to read it in. The documents in `docs/context/` and `docs/history/` were copied byte for byte from the claude.ai project "MCP & Agentic AI Security" (files named `Idea3_*`) and from the 19 Sep audit report. They are frozen: never edit them. Corrections go in `research/CORRECTIONS.md`; new work goes in `research/` and `experiments/`.

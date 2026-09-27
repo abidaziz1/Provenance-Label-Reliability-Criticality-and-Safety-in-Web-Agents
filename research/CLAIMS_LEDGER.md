@@ -1,6 +1,6 @@
 # Claims ledger
 
-Every number or claim that may appear in the paper, with its evidence. Gate 0: a claim is `supported` only with a script, a commit, a result file, a passing test and a construct check. `numbers-verifier` checks this file before any document goes to Alam.
+Every number or claim that may appear in the paper, with its evidence. Gate 0: a claim is `supported` only with a script, a commit, a result file, a passing test and a construct check. Review this ledger before citing a result; tests and construct checks are separate requirements.
 
 Status values: `supported`, `provisional` (evidence exists, review or rerun pending), `pending` (no evidence yet), `withdrawn` (see `research/CORRECTIONS.md`).
 

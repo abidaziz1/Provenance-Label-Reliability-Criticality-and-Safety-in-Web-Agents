@@ -1,60 +1,32 @@
-# Status
+# Project status
 
-**Updated:** 27 Sep 2026, Cowork session (Claude).
-**Phase:** 1 (lock down P1). Gate N passed on 27 Sep. Next gate: Gate 1 (UCM reproduces), 8 Nov.
+Updated 27 September 2026. Maintainer: **Abid Aziz**.
 
-## State
+## Research scope
 
-- **Gate N passed on 27 Sep.** P1 is the primary contribution: page archives and site drift remove what structural defenses read. P2 and P3 stay conditional on the real-agent pilot (2.4) and the hand audit (1.7). Dropped: 1.10, 2.3, 2.6, 3.1 and Phase 4; the target is TMLR, with DTRAP as the floor.
-- **The repo is public.**
-  - PRs 1 to 3 are merged in order, and CI passed on every run.
-  - A scan of all 261 blobs in its history and the 168 files inside the uploaded zip found no key and no personal contact detail. Commit metadata carries only noreply addresses.
-  - The README now states current findings, withdrawn claims and third-party licenses.
-- **Evidence for P1.**
-  - K21: the archive keeps 21 attribute names.
-  - K22: 24 of 25 UCM Booking hand selectors match nothing on the archive.
-  - K25: stripping alone disables 53 of 57 working selectors on the same live DOM.
-  - K26: requiring an `href` halves Prismata-style criticality.
-- **Open question for P1.** Does UCM's own generator still work on stripped pages? Backlog O4 answers it without annotators, for about $7.
-- **Drafts waiting for Alam.**
-  - The emails (`outreach/`): send the Prismata one; the UCM one is optional. Both now link the public repo and leave your name blank for you to fill in.
-  - The annotator brief (`annotations/ANNOTATOR_BRIEF.md`), needed only if P3 stays in play.
+Gate N passed on 27 September: P1 (preservation of defense inputs) is primary. P2 depends on the real-agent pilot, task 2.4; P3 depends on the independent annotation audit, task 1.7. Tasks 1.10, 2.3, 2.6, 3.1, 4.1, and 4.2 are dropped. The coupling decision, venue call, and mechanism gate are retired.
 
-## Preflight (26 Sep, this session)
+The working target is TMLR by 19 February 2027, with DTRAP as an alternative. This is a plan, not an acceptance or publication claim. No provisional finding has been promoted to supported by the repository maintenance work.
 
-| check | result |
-|---|---|
-| anthropic /v1/models (research key) | 200 |
-| gemini /v1beta/models | 200 (free tier; Batch API refused) |
-| openai /v1/models | 401 (no key; no credit yet) |
-| huggingface Mind2Web | 200 |
-| arxiv.org | 200 |
-| semantic scholar, openalex | 429 (rate limited) |
-| git clone of the repo | ok (public since 27 Sep) |
-| git push, GitHub API | refused by the session's git proxy |
-| docker | not running |
-| CPUs, RAM, free disk | 2, 8.2 GB, 30.9 GB |
+## Repository
 
-## Spend
+- The repository is public. The 26 and 27 September imports are merged in PRs #1–#5.
+- Main requires a pull request, passing checks, an up-to-date branch, and resolved conversations; force pushes and deletion are blocked.
+- The README and [review guide](docs/REVIEW_GUIDE.md) map current evidence to its limits.
+- The test suite expects 47 passed and one dataset-dependent skip without Mind2Web.
+- Original code uses MIT; original documentation uses CC BY 4.0. Third-party terms remain separate.
+- This public artifact includes maintainer identity and needs a separate preparation for anonymous review.
 
-- API: $0.000272 logged (smoke test; about $0.0001 actually charged on the Claude key), of the $175 to $380 TMLR-route budget.
+## Next research steps
 
-## Open PRs waiting for Alam
+1. O5: census of benchmark representations and defense inputs.
+2. O9: construct check of selector non-matches before claiming a fail-open result.
+3. O4: same-page generator comparison, only after budget approval.
+4. Task 1.7: item sampling and audit, only after annotators are selected.
+5. Adversarial review of K21, K22, K25, and K26 before promoting their ledger status.
 
-- This session still cannot push. The Gate N and public-repo work comes as a bundle with two branches, `claude/gate-n-public-repo` and `claude/guardrail-scanner-more-keys`.
+## Decisions still needed
 
-## Open needs-human (in order)
+Abid Aziz must confirm affiliation, outreach, annotators, and the O4 spend. Outreach files are drafts and have not been sent by this maintenance work. Credential revocation remains unverified. See [maintainer tasks](research/HUMAN_TASKS.md).
 
-1. **H8b.** Push the new bundle and merge its two PRs.
-2. **H10.** Protect main; this is free now that the repo is public.
-3. **H9.** Revoke the unused Stripe, Resend and Slack keys.
-4. **1.1.** Send the Prismata email (recommended). 1.2, the UCM email, is optional.
-5. **P3 decision.** Name two annotators if you want P3 tested (`annotations/ANNOTATOR_BRIEF.md`); otherwise P3 becomes a paragraph.
-6. **O4.** Say yes or no to the same-page generator test, about $7.
-7. **H11.** Choose a license.
-
-## Next 3 actions (Claude)
-
-1. O5, the free benchmark census of defense inputs, and the O9 fail-open construct check (free).
-2. O4, pre-registered, once you say yes.
-3. The 1.7 item sampler and first audit batch, if you keep P3.
+Historical environment checks and session details are in [the research log archive](docs/history/RESEARCH_LOG_through_27Sep.md); they are not current service-health claims.

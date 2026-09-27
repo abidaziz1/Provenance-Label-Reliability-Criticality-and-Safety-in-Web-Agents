@@ -1,6 +1,6 @@
 # Notebook git convention (Colab)
 
-Every notebook Alam runs in Colab keeps its results in this repo from the first cell. This follows Alam's research-notebook convention, adapted for a private repo and for review by Claude before anything reaches main.
+Notebooks keep results on dedicated branches for review before they reach main. The repository is public; credentials and private inputs must stay out of notebook output.
 
 ## Rules
 
@@ -8,7 +8,7 @@ Every notebook Alam runs in Colab keeps its results in this repo from the first 
 - Pull before any work; push after every cell that produces a result worth keeping.
 - Commit messages carry the numbers: `2.4 pilot done: compliance=0.31 (n=640), cost=$14.20`, never `update results`.
 - Long cells (10 minutes or more) run a background thread that pushes every `PUSH_EVERY` minutes, inside `try/finally`, so a crash still pushes.
-- Push to `colab/<task-id>`, never to main. Claude verifies the branch (skill: colab-intake), then opens a PR for Alam.
+- Push to `colab/<task-id>`, never to main. Validate the branch and open a pull request for review.
 - Files over about 50 MB go to an orphan branch `data/<task-id>` in parts under 95 MB, with a `MANIFEST.json` of SHA-256 values. No Google Drive.
 - The token comes from Colab secrets through `GIT_ASKPASS`, so it never appears in a URL, `.git/config`, a cell output or an error message.
 - Commits stage only result paths (`RESULT_PATHS`), and the repo's pre-commit and commit-msg hooks run in Colab too.
@@ -20,10 +20,10 @@ Every notebook Alam runs in Colab keeps its results in this repo from the first 
 
 ```python
 TASK_ID    = "2.7"
-REPO       = "<owner>/<repo>"            # filled in by Claude when it builds the notebook
+REPO       = "<owner>/<repo>"            # set when generating the notebook
 REPO_DIR   = "/content/idea3"
 BRANCH     = f"colab/{TASK_ID}"
-GIT_USER   = "Alam"
+GIT_USER   = "Abid Aziz"
 GIT_EMAIL  = "<the email on your GitHub account>"
 PUSH_EVERY = 20                          # minutes, long cells only
 ```
@@ -130,6 +130,6 @@ print("done")
 
 ## Notes
 
-- `GIT_EMAIL` should be the email on Alam's GitHub account (or his GitHub noreply address), so commits are attributed to him.
+- `GIT_EMAIL` should be the email on Abid Aziz's GitHub account (or his GitHub noreply address), so commits are attributed to him.
 - Keys the notebook needs come from Colab secrets with `userdata.get`: `RESEARCH_ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GEMINI_API_KEY`. The v2 notebooks still read `ANTHROPIC_API_KEY`; task 1.16 switches them (with a fallback to the old name). The notebook never prints a key.
 - Task 1.13 retrofits the three v2 notebook builders in `notebooks/builders/` with these cells.

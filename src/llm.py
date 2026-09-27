@@ -11,8 +11,8 @@ Every paid model call in this repo goes through `LLM.complete` or the Batch API 
 
 Key variables:
   RESEARCH_ANTHROPIC_API_KEY  research key for Claude models. Deliberately NOT named
-                              ANTHROPIC_API_KEY, so Claude Code never picks it up for its own auth.
-  OPENAI_API_KEY              or the literal value "proxy-injected" when a Claude Code cloud
+                              ANTHROPIC_API_KEY, to keep research and development credentials separate.
+  OPENAI_API_KEY              or the literal value "proxy-injected" when a configured cloud
                               environment attaches the real key as an API credential.
   GEMINI_API_KEY              optional; or "proxy-injected" when attached as an API credential.
                               scripts/preflight.py reports whether Google's API is reachable.

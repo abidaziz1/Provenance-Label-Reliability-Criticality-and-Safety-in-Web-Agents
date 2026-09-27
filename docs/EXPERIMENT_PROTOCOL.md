@@ -1,6 +1,6 @@
 # Experiment protocol
 
-Rules for anything that produces a number. The skills `new-experiment` and `colab-intake` follow this file.
+Rules for analyses that produce a research number, including notebook runs and reconstructed experiments.
 
 ## Folder
 

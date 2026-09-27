@@ -1,7 +1,7 @@
 import json, subprocess, sys
 from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
-HOOK = ROOT / ".claude" / "hooks" / "guard_secrets.py"
+HOOK = ROOT / "scripts" / "guard_commands.py"
 
 def _decision(cmd):
     r = subprocess.run([sys.executable, str(HOOK)], input=json.dumps({"tool_input": {"command": cmd}}),

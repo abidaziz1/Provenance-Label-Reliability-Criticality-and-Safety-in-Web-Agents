@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Claude Code PreToolUse hook for Bash.
+"""Command-policy guard using a JSON tool-call input and decision output.
 
-Reads the tool call as JSON on stdin and denies commands that would print secrets, read key files,
-stage secret files, skip the secret scan, rewrite shared history, push to main or merge a PR.
-It is a second layer behind the deny rules in .claude/settings.json. Neither layer is a sandbox:
-a script can still read the environment, so the rules in CLAUDE.md apply regardless.
+Rejects common credential disclosures and prohibited Git operations. This is a
+pattern-based check, not a sandbox. Integrators must invoke it explicitly;
+Git's commit hooks separately run scripts/scan_secrets.py.
 """
 import json, re, sys
 
@@ -112,8 +111,8 @@ def main():
         print(json.dumps({"hookSpecificOutput": {
             "hookEventName": "PreToolUse",
             "permissionDecision": "deny",
-            "permissionDecisionReason": f"Blocked by .claude/hooks/guard_secrets.py: {why}. "
-                                        "Check a key's presence with `test -n \"$VAR\"`; see CLAUDE.md."}}))
+            "permissionDecisionReason": f"Blocked by scripts/guard_commands.py: {why}. "
+                                        "Check a key's presence with `test -n \"$VAR\"`; see CONTRIBUTING.md."}}))
     sys.exit(0)
 
 

@@ -1,23 +1,17 @@
-## Summary
-<!-- one or two sentences for Alam: what this PR does, with the headline number if there is one -->
+## Change
 
-- Stacked on (open PRs this includes, or none):
-- Markers: <!-- [claim] [gate] [budget] [prereg] [guardrail], or none -->
+Describe the problem and the resulting behavior or documentation change.
 
-## Tasks
-<!-- one section per roadmap task; copy the block -->
+## Evidence and validation
 
-### Task <id>: <title>
-- **Check first:** <!-- the one thing Alam should look at, and the file it is in -->
-- Experiment folder and pre-registration commit:
-- Results: <!-- numbers with n, intervals, frame, and the file each came from -->
-- Spend: $___ of $___ budget
-- Deviations from the pre-registration: none, or a list
-- Construct check: <!-- one line: why this measures what the claim says -->
+- Relevant claim IDs or experiment folders:
+- Tests and commands run:
+- Limitations, skipped checks, or external inputs:
 
-## Checks
-- [ ] `python3 -m pytest -q tests` passes
-- [ ] `python3 scripts/scan_secrets.py` is clean
-- [ ] Every new number is in research/CLAIMS_LEDGER.md with its evidence file
-- [ ] ROADMAP.md, RESEARCH_LOG.md and STATUS.md are updated
-- [ ] Nothing in this PR merges itself or changes a guardrail without the `[guardrail]` marker
+## Review checklist
+
+- [ ] Tests and credential scan pass, or limitations are explained.
+- [ ] Changed research results include their frame, uncertainty, and evidence.
+- [ ] Claim status and corrections remain accurate.
+- [ ] No credentials, private correspondence, or participant identities are included.
+- [ ] Third-party notices and applicable licenses are preserved.

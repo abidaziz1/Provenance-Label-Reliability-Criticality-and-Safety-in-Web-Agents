@@ -1,6 +1,6 @@
 # Contribution statement (draft for Gate N)
 
-Status: **approved at Gate N on 27 Sep 2026 by Alam.** P1 is the paper's primary contribution; P2 and P3 stay conditional on their validation; the proposed drops are approved. Drafted by Claude on 26 Sep (task N0.5). Nothing here is a supported claim yet: numbers carry their claims-ledger IDs and are provisional until each row passes Gate 0.
+Status: **approved at Gate N on 27 Sep 2026 by Abid Aziz.** P1 is the paper's primary contribution; P2 and P3 stay conditional on their validation; the proposed drops are approved. Draft dated 26 Sep (task N0.5); original drafting provenance is retained in the historical records. Nothing here is a supported claim yet: numbers carry their claims-ledger IDs and are provisional until each row passes Gate 0.
 
 ## The paper in one paragraph
 
