@@ -55,6 +55,6 @@
 
 ## Next 3 actions (Claude)
 
-1. O5, the free benchmark census of defense inputs.
+1. O5, the free benchmark census of defense inputs, and the O9 fail-open construct check (free).
 2. O4, pre-registered, once you say yes.
 3. The 1.7 item sampler and first audit batch, if you keep P3.

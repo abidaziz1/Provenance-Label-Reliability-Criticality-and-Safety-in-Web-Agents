@@ -23,7 +23,7 @@ This session still cannot push, so the work comes as a bundle with two branches.
   - Branch protection is noted as free.
 - **Annotator brief.** `annotations/ANNOTATOR_BRIEF.md` is a one-page, plain-language brief you can forward to two annotators.
 - **Colab fix.** Commits from Colab now use your GitHub noreply address, so they link to your account.
-- **Backlog.** New candidate ideas O4 to O8.
+- **Backlog.** New candidate ideas O4 to O9. O9 notes that UCM's released GitLab marker masks nothing, and logs nothing, when its selectors match nothing; it is a check to run, not a claim.
 
 **Check first:**
 - Read `README.md` as a stranger would: it should not overstate anything about Prismata or UCM.
