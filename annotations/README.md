@@ -1,11 +1,11 @@
 # Annotations
 
-Human labels for tasks 1.7, 2.1 and 3.1.
+Human labels for task 1.7, the exposure audit that decides P3, and for 2.1 only if P3 needs more than the audit. Task 3.1 was dropped at Gate N. `ANNOTATOR_BRIEF.md` is the plain-language brief for the two annotators.
 
 - `GUIDE.md`: the guide annotators read (version 0.1).
 - `../scripts/build_annotation_page.py`: builds one self-contained HTML page from an items file. Page text is escaped and rendered as plain text; `tests/test_annotation_page.py` checks this.
 - `demo_items.json` and `demo_page.html`: two invented items for trying the page. They are not study data.
-- `raw/<annotator>_<date>.json`: one file per annotator per session, as saved by the page. Annotators email their file to Alam, who commits it; annotators get no access to this repo, which holds unpublished work. Never edited after commit.
+- `raw/<annotator>_<date>.json`: one file per annotator per session, as saved by the page. Annotators email their file to Alam, who commits it. The repo is public, but annotators must not browse it while labeling: it holds the labeler's rules and what we expect to find, which would unblind them. Never edited after commit.
 - Annotators are identified by a short code, not by name, in every committed file.
 - Adjudicated labels and agreement statistics are produced by a script and written to the experiment folder of the task that uses them.
 

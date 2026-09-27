@@ -123,7 +123,7 @@ Claude is denied read access to `.env` by `.claude/settings.json`, and the Bash 
 - New cloud sessions and routine runs start from main. If work PRs are still open, Claude merges them into its branch, oldest first ("stacked on #N"), so work continues while PRs wait. Merging them in order clears the stack. If Alam closes a PR without merging it, Claude rebuilds the stack without it.
 - CI (`.github/workflows/ci.yml`) runs the secret scan and the tests on every push and PR.
 - Tags on main (`v2.0-baseline` at bootstrap, `results-frozen-<date>` after task 5.6) are Alam's: a cloud session cannot push tags.
-- On a free private repo GitHub cannot enforce required reviews (branch protection on private repos needs a paid plan such as GitHub Pro). If Alam upgrades, protect main: require a PR, block force pushes and deletion.
+- The repo is public since 27 Sep 2026, so branch protection is free: protect main (require a PR, block force pushes and deletion). Everything committed is public, drafts included; never commit captured pages, raw data or anything under embargo.
 
 ## 5. Human tasks
 

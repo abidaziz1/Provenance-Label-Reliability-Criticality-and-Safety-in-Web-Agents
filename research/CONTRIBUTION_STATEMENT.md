@@ -1,6 +1,6 @@
 # Contribution statement (draft for Gate N)
 
-Status: DRAFT by Claude, 26 Sep 2026, task N0.5. Alam approves or rewrites it at Gate N (Oct 11). Nothing here is a supported claim yet. Numbers carry their claims-ledger IDs and are provisional until each row passes Gate 0.
+Status: **approved at Gate N on 27 Sep 2026 by Alam.** P1 is the paper's primary contribution; P2 and P3 stay conditional on their validation; the proposed drops are approved. Drafted by Claude on 26 Sep (task N0.5). Nothing here is a supported claim yet: numbers carry their claims-ledger IDs and are provisional until each row passes Gate 0.
 
 ## The paper in one paragraph
 
@@ -135,16 +135,6 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 Dropping 1.10, 2.3, 2.6, 3.1 and 4.1 to 4.2 by default saves $2 to $7 (3.1), $45 to $120 (2.6, optional anyway) and $40 to $100 (Phase 4). It also saves up to 44 annotation hours unless coupling goes ahead.
 
-## Gate N issue (text to open when the repo is reachable)
+## Gate N
 
-**Title:** Gate N: approve the contribution statement
-
-**Body:**
-- Please read `research/CONTRIBUTION_STATEMENT.md` and `research/NOVELTY_LEDGER.md`.
-- Decide:
-  - [ ] P1 as the lead contribution, with falsification tests (a) to (c)
-  - [ ] P2, conditional on the 2.4 pilot clearing 5% in the exposure-only cell
-  - [ ] P3: keep conditional on the hand audit, or move to supporting now
-  - [ ] the drops in the task table (1.10, 2.3, 2.6, 3.1, 4.1, 4.2)
-  - [ ] a working title
-- Phase 3 spend waits for this issue to close.
+Passed on 27 Sep 2026 (`research/DECISIONS.md`). The next re-audit (N0.6) follows Gate 1.

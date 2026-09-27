@@ -49,3 +49,16 @@ Untrusted Content Masking (arXiv:2607.05277) ships MIT code and makes the same s
 - 1.13, 1.16, 1.3, 1.4 (notebooks): git convention, calls through `src/llm.py`, notebook 03 as one batch job, coupling power and go/no-go in notebook 02; a test rebuilds all three notebooks byte for byte.
 - Drafts for Alam: N0.4 triage, N0.5 contribution statement, emails 1.1 and 1.2, the pre-registration (1.6), the annotation guide and page (1.7).
 - Untrusted content: no page text was printed; the live captures stay in `data/`.
+
+## 2026-09-27: Gate N passed; repo public (Claude)
+- **Merges.** Alam pushed the 26 Sep bundle and merged PRs 1 to 3 in order, with merge commits; CI passed on all five runs.
+- **Repo check.**
+  - Main's tree equals the reviewed branch, and 47 tests pass on main.
+  - A scan of all 261 blobs in history, including inside the uploaded kit zip, found no key and no personal email or phone number. The scan also covered Stripe, Resend and the `AQ.` Google key formats.
+- **Gate N (Alam).** P1 is primary; P2 and P3 are conditional; the drops are approved (DECISIONS, 27 Sep).
+- **Now public.** Rewrote the README around current findings, withdrawn claims and third-party licenses (Mind2Web CC BY 4.0, UCM MIT). Removed text that assumed a private repo. Added the annotator brief. Fixed the Colab commit email to the owner's GitHub noreply address.
+- **Scanner.** Added Stripe and Resend key patterns (guardrail branch), because Alam may supply those keys later.
+- **Backlog.** New candidate ideas O4 to O8; O4 (same-page generator test) and O5 (benchmark census) are the strongest next steps for P1.
+- **Public-text fixes.** The email drafts no longer promise results "before any public version": they link the repo and leave the sender's name for Alam to fill in. Authors' replies stay out of the public repo (`outreach/README.md`). Added `THIRD_PARTY_NOTICES.md` with UCM's MIT notice and Mind2Web's CC BY 4.0 attribution.
+- **O9 (backlog).** Reading UCM's GitLab marker at `acff2e4`: a selector that matches nothing marks nothing and logs nothing, and `reveal.js` masks only marked elements, so a stripped or stale page would reach the agent unmasked. Not a claim yet: UCM's limitations section and a headless construct check come first.
+- **Rescan.** Repeated with the guardrail branch's patterns and a personal-email check: 0 hits in the 261 public blobs, the 168 files in the zip and the 18 blobs new on the two branches. Commit metadata in public history carries only GitHub and Anthropic noreply addresses.

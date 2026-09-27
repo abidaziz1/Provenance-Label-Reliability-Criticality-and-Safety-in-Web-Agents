@@ -1,33 +1,24 @@
 # Status
 
-**Updated:** 26 Sep 2026, Cowork session (Claude).
-**Phase:** 0 (contribution audit) and 1 (lock down). Next gate: Gate N on Oct 11.
+**Updated:** 27 Sep 2026, Cowork session (Claude).
+**Phase:** 1 (lock down P1). Gate N passed on 27 Sep. Next gate: Gate 1 (UCM reproduces), 8 Nov.
 
 ## State
 
-- **Where the work is.** Three branches, delivered to Alam as a git bundle because this session cannot push (HTTP 403 from the session's git proxy; anthropics/claude-code#96075). The PR bodies are in `docs/PR_BODIES_26Sep.md`.
-  - `claude/baseline-v2.0`: the kit unpacked at the root, tagged `v2.0-baseline`.
-  - `claude/guardrail-llm-batch`: `[guardrail]` changes: the Batch API, verified prices, a new key pattern in the secret scanner.
-  - `claude/cowork-run-2`: all research work; stacked on the other two.
-- **Phase 0.**
-  - N0.1 to N0.4 are done.
-  - The contribution statement (N0.5) is drafted. It leads with P1: page archives and site drift remove what structural defenses read.
-- **Evidence for P1, all free and pre-registered where noted.**
-  - K21: the archive keeps 21 attribute names and no site `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites.
+- **Gate N passed on 27 Sep.** P1 is the primary contribution: page archives and site drift remove what structural defenses read. P2 and P3 stay conditional on the real-agent pilot (2.4) and the hand audit (1.7). Dropped: 1.10, 2.3, 2.6, 3.1 and Phase 4; the target is TMLR, with DTRAP as the floor.
+- **The repo is public.**
+  - PRs 1 to 3 are merged in order, and CI passed on every run.
+  - A scan of all 261 blobs in its history and the 168 files inside the uploaded zip found no key and no personal contact detail. Commit metadata carries only noreply addresses.
+  - The README now states current findings, withdrawn claims and third-party licenses.
+- **Evidence for P1.**
+  - K21: the archive keeps 21 attribute names.
   - K22: 24 of 25 UCM Booking hand selectors match nothing on the archive.
-  - K25, C7c: on the same live DOM, stripping alone disables 53 of 57 working selectors.
-  - K26, C7b: requiring an `href` halves Prismata-style criticality on the archive (ratio 0.48).
-- **Reproduction.** Every number from 25 Sep reran identically on 26 Sep. The baseline is byte-identical at `v2.0-baseline`. 47 tests pass.
-- **Code tasks done.**
-  - 1.15: Batch API, live-tested with Anthropic.
-  - 1.4: model IDs and verified prices.
-  - 1.13: the notebook git convention.
-  - 1.16: notebooks call models through `src/llm.py`; notebook 03 runs as one batch.
-  - 1.3: coupling power and the go/no-go.
+  - K25: stripping alone disables 53 of 57 working selectors on the same live DOM.
+  - K26: requiring an `href` halves Prismata-style criticality.
+- **Open question for P1.** Does UCM's own generator still work on stripped pages? Backlog O4 answers it without annotators, for about $7.
 - **Drafts waiting for Alam.**
-  - Emails 1.1 and 1.2.
-  - The pre-registration (1.6).
-  - The annotation guide and page (1.7).
+  - The emails (`outreach/`): send the Prismata one; the UCM one is optional. Both now link the public repo and leave your name blank for you to fill in.
+  - The annotator brief (`annotations/ANNOTATOR_BRIEF.md`), needed only if P3 stays in play.
 
 ## Preflight (26 Sep, this session)
 
@@ -39,7 +30,7 @@
 | huggingface Mind2Web | 200 |
 | arxiv.org | 200 |
 | semantic scholar, openalex | 429 (rate limited) |
-| git clone of the private repo | ok with Alam's token |
+| git clone of the repo | ok (public since 27 Sep) |
 | git push, GitHub API | refused by the session's git proxy |
 | docker | not running |
 | CPUs, RAM, free disk | 2, 8.2 GB, 30.9 GB |
@@ -50,18 +41,20 @@
 
 ## Open PRs waiting for Alam
 
-- None opened yet. Push the bundle, then open three PRs in this order: baseline, guardrail, recovery (H8).
+- This session still cannot push. The Gate N and public-repo work comes as a bundle with two branches, `claude/gate-n-public-repo` and `claude/guardrail-scanner-more-keys`.
 
 ## Open needs-human (in order)
 
-1. **H8.** Push the git bundle and open the three PRs, then merge them in order.
-2. **H9.** Revoke the unused Stripe, Resend and Slack keys.
-3. **N0.5, Gate N by Oct 11.** Read `research/CONTRIBUTION_STATEMENT.md` and decide on P1 to P3 and the proposed drops.
-4. **1.1 and 1.2.** Edit and send the two author emails; the affiliation is a placeholder.
-5. **1.11.** Name the two annotators. The 1.7 audit batch needs them by Oct 9.
+1. **H8b.** Push the new bundle and merge its two PRs.
+2. **H10.** Protect main; this is free now that the repo is public.
+3. **H9.** Revoke the unused Stripe, Resend and Slack keys.
+4. **1.1.** Send the Prismata email (recommended). 1.2, the UCM email, is optional.
+5. **P3 decision.** Name two annotators if you want P3 tested (`annotations/ANNOTATOR_BRIEF.md`); otherwise P3 becomes a paragraph.
+6. **O4.** Say yes or no to the same-page generator test, about $7.
+7. **H11.** Choose a license.
 
 ## Next 3 actions (Claude)
 
-1. Write and pre-register the 1.7 item sampler, then build the first audit batch (about 100 exposure-driving seeds).
-2. The C1' novelty check against web-measurement studies of third-party content, before Gate N.
-3. Pre-register task 2.4 (real-agent pilot) under notebook 03's batch design, ready to run once you approve its budget ($11 to $22 at batch price).
+1. O5, the free benchmark census of defense inputs, and the O9 fail-open construct check (free).
+2. O4, pre-registered, once you say yes.
+3. The 1.7 item sampler and first audit batch, if you keep P3.
