@@ -1,0 +1,14 @@
+task: "N0.2"
+slug: "c1-robustness"
+created: "2026-09-25"
+prereg_commit: "78e50c7 (local commit, lost in the 26 Sep reset before any push)"
+data:
+  dataset: osunlp/Mind2Web
+  revision: 17ece8eb89862368edc0cc806acee6fca5163474
+  shards: [train_0.json, train_1.json, train_10.json]
+  frame: "57-site"
+models: []
+budget_usd: 0.0
+seeds: []
+scripts:
+  run: "scripts/c1_robustness.py"

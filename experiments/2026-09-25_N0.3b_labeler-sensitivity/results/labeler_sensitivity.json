@@ -1,0 +1,854 @@
+{
+ "pages": 1163,
+ "tasks": 145,
+ "sites": 57,
+ "mismatch_vs_gt_provenance_sampled": 0,
+ "variants": {
+  "V0_base": {
+   "elem_pct": 9.19,
+   "page_pct": 38.09,
+   "page_ci": [
+    27.72,
+    49.05
+   ],
+   "task_pct": 59.31,
+   "task_ci": [
+    47.18,
+    70.95
+   ],
+   "target_pct": 7.71,
+   "target_n": 1103,
+   "sites_any": 40
+  },
+  "V1_no_data_attr_tokens": {
+   "elem_pct": 9.19,
+   "page_pct": 38.09,
+   "page_ci": [
+    27.72,
+    49.05
+   ],
+   "task_pct": 59.31,
+   "task_ci": [
+    47.18,
+    70.95
+   ],
+   "target_pct": 6.62,
+   "target_n": 1103,
+   "sites_any": 40
+  },
+  "V2_no_hosted_H": {
+   "elem_pct": 2.45,
+   "page_pct": 30.7,
+   "page_ci": [
+    20.61,
+    42.33
+   ],
+   "task_pct": 47.59,
+   "task_ci": [
+    35.14,
+    60.31
+   ],
+   "target_pct": 2.72,
+   "target_n": 1103,
+   "sites_any": 32
+  },
+  "V3_no_generic_ugc(question/answer/qa/feedback)": {
+   "elem_pct": 8.82,
+   "page_pct": 36.2,
+   "page_ci": [
+    26.03,
+    46.93
+   ],
+   "task_pct": 58.62,
+   "task_ci": [
+    46.48,
+    70.47
+   ],
+   "target_pct": 7.07,
+   "target_n": 1103,
+   "sites_any": 39
+  },
+  "V4_strict(V1+V2+V3)": {
+   "elem_pct": 2.02,
+   "page_pct": 27.77,
+   "page_ci": [
+    18.0,
+    39.17
+   ],
+   "task_pct": 45.52,
+   "task_ci": [
+    33.09,
+    58.11
+   ],
+   "target_pct": 1.0,
+   "target_n": 1103,
+   "sites_any": 30
+  },
+  "V5_E_only(ads+crossorigin iframes, class/id/src)": {
+   "elem_pct": 1.22,
+   "page_pct": 24.33,
+   "page_ci": [
+    14.88,
+    35.55
+   ],
+   "task_pct": 39.31,
+   "task_ci": [
+    27.08,
+    52.32
+   ],
+   "target_pct": 0.54,
+   "target_n": 1103,
+   "sites_any": 25
+  }
+ },
+ "V0_detail": {
+  "exposed_pages": 443,
+  "page_keys_top": [
+   [
+    "E|ad:ad|class",
+    120
+   ],
+   [
+    "E|ad:ad|id",
+    91
+   ],
+   [
+    "H|hosted:listing|class",
+    56
+   ],
+   [
+    "U|ugc:reviews|class",
+    46
+   ],
+   [
+    "E|ad:ads|class",
+    45
+   ],
+   [
+    "H|hosted:partner|class",
+    40
+   ],
+   [
+    "E|ad:adslot|class",
+    39
+   ],
+   [
+    "E|ad:native-ad|id",
+    34
+   ],
+   [
+    "H|hosted:storefront|class",
+    34
+   ],
+   [
+    "U|ugcgen:answer|class",
+    27
+   ],
+   [
+    "H|hosted:listings|class",
+    23
+   ],
+   [
+    "E|ad:ads|id",
+    20
+   ],
+   [
+    "U|ugc:review|class",
+    20
+   ],
+   [
+    "U|ugcgen:feedback|id",
+    17
+   ],
+   [
+    "E|ad:adcontainer|id",
+    17
+   ],
+   [
+    "E|ad:sponsored|class",
+    15
+   ],
+   [
+    "E|ad:gpt|class",
+    13
+   ],
+   [
+    "E|ad:dfp|id",
+    12
+   ],
+   [
+    "H|hosted:marketplace|class",
+    12
+   ],
+   [
+    "E|ad:gpt|id",
+    12
+   ]
+  ],
+  "elem_keys_top": [
+   [
+    "H|hosted:storefront|class",
+    7564
+   ],
+   [
+    "H|hosted:listing|class",
+    4681
+   ],
+   [
+    "U|ugcgen:answer|class",
+    701
+   ],
+   [
+    "E|ad:ad|class",
+    661
+   ],
+   [
+    "U|ugc:reviews|class",
+    592
+   ],
+   [
+    "H|hosted:listings|class",
+    581
+   ],
+   [
+    "E|ad:adslot|class",
+    490
+   ],
+   [
+    "E|ad:sponsored|class",
+    479
+   ],
+   [
+    "U|ugc:forum|class",
+    355
+   ],
+   [
+    "H|hosted:sellers|class",
+    335
+   ],
+   [
+    "H|hosted:seller|class",
+    308
+   ],
+   [
+    "H|hosted:third-party|class",
+    284
+   ],
+   [
+    "E|ad:gpt|class",
+    246
+   ],
+   [
+    "U|ugc:reviews|id",
+    211
+   ],
+   [
+    "E|ad:ad|id",
+    210
+   ]
+  ],
+  "data_attr_names": [],
+  "pages_only_H": 86,
+  "pages_only_data_tokens": 0,
+  "exposed_pages_maxcov_gt50": 67,
+  "exposed_pages_maxcov_gt20": 88,
+  "maxcov_tags": [
+   [
+    "div",
+    382
+   ],
+   [
+    "p",
+    21
+   ],
+   [
+    "section",
+    12
+   ],
+   [
+    "ins",
+    9
+   ],
+   [
+    "tr",
+    6
+   ],
+   [
+    "li",
+    3
+   ],
+   [
+    "table",
+    2
+   ],
+   [
+    "span",
+    2
+   ]
+  ],
+  "g4_vis_leaves": 38477,
+  "g4_crit": 808,
+  "g4_crit_pct": 2.1,
+  "g4_crit_with_all_children_seeded_D": 808,
+  "g4_crit_child_rules": [
+   [
+    "dev:menu",
+    159
+   ],
+   [
+    "dev:footer",
+    52
+   ],
+   [
+    "dev:header",
+    21
+   ],
+   [
+    "tag:nav",
+    14
+   ],
+   [
+    "role:search",
+    5
+   ],
+   [
+    "tag:main",
+    5
+   ],
+   [
+    "dev:logo",
+    4
+   ],
+   [
+    "dev:navigation",
+    3
+   ]
+  ],
+  "g4_crit_tags": [
+   [
+    "div",
+    141
+   ],
+   [
+    "li",
+    75
+   ],
+   [
+    "p",
+    20
+   ],
+   [
+    "span",
+    17
+   ],
+   [
+    "section",
+    5
+   ],
+   [
+    "footer",
+    4
+   ],
+   [
+    "iframe",
+    3
+   ]
+  ],
+  "page_with_crit_leaf_pct": 8.43,
+  "indep_pred_page_pct": 16.37,
+  "site_exposed_pages": [
+   [
+    "expedia",
+    39
+   ],
+   [
+    "booking",
+    32
+   ],
+   [
+    "amazon",
+    24
+   ],
+   [
+    "aa",
+    21
+   ],
+   [
+    "ebay",
+    21
+   ],
+   [
+    "ryanair",
+    19
+   ],
+   [
+    "target",
+    17
+   ],
+   [
+    "united",
+    16
+   ],
+   [
+    "nyc",
+    15
+   ],
+   [
+    "ticketcenter",
+    15
+   ]
+  ],
+  "target_examples": [
+   {
+    "site": "amctheatres",
+    "step": 0,
+    "key": "E|ad:ad|data",
+    "seed_tag": "a",
+    "seed_ci": "NavGroupItem-link#",
+    "cov": 0.001,
+    "t_tag": "a",
+    "t_text": "On Demand"
+   },
+   {
+    "site": "boardgamegeek",
+    "step": 3,
+    "key": "H|hosted:marketplace|class",
+    "seed_tag": "div",
+    "seed_ci": "game-marketplace#",
+    "cov": 0.028,
+    "t_tag": "a",
+    "t_text": "65 n Ark Nova Ark Nova (English edition, third pri"
+   },
+   {
+    "site": "boardgamegeek",
+    "step": 5,
+    "key": "U|ugc:forum|class",
+    "seed_tag": "table",
+    "seed_ci": "forum_table#",
+    "cov": 0.455,
+    "t_tag": "img",
+    "t_text": ""
+   },
+   {
+    "site": "boardgamegeek",
+    "step": 2,
+    "key": "U|ugc:forum|class",
+    "seed_tag": "table",
+    "seed_ci": "forum_table#",
+    "cov": 0.157,
+    "t_tag": "a",
+    "t_text": "Submit game listings"
+   },
+   {
+    "site": "booking",
+    "step": 10,
+    "key": "H|hosted:listings|class",
+    "seed_tag": "div",
+    "seed_ci": "Box-sc-1x26akg-0 Listings__ListingCardWr#",
+    "cov": 0.078,
+    "t_tag": "button",
+    "t_text": "Choose your room"
+   },
+   {
+    "site": "booking",
+    "step": 12,
+    "key": "H|hosted:listings|class",
+    "seed_tag": "div",
+    "seed_ci": "Box-sc-1x26akg-0 Listings__ListingCardWr#",
+    "cov": 0.122,
+    "t_tag": "button",
+    "t_text": "Choose your room"
+   },
+   {
+    "site": "booking",
+    "step": 16,
+    "key": "H|hosted:listings|class",
+    "seed_tag": "div",
+    "seed_ci": "sc-AxirZ bnKfMc listings#listingContent",
+    "cov": 0.917,
+    "t_tag": "button",
+    "t_text": "Choose"
+   },
+   {
+    "site": "booking",
+    "step": 12,
+    "key": "H|hosted:listings|class",
+    "seed_tag": "div",
+    "seed_ci": "Box-sc-1x26akg-0 Listings__ListingCardWr#",
+    "cov": 0.262,
+    "t_tag": "button",
+    "t_text": "Choose your room"
+   },
+   {
+    "site": "booking",
+    "step": 16,
+    "key": "H|hosted:listings|class",
+    "seed_tag": "div",
+    "seed_ci": "sc-AxirZ bnKfMc listings#listingContent",
+    "cov": 0.911,
+    "t_tag": "button",
+    "t_text": "Choose"
+   },
+   {
+    "site": "cargurus",
+    "step": 17,
+    "key": "E|ad:ad|data",
+    "seed_tag": "label",
+    "seed_ci": "cgds_btn-ljEK6_ cgds_btn_outline-fqPZ6X #",
+    "cov": 0.003,
+    "t_tag": "label",
+    "t_text": "No"
+   },
+   {
+    "site": "cvs",
+    "step": 0,
+    "key": "E|ad:ad|data",
+    "seed_tag": "button",
+    "seed_ci": "menu-button#Shop-menu",
+    "cov": 0.002,
+    "t_tag": "button",
+    "t_text": "Shop"
+   },
+   {
+    "site": "delta",
+    "step": 7,
+    "key": "E|ad:ad|data",
+    "seed_tag": "input",
+    "seed_ci": "smt-combobox-input#smt-combobox-labeled",
+    "cov": 0.001,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "ebay",
+    "step": 3,
+    "key": "H|hosted:listing|class",
+    "seed_tag": "section",
+    "seed_ci": "b-module b-list b-listing srp-grid b-dis#s0-27_1-9-0-1[0]-0-0",
+    "cov": 0.7,
+    "t_tag": "button",
+    "t_text": "All Filters"
+   },
+   {
+    "site": "ebay",
+    "step": 10,
+    "key": "U|ugcgen:answer|class",
+    "seed_tag": "div",
+    "seed_ci": "s-answer-region s-answer-region-center-t#",
+    "cov": 0.122,
+    "t_tag": "button",
+    "t_text": "Best Match"
+   },
+   {
+    "site": "ebay",
+    "step": 11,
+    "key": "U|ugcgen:answer|class",
+    "seed_tag": "div",
+    "seed_ci": "s-answer-region s-answer-region-center-t#",
+    "cov": 0.122,
+    "t_tag": "a",
+    "t_text": "Price + Shipping: lowest first"
+   },
+   {
+    "site": "ebay",
+    "step": 2,
+    "key": "E|ad:ad|data",
+    "seed_tag": "input",
+    "seed_ci": "textbox__control#s0-51-13-0-1-2-6-0-8",
+    "cov": 0.0,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "ebay",
+    "step": 6,
+    "key": "U|ugcgen:answer|class",
+    "seed_tag": "div",
+    "seed_ci": "s-answer-region s-answer-region-center-t#",
+    "cov": 0.094,
+    "t_tag": "button",
+    "t_text": "Best Match"
+   },
+   {
+    "site": "ebay",
+    "step": 7,
+    "key": "U|ugcgen:answer|class",
+    "seed_tag": "div",
+    "seed_ci": "s-answer-region s-answer-region-center-t#",
+    "cov": 0.094,
+    "t_tag": "a",
+    "t_text": "Price + Shipping: lowest first"
+   },
+   {
+    "site": "eventbrite",
+    "step": 4,
+    "key": "H|hosted:listing|class",
+    "seed_tag": "section",
+    "seed_ci": "listing-organizer eds-l-pad-bot-5#",
+    "cov": 0.033,
+    "t_tag": "button",
+    "t_text": "Contact"
+   },
+   {
+    "site": "eventbrite",
+    "step": 7,
+    "key": "H|hosted:listing|class",
+    "seed_tag": "button",
+    "seed_ci": "eds-btn eds-btn--button eds-btn--follow #",
+    "cov": 0.004,
+    "t_tag": "button",
+    "t_text": "Follow"
+   },
+   {
+    "site": "expedia",
+    "step": 0,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.895,
+    "t_tag": "a",
+    "t_text": "Flights"
+   },
+   {
+    "site": "expedia",
+    "step": 1,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.9,
+    "t_tag": "a",
+    "t_text": "One-way"
+   },
+   {
+    "site": "expedia",
+    "step": 2,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.899,
+    "t_tag": "button",
+    "t_text": "Leaving from"
+   },
+   {
+    "site": "expedia",
+    "step": 3,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.901,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 4,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.905,
+    "t_tag": "button",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 5,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.899,
+    "t_tag": "button",
+    "t_text": "Going to"
+   },
+   {
+    "site": "expedia",
+    "step": 6,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.903,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 7,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.902,
+    "t_tag": "button",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 8,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.899,
+    "t_tag": "button",
+    "t_text": "Apr 5"
+   },
+   {
+    "site": "expedia",
+    "step": 9,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.915,
+    "t_tag": "button",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 10,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.915,
+    "t_tag": "button",
+    "t_text": "Done : (Save changes and close the date picker.)"
+   },
+   {
+    "site": "expedia",
+    "step": 11,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.899,
+    "t_tag": "button",
+    "t_text": "Search"
+   },
+   {
+    "site": "expedia",
+    "step": 12,
+    "key": "E|ad:adslot|class",
+    "seed_tag": "div",
+    "seed_ci": "uitk-view-row uitk-view-row-theme-second#",
+    "cov": 0.586,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 13,
+    "key": "E|ad:adslot|class",
+    "seed_tag": "div",
+    "seed_ci": "uitk-view-row uitk-view-row-theme-second#",
+    "cov": 0.231,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 14,
+    "key": "E|ad:adslot|class",
+    "seed_tag": "div",
+    "seed_ci": "uitk-view-row uitk-view-row-theme-second#",
+    "cov": 0.581,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 15,
+    "key": "E|ad:adslot|class",
+    "seed_tag": "div",
+    "seed_ci": "uitk-view-row uitk-view-row-theme-second#",
+    "cov": 0.564,
+    "t_tag": "input",
+    "t_text": ""
+   },
+   {
+    "site": "expedia",
+    "step": 16,
+    "key": "E|ad:adslot|class",
+    "seed_tag": "div",
+    "seed_ci": "uitk-view-row uitk-view-row-theme-second#",
+    "cov": 0.566,
+    "t_tag": "select",
+    "t_text": "Price (Lowest) Price (Highest) Duration (Shortest)"
+   },
+   {
+    "site": "expedia",
+    "step": 0,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.895,
+    "t_tag": "a",
+    "t_text": "Flights"
+   },
+   {
+    "site": "expedia",
+    "step": 1,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.9,
+    "t_tag": "a",
+    "t_text": "One-way"
+   },
+   {
+    "site": "expedia",
+    "step": 2,
+    "key": "H|hosted:storefront|class",
+    "seed_tag": "div",
+    "seed_ci": "Storefront-Homepage#",
+    "cov": 0.899,
+    "t_tag": "button",
+    "t_text": "1 traveler"
+   }
+  ],
+  "target_keys": [
+   [
+    "H|hosted:storefront|class",
+    34
+   ],
+   [
+    "H|hosted:listing|class",
+    14
+   ],
+   [
+    "E|ad:ad|data",
+    12
+   ],
+   [
+    "H|hosted:listings|class",
+    6
+   ],
+   [
+    "E|ad:adslot|class",
+    5
+   ],
+   [
+    "U|ugcgen:answer|class",
+    4
+   ],
+   [
+    "U|ugcgen:feedback|class",
+    3
+   ],
+   [
+    "U|ugc:forum|class",
+    2
+   ],
+   [
+    "H|hosted:marketplace|class",
+    1
+   ],
+   [
+    "E|ad:sponsor|class",
+    1
+   ],
+   [
+    "U|ugc:reviews|id",
+    1
+   ],
+   [
+    "U|ugc:reviews|class",
+    1
+   ]
+  ]
+ }
+}

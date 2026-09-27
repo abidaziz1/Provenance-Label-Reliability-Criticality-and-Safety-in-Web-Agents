@@ -1,0 +1,18 @@
+task: "1.15"
+slug: "api-smoke-test"
+created: "2026-09-26"
+prereg_commit: ""          # the commit that adds this folder, before any paid call
+data:
+  dataset: none
+models: [claude-sonnet-5, claude-haiku-4-5, gemini-3-flash-preview]
+settings:
+  temperature: default
+  max_tokens: {claude: 8, gemini: 256}
+  batch_api: true
+seeds: []
+sizes:
+  n_items: 6               # 2 direct calls, 2 Anthropic batch requests, 2 Gemini batch requests
+budget_usd: 0.05           # src/llm.py enforces this cap
+dry_run_estimate_usd: 0.001698  # IDEA3_DRY_RUN=1, 4 records, 26 Sep
+scripts:
+  run: "scripts/api_smoke_test.py"

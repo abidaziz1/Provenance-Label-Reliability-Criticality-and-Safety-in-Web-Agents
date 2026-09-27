@@ -53,12 +53,28 @@ v1 computed, per vendor, `P(false trust | critical position) / P(false trust | o
 
 Run top to bottom. `DRY_RUN` is on."""))
 
+a(new_markdown_cell("""## Git and results (task 1.13)
+
+Results go to the branch `colab/<task-id>` of the research repo, never to main; Claude checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model keys named in the secrets cell. Every paid call goes through `src/llm.py` under the budget in `EXP_DIR/config.yaml`. For the confirmatory run (task 3.1), set `TASK_ID = "3.1"`, `PHASE = "confirmatory"` and its own `EXP_DIR`."""))
+a(new_code_cell(git_config("2.2", "2026-10-12_2.2_vendor-labeling-pilot")))
+a(new_code_cell(GIT_SETUP))
+a(new_code_cell(PUSH_HELPER))
+
 a(new_code_cell('''# ---------------------------------------------------------------- configuration
 DRY_RUN = True
 ALPHA = 0.05
 POWER_TARGET = 0.80
-MODEL_A = "claude-sonnet-4-5"      # vendor A
+MODEL_A = "claude-sonnet-5"        # vendor A  [1.4] every labeled item records the model IDs
 MODEL_B = "gpt-5.4-mini"           # vendor B
+MODEL_C = "gemini-3-flash-preview" # vendor C, task 2.3, optional (free tier)
+USE_GEMINI = False
+
+# [1.3] the coupling go/no-go (ROADMAP, Oct 30) is decided on the pilot, against people
+PHASE = "pilot"                    # "pilot" (2.2) writes the go/no-go; "confirmatory" (3.1) obeys it
+GT_SOURCE = "heuristic"            # set "human" once the 2.1 labels are in HUMAN_LABELS
+HUMAN_LABELS = f"{EXP_DIR}/human_labels.json"   # {item_id: "D"|"U"|"H"|"E"}, adjudicated
+PILOT_DECISION = "experiments/2026-10-12_2.2_vendor-labeling-pilot/go_no_go.json"
+ANNOTATOR_HOURS_FREE = 0           # hours two annotators can give to 3.1; the 10% row needs about 44
 
 # [A-7] THE BASE RATE IS A CHOICE AND IT MUST BE JUSTIFIED.
 # v1 used 0.294. That is the rate at which two vendors DISAGREED in the 131-item
@@ -81,10 +97,13 @@ assert BASE_RATE != 0.294, "0.294 is the disagreement rate. Choose an error rate
 print(f"assumed false-trust base rate: {BASE_RATE:.1%}  ({BASE_RATE_CANDIDATES[BASE_RATE]})")
 print(f"target effect: {TARGET_RR}x   alpha {ALPHA}   power {POWER_TARGET}")'''))
 
-a(new_code_cell('''%pip install -q numpy scipy lxml cssselect huggingface_hub anthropic openai'''))
+a(new_code_cell('''%pip install -q numpy scipy lxml cssselect huggingface_hub anthropic openai google-genai pyyaml'''))
 a(new_code_cell(SECRETS))
+a(new_code_cell(LLM_SETUP))
 
-a(new_markdown_cell("""## Step 1. Power, across base rates, with the clustering cost included
+a(new_markdown_cell("""## Step 1a. Power for the criticality ratio (the secondary statistic)
+
+[1.3] Until 26 Sep this was the notebook's only power cell, so the study was sized for the secondary statistic. Step 1b sizes the primary one, coupling.
 
 No key needed. Two things v1 got wrong are fixed here.
 
@@ -138,6 +157,35 @@ print(f"\\nfixed sample size for this study: {N_ITEMS} items "
 print(f"v1 fixed 111 items from the 0.294 disagreement rate. At {BASE_RATE:.0%} its "
       f"power was about {power_fisher(37, 74, min(BASE_RATE*TARGET_RR,0.99), BASE_RATE):.0%}.")'''))
 
+a(new_markdown_cell("""## Step 1b. Power for coupling, the primary statistic (task 1.3)
+
+Coupling asks whether the two vendors false-trust the **same** items more often than independence predicts. Its power depends on each vendor's false-trust rate, which only the pilot measures. The table below is the ROADMAP go/no-go table, recomputed with the method of `scripts/tokens_and_coupling.py`: a one-sided Fisher test on the 2x2 table of (A wrong, B wrong), alpha .05, design effect 2.68."""))
+
+a(new_code_cell('''rng_c = np.random.default_rng(7)
+DEFF_COUPLING = 2.68       # ICC 0.24 from the 26 Aug smoke test; re-estimate from the 2.1 labels
+
+def coupling_power(n, p, kappa, B=800, deff=DEFF_COUPLING):
+    n_eff = int(n / deff); pb = min(kappa * p * p, p); hits = 0
+    for _ in range(B):
+        a_, b_, c_, d_ = rng_c.multinomial(n_eff, [pb, p - pb, p - pb, 1 - 2 * p + pb])
+        _, pv = fisher_exact([[a_, b_], [c_, d_]], alternative="greater"); hits += pv < 0.05
+    return hits / B
+
+def coupling_need(p, kappa=2.0):
+    lo, hi, best = 100, 40000, None
+    while lo <= hi:
+        mid = (lo + hi) // 2
+        if coupling_power(mid, p, kappa) >= POWER_TARGET: best = mid; hi = mid - 100
+        else: lo = mid + 100
+    return best
+
+print("items needed for 80% power on the coupling test (one-sided, alpha .05, DEFF 2.68):")
+print(f"{'per-vendor error':>17s} {'kappa 1.5':>10s} {'kappa 2.0':>10s} {'kappa 3.0':>10s}")
+for p_ in (0.05, 0.10, 0.20):
+    row = [coupling_need(p_, k) for k in (1.5, 2.0, 3.0)]
+    print(f"{p_:17.0%} " + " ".join(f"{(str(x) if x else '>40k'):>10s}" for x in row))
+print("ROADMAP go/no-go (kappa 2.0): 20% needs about 469 items, 10% about 2,192, 5% about 9,084")'''))
+
 a(new_code_cell(WRITE_PIPELINE))
 
 a(new_markdown_cell("""## Step 2. Build the packet
@@ -161,7 +209,7 @@ Two things fall out. The deployable gate admits roughly **1.8x more** critical r
 
 a(new_code_cell(MANIFEST))
 
-a(new_code_cell('''import json, collections, random, re, gc
+a(new_code_cell('''import json, collections, random, re, gc, hashlib
 from lxml import html as LH
 %run -i idea3_pipeline.py
 
@@ -281,7 +329,9 @@ a(new_code_cell('''def build_items(tasks, gate_k=GATE_K, cap_per_site=60, max_pa
                     al = gattr(n_, "aria_label")
                     if al: desc += f"[aria={al[:30]}]"
                     chain.append(desc); n_ = n_.getparent(); hops += 1
-                out.append(dict(site=site, task=t["confirmed_task"],
+                key = f"{site}|{t['annotation_id']}|{act['action_uid']}|{' > '.join(reversed(chain))}|{txt[:200]}"
+                out.append(dict(item_id=hashlib.sha1(key.encode()).hexdigest()[:12],   # [1.3] joins human labels
+                                site=site, task=t["confirmed_task"],
                                 path=" > ".join(reversed(chain)), text=txt[:600],
                                 gt=prov[el], n_actionable_inside=len(inside),
                                 critical=bool(crit["task_lexical"]),
@@ -343,7 +393,8 @@ def stratified(pool, n):
 
 packet = stratified(crit, n_c) + stratified(other, n_o)
 random.shuffle(packet)
-json.dump(packet, open("labeling_packet.json", "w"), indent=1)
+os.makedirs(EXP_DIR, exist_ok=True)
+json.dump(packet, open(f"{EXP_DIR}/labeling_packet.json", "w"), indent=1)
 print(f"packet: {len(packet)} items, {len({i['site'] for i in packet})} sites")
 print("critical per site in packet:",
       collections.Counter(i["site"] for i in packet if i["critical"]).most_common(6))'''))
@@ -376,38 +427,48 @@ Answer with exactly one letter: D, U, H or E."""
 
 VALID = {"D", "U", "H", "E"}
 
-def label_anthropic(item, model=MODEL_A):
-    if DRY_RUN: return None
-    import anthropic
-    c = anthropic.Anthropic(api_key=ANTHROPIC_API_KEY)
-    r = c.messages.create(model=model, max_tokens=5, messages=[
-        {"role": "user", "content": LABEL_PROMPT.format(**item)}])
-    t = r.content[0].text.strip().upper()[:1]
+def _one_letter(text):
+    t = (text or "").strip().upper()[:1]
     return t if t in VALID else None
+
+# [1.16] every call through src/llm.py: budget cap, cost log, model_returned in EXP_DIR/llm_calls.jsonl
+def label_anthropic(item, model=MODEL_A):
+    return _one_letter(llm.complete(model, LABEL_PROMPT.format(**item), max_tokens=5, tag=f"{TASK_ID} A"))
 
 def label_openai(item, model=MODEL_B):
-    if DRY_RUN: return None
-    from openai import OpenAI
-    c = OpenAI(api_key=OPENAI_API_KEY)
-    r = c.chat.completions.create(model=model, max_tokens=5, messages=[
-        {"role": "user", "content": LABEL_PROMPT.format(**item)}])
-    t = r.choices[0].message.content.strip().upper()[:1]
-    return t if t in VALID else None
+    # GPT-5 models take max_completion_tokens (src/llm.py sends it) and spend part of it on
+    # reasoning; v2's max_tokens=5 left nothing for the answer
+    return _one_letter(llm.complete(model, LABEL_PROMPT.format(**item), max_tokens=512, tag=f"{TASK_ID} B"))
 
-est = len(packet) * 2
-print(f"planned: {est} calls ({len(packet)} items x 2 vendors)")
-print("set DRY_RUN = False when you are ready to spend that.")
+def label_gemini(item, model=MODEL_C):
+    return _one_letter(llm.complete(model, LABEL_PROMPT.format(**item), max_tokens=256, tag=f"{TASK_ID} C"))
+
+VENDORS = [("A", label_anthropic, MODEL_A, 5), ("B", label_openai, MODEL_B, 512)]
+if USE_GEMINI: VENDORS.append(("C", label_gemini, MODEL_C, 256))
+est_usd = sum(llm.estimate(m, LABEL_PROMPT.format(**it), mt) for it in packet for _, _, m, mt in VENDORS)
+print(f"planned: {len(packet) * len(VENDORS)} calls ({len(packet)} items x {len(VENDORS)} vendors), "
+      f"at most ${est_usd:.2f} at list price; budget ${llm.budget:.2f}")
+
+# [1.3] the confirmatory run (3.1) spends nothing unless the pilot said GO
+if PHASE == "confirmatory":
+    d = json.load(open(PILOT_DECISION)) if os.path.exists(PILOT_DECISION) else {"decision": "missing"}
+    if d.get("decision") != "GO":
+        raise SystemExit(f"coupling go/no-go is {d.get('decision')!r} ({PILOT_DECISION}); 3.1 does not run")
 
 labels = []
 if not DRY_RUN:
     for i, it in enumerate(packet):
         it = dict(it)
-        it["A"] = label_anthropic(it)
-        it["B"] = label_openai(it)
+        for key, fn, model, _ in VENDORS:
+            it[key] = fn(it); it[f"model_{key}"] = model
         labels.append(it)
         if (i + 1) % 20 == 0: print(f"  {i+1}/{len(packet)}")
-    json.dump(labels, open("labels.json", "w"), indent=1)
-    print(f"{len(labels)} items labeled by both vendors")'''))
+        if (i + 1) % 100 == 0:
+            json.dump(labels, open(f"{EXP_DIR}/labels.json", "w"), indent=1)
+            push(f"{TASK_ID} labels checkpoint {i+1}/{len(packet)}, spent ${llm.spent:.2f}")
+    json.dump(labels, open(f"{EXP_DIR}/labels.json", "w"), indent=1)
+    push(f"{TASK_ID} {len(labels)} items labeled by {len(VENDORS)} vendors, spent ${llm.spent:.2f}")
+    print(f"{len(labels)} items labeled by {len(VENDORS)} vendors")'''))
 
 a(new_markdown_cell("""## Step 4. Analysis
 
@@ -451,6 +512,12 @@ if DRY_RUN or not labels:
     print("DRY_RUN or no labels yet. Nothing to analyse.")
 else:
     rows = [r for r in labels if r.get("A") in VALID and r.get("B") in VALID]
+    if GT_SOURCE == "human":           # [1.3] people, not the heuristic, decide what false trust is
+        human = json.load(open(HUMAN_LABELS))
+        rows = [dict(r, gt=human[r["item_id"]]) for r in rows if r["item_id"] in human]
+        print(f"ground truth: human labels for {len(rows)} items ({HUMAN_LABELS})")
+    else:
+        print("ground truth: the heuristic labeler. Rates below are agreement rates, not error rates.")
     for r in rows:
         r["ftA"] = (r["gt"] in UNT and r["A"] == "D")
         r["ftB"] = (r["gt"] in UNT and r["B"] == "D")
@@ -508,7 +575,38 @@ else:
         print(f"  {g:18s}: n_crit={len(c):4d}  "
               f"A false-trust {np.mean([r['ftA'] for r in c]):.3f}  "
               f"B false-trust {np.mean([r['ftB'] for r in c]):.3f}")
-    json.dump(rows, open("analysis_rows.json", "w"), indent=1)'''))
+    json.dump(rows, open(f"{EXP_DIR}/analysis_rows.json", "w"), indent=1)
+    ci_txt = "n/a" if lo is None else f"[{lo:.2f}, {hi:.2f}]"
+    push(f"{TASK_ID} analysis: kappa={kappa:.2f} {ci_txt}, P(A ft)={pA:.3f}, P(B ft)={pB:.3f}, n={n}")'''))
+
+a(new_markdown_cell("""## Step 5. Coupling go/no-go (pilot only, task 1.3)
+
+The ROADMAP rule, fixed on 24 Sep: **go** if the pilot's false-trust rate against people is 20% or more for each vendor, or 10% or more with two annotators free for about 44 hours; otherwise **no-go**: report the pilot kappa with its interval and drop task 3.1. The decision is written to `go_no_go.json`, and the confirmatory run refuses to start without a GO."""))
+
+a(new_code_cell('''if PHASE != "pilot":
+    print("confirmatory run: the go/no-go was read before labeling")
+elif DRY_RUN or not labels:
+    print("DRY_RUN or no labels: no decision")
+else:
+    rate = min(pA, pB)
+    if GT_SOURCE != "human":
+        decision, why = "UNDETERMINED", "the rule is defined against people; merge the 2.1 labels and set GT_SOURCE = 'human'"
+    elif rate >= 0.20:
+        decision, why = "GO", f"lower per-vendor false-trust rate {rate:.1%} is at least 20%"
+    elif rate >= 0.10 and ANNOTATOR_HOURS_FREE >= 44:
+        decision, why = "GO", f"rate {rate:.1%} is at least 10% and {ANNOTATOR_HOURS_FREE} annotator hours are free"
+    else:
+        decision, why = "NO-GO", f"rate {rate:.1%}: coupling at kappa 2 is not measurable within the annotation budget"
+    need = coupling_need(max(rate, 0.01)) if rate > 0 else None
+    out = dict(decision=decision, why=why, gt_source=GT_SOURCE, n_items=n, rate_A=round(float(pA), 4),
+               rate_B=round(float(pB), 4), kappa=round(float(kappa), 3), kappa_ci95=[lo, hi],
+               items_needed_for_kappa_2=need, annotator_hours_free=ANNOTATOR_HOURS_FREE,
+               models=[m for _, _, m, _ in VENDORS])
+    json.dump(out, open(f"{EXP_DIR}/go_no_go.json", "w"), indent=1)
+    push(f"{TASK_ID} coupling go/no-go: {decision} (rate {rate:.1%}, n={n}, items needed {need})")
+    print(decision, "-", why)'''))
+
+a(new_code_cell(final_push("2.2")))
 
 a(new_markdown_cell("""## Decision rules, fixed before the data
 

@@ -5,10 +5,10 @@ You are the research assistant on this project. Alam is the PI. Work autonomousl
 @STATUS.md
 
 ## What the project is
-A measurement paper on structural trust-boundary defenses for web agents (Prismata, arXiv:2607.08147; UCM, arXiv:2607.05277). Provisional evidence (claims-ledger IDs in brackets; none is `supported` yet):
-- Prismata's 1.2% residual-risk figure matches the root-to-task-target reading of "critical path" (1.13% to 1.73%, K1-K2) and not the "contains an actionable descendant" reading its own Section 3 uses (49.93%, K3). A forty-fold definitional gap. `docs/context/02_Reconciliation_1.2pct.md`
-- Containment attack, controller upper bounds: a label error with the envelope held fixed gives exposure and 0.0% effect; propagated into a page-wide envelope 96.9%, task-scoped 0.0% (K8-K9). For influence escape under a page-wide envelope the same fixed-envelope error does add 33.3 points, through exposure (K11). `docs/context/03_Corrected_Ablation_Results.md`
-- The published criticality gate is oracle-informed; a deployable target-free gate admits about 1.8x more critical regions (K6).
+A measurement paper on structural trust-boundary defenses for web agents (Prismata, arXiv:2607.08147; UCM, arXiv:2607.05277). Provisional evidence (claims-ledger IDs in brackets; none is `supported` yet). Read `research/NOVELTY_LEDGER.md` first: the 25 Sep audit withdrew two earlier claims (C1, C2).
+- The draft contribution statement (`research/CONTRIBUTION_STATEMENT.md`, for Gate N) leads with archive fidelity and decay (C7, C8, novel as measurement): the Mind2Web archive drops every site `data-*`, `href`, `on*`, `tabindex`, `style` and `hidden` (K21); on the same live Booking page that alone disables 53 of 57 working UCM selectors (K25); requiring an `href` halves Prismata-style criticality on the archive (K26). Conditional contributions: the exposure channel of a label error under a page-wide envelope (+33.3 points, C3, K11), and per-page and per-task exposure (C1', 24% to 31% of pages and 39% to 48% of tasks under stricter heuristic labels, K24). Whether Prismata's 1.2% reproduces is open: it depends on its unit, labeler and page representation (1.6% to 19.6% across our units).
+- Containment attack, controller upper bounds: a label error with the envelope held fixed gives 0.0% effect; propagated into a page-wide envelope 96.9% (K8, K9). Our "task-scoped" envelope is the annotated target, an oracle, so task-scoped 0.0% results hold by construction (C4 withdrawn as stated).
+- Our own 18 Sep gate-width sweep ranked elements by distance to the annotated target (an oracle); a target-free version admits about 1.8x more critical regions (K6). Prismata's gate is task-scoped through an LLM, not an oracle.
 Target: TMLR by 19 Feb 2027; IEEE TDSC by 19 Mar 2027 only if the mechanism works; ACM DTRAP is the floor. Plan: `ROADMAP.md`.
 
 ## Primary focus: the true contribution
@@ -41,7 +41,7 @@ This project reads prompt-injection payloads and live web pages for a living. Te
 
 ## Experiments and records
 - Every run that produces a number lives in `experiments/<date>_<task>_<slug>/` from the template, registered in `experiments/README.md`.
-- Every paid model call goes through `src/llm.py`: open it with `LLM.from_experiment(<folder>)` so the cap in `config.yaml` applies. Estimate with `IDEA3_DRY_RUN=1` first. Batch API support is task 1.15; until it lands, price runs at list price.
+- Every paid model call goes through `src/llm.py`: open it with `LLM.from_experiment(<folder>)` so the cap in `config.yaml` applies. Estimate with `IDEA3_DRY_RUN=1` first. Independent calls go through the Batch API at half price: `LLM.submit_batch` records the batch in the experiment folder and `LLM.collect_batch` logs its cost (task 1.15).
 - Records you keep current: `STATUS.md` (every session end), `RESEARCH_LOG.md` (dated entries), `ROADMAP.md` (task status), `research/CLAIMS_LEDGER.md`, `research/DECISIONS.md`, `research/CORRECTIONS.md`, `research/HUMAN_TASKS.md`.
 - Committed results are frozen: a rerun writes a new file or goes in an experiment folder. If a script overwrites a committed file, restore it with `git checkout -- <file>` and record any difference. Index results in `results/README.md`.
 

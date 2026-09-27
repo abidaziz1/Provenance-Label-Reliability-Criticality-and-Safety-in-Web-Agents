@@ -1,0 +1,45 @@
+{
+ "pages": 1163,
+ "tasks": 145,
+ "sites": 57,
+ "attr": {
+  "actionable_elements": 208609,
+  "element_inside_untrusted_pct": 9.19,
+  "element_self_or_inside_untrusted_pct": 9.39,
+  "page_exposed_pct": 38.09,
+  "page_exposed_ci95_site": [
+   27.72,
+   49.05
+  ],
+  "task_exposed_pct": 59.31,
+  "task_exposed_ci95_site": [
+   47.18,
+   70.95
+  ],
+  "sites_with_any_exposed_page": 40
+ },
+ "attr+click": {
+  "actionable_elements": 221524,
+  "element_inside_untrusted_pct": 9.41,
+  "element_self_or_inside_untrusted_pct": 9.6,
+  "page_exposed_pct": 38.09,
+  "page_exposed_ci95_site": [
+   27.72,
+   49.05
+  ],
+  "task_exposed_pct": 59.31,
+  "task_exposed_ci95_site": [
+   47.18,
+   70.95
+  ],
+  "sites_with_any_exposed_page": 40
+ },
+ "target_inside_untrusted_pct": 7.71,
+ "observations_with_resolvable_target": 1103,
+ "untrusted_leaves_per_page": 43.87,
+ "prismata_published_upper_bounds": {
+  "critical_paths_per_page_max_pct": 19.17,
+  "case3_paths_per_page_max_pct": 1.66,
+  "note": "if every critical (Case-3) path sat on a different page of Prismata's 5,664 DOMs"
+ }
+}

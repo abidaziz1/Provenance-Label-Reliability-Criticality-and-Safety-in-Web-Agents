@@ -1,0 +1,104 @@
+{
+ "pages": 1163,
+ "tasks": 145,
+ "sites": 57,
+ "anchors_per_page": 256.88,
+ "anchors_with_href_total": 0,
+ "rules": {
+  "R0_tag": {
+   "visible_actionable_per_page": 179.37,
+   "anchor_share_of_visible_actionable_pct": 69.1,
+   "G0_region_crit_visunits_pct": 52.56,
+   "G0_region_crit_visunits_ci95_site": [
+    38.78,
+    67.45
+   ],
+   "G3_node_crit_visunits_pct": 19.57,
+   "G3_node_crit_visunits_ci95_site": [
+    13.86,
+    27.9
+   ],
+   "G4_leafpath_crit_visunits_pct": 2.1,
+   "G4_leafpath_crit_visunits_ci95_site": [
+    0.34,
+    6.08
+   ],
+   "page_exposed_pct": 38.09,
+   "page_exposed_ci95_site": [
+    27.72,
+    49.05
+   ],
+   "task_exposed_pct": 59.31,
+   "task_exposed_ci95_site": [
+    47.18,
+    70.95
+   ]
+  },
+  "R1_href_required": {
+   "visible_actionable_per_page": 68.62,
+   "G0_region_crit_visunits_pct": 23.94,
+   "G0_region_crit_visunits_ci95_site": [
+    13.09,
+    40.23
+   ],
+   "G3_node_crit_visunits_pct": 9.4,
+   "G3_node_crit_visunits_ci95_site": [
+    6.69,
+    13.5
+   ],
+   "G4_leafpath_crit_visunits_pct": 1.29,
+   "G4_leafpath_crit_visunits_ci95_site": [
+    0.13,
+    4.48
+   ],
+   "page_exposed_pct": 25.28,
+   "page_exposed_ci95_site": [
+    16.71,
+    35.21
+   ],
+   "task_exposed_pct": 50.34,
+   "task_exposed_ci95_site": [
+    38.62,
+    62.14
+   ]
+  },
+  "R2_href_or_flag": {
+   "visible_actionable_per_page": 188.73,
+   "G0_region_crit_visunits_pct": 50.82,
+   "G0_region_crit_visunits_ci95_site": [
+    38.05,
+    64.72
+   ],
+   "G3_node_crit_visunits_pct": 20.57,
+   "G3_node_crit_visunits_ci95_site": [
+    16.17,
+    27.63
+   ],
+   "G4_leafpath_crit_visunits_pct": 1.94,
+   "G4_leafpath_crit_visunits_ci95_site": [
+    0.34,
+    5.64
+   ],
+   "page_exposed_pct": 38.09,
+   "page_exposed_ci95_site": [
+    27.72,
+    49.05
+   ],
+   "task_exposed_pct": 59.31,
+   "task_exposed_ci95_site": [
+    47.18,
+    70.95
+   ]
+  }
+ },
+ "R1_over_R0": {
+  "G0_region": 0.455,
+  "G3_node": 0.48,
+  "G4_leafpath": 0.614,
+  "page_exposed": 0.664
+ },
+ "exploratory_G3_ratio_ci95_site": [
+  0.323,
+  0.638
+ ]
+}

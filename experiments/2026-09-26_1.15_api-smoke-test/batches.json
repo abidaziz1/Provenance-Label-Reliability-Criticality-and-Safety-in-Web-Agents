@@ -1,0 +1,18 @@
+{
+ "msgbatch_0132hQRDrg797fPUk7s8uC3i": {
+  "provider": "anthropic",
+  "model": "claude-haiku-4-5",
+  "tag": "smoke-batch",
+  "n_requests": 2,
+  "est_usd": 5.1e-05,
+  "submitted": "2026-09-26T13:39:21Z",
+  "status": "collected",
+  "custom_ids": [
+   "smoke1",
+   "smoke2"
+  ],
+  "collected": "2026-09-26T13:41:47Z",
+  "cost_usd": 3.4e-05,
+  "n_results": 2
+ }
+}

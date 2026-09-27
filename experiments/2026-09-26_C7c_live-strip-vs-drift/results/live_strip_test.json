@@ -1,0 +1,2492 @@
+{
+ "summary": {
+  "capture": {
+   "homepage": {
+    "http_status": 403,
+    "final_url_path": "https://www.booking.com/index.html",
+    "content_selector_found": false,
+    "bytes": 1073,
+    "sha256": "1e6ff25710ea56de4d9b436e5eabffc793c5555068fd5f347df07e56c502cf95",
+    "captured_utc": "2026-09-26T12:47:07Z"
+   },
+   "hotel": {
+    "http_status": 200,
+    "final_url_path": "https://www.booking.com/hotel/fr/tour-eiffel.html",
+    "content_selector_found": true,
+    "bytes": 2319486,
+    "sha256": "36d49dd84d9f4ad10a5229c85c7675b42c8ffdf2de73f7d3c2387049498622ca",
+    "captured_utc": "2026-09-26T12:47:59Z"
+   },
+   "search": {
+    "http_status": 202,
+    "final_url_path": "https://www.booking.com/city/fr/paris.html",
+    "content_selector_found": false,
+    "bytes": 1005391,
+    "sha256": "4d2242872e8eeac5c9f9bfdae14eeddd886d1433b33216481b5f3f424713dd08",
+    "captured_utc": "2026-09-26T12:47:39Z"
+   }
+  },
+  "elements_with_data_testid_live": {
+   "homepage": 0,
+   "search": 340,
+   "hotel": 369
+  },
+  "selector_parse_errors": 0,
+  "hand": {
+   "selectors": 25,
+   "match_live": 13,
+   "of_those_match_nothing_after_strip": 11,
+   "share_disabled_by_strip_pct": 84.6,
+   "survive_strip": [
+    "div[aria-label='Certification name']",
+    "h2.pp-header__title"
+   ],
+   "live_matching_use_data_attr": 11
+  },
+  "llm": {
+   "selectors": 70,
+   "match_live": 44,
+   "of_those_match_nothing_after_strip": 42,
+   "share_disabled_by_strip_pct": 95.5,
+   "survive_strip": [
+    "h2.ddb12f4f86.pp-header__title",
+    "section[id='questions-answers-desktop'] .aa225776f2.ca9d921c46.f6707cac49"
+   ],
+   "live_matching_use_data_attr": 41
+  },
+  "pooled": {
+   "selectors": 95,
+   "match_live": 57,
+   "of_those_match_nothing_after_strip": 53,
+   "share_disabled_by_strip_pct": 93.0,
+   "survive_strip": [
+    "div[aria-label='Certification name']",
+    "h2.ddb12f4f86.pp-header__title",
+    "h2.pp-header__title",
+    "section[id='questions-answers-desktop'] .aa225776f2.ca9d921c46.f6707cac49"
+   ],
+   "live_matching_use_data_attr": 52
+  },
+  "hashed_class_tokens": {
+   "n": 23,
+   "present_live": 16,
+   "present_live_list": [
+    "aa225776f2",
+    "b08850ce41",
+    "b87c397a13",
+    "b99b6ef58f",
+    "c3bdfd4ac2",
+    "ca9d921c46",
+    "d1bc97eb82",
+    "d4569c512a",
+    "ddb12f4f86",
+    "e01a413467",
+    "e01adb21c0",
+    "e7addce19e",
+    "f546354b44",
+    "f6707cac49",
+    "fb14de7f14",
+    "fff1944c52"
+   ]
+  },
+  "decay_hand_vs_ucm_captures": {
+   "ucm_captures_match": 25,
+   "live_today_match": 13
+  }
+ },
+ "selectors": [
+  {
+   "selector": "[data-testid='property-card'] [data-testid='title']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] div.fff1944c52:not([class*='f4008c3a61']):not([class*='fb14de7f14']):not([class*='f546354b44'])",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "fff1944c52"
+   ],
+   "hashed_classes": [
+    "fff1944c52"
+   ],
+   "class_attr_substring": true,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] [data-testid='image']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "h2.pp-header__title",
+   "hand": true,
+   "data_attr": false,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "pp-header__title"
+   ],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": true
+  },
+  {
+   "selector": "[data-testid='property-description']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreview-text']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='rt-name-link'] .b08850ce41",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41"
+   ],
+   "hashed_classes": [
+    "b08850ce41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 16,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreview'] div.b08850ce41.f546354b44",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "hashed_classes": [
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='brand-name']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='matchmaking-questions-answers-desktop'] .aa225776f2.ca9d921c46.f6707cac49",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "aa225776f2",
+    "ca9d921c46",
+    "f6707cac49"
+   ],
+   "hashed_classes": [
+    "aa225776f2",
+    "ca9d921c46",
+    "f6707cac49"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "h3[data-testid='question']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 7,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='answer'][itemprop='text']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [
+    "itemprop"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 7,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='poi-block-list'] .d1bc97eb82",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d1bc97eb82"
+   ],
+   "hashed_classes": [
+    "d1bc97eb82"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 33,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "div[aria-label='Certification name']",
+   "hand": true,
+   "data_attr": false,
+   "other_attr": [
+    "aria-label"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": true
+  },
+  {
+   "selector": "[data-testid='featuredreviewcard-text'] .b99b6ef58f.d14152e7c3.e01adb21c0",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f",
+    "d14152e7c3",
+    "e01adb21c0"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f",
+    "d14152e7c3",
+    "e01adb21c0"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreviewcard-avatar'] .b08850ce41.f546354b44, [data-testid='featuredreviewcard-avatar'] .a787c7cca4",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "a787c7cca4",
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "hashed_classes": [
+    "a787c7cca4",
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreviewcard-avatar'] .d838fb5f41.aea5eccb71",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='GalleryUnifiedDesktop-wrapper'] img",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 8,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='PropertyBrandInfo-wrapper'] img",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='web-core-property-card'] [data-testid='webcore-carousel-image'] img",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='web-core-property-card'] h3",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='promotional-banner-content-caption']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='promotional-banner-content-title']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='promotional-banner-content-subtitle']",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='promotional-banner-partial-image'] img",
+   "hand": true,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='title-link'] [data-testid='title']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] .fff1944c52:not([data-testid='address-link']):not([data-testid='distance']):not([role='button']):not(.f4008c3a61):not(.f546354b44)",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "role"
+   ],
+   "id": false,
+   "classes": [
+    "f4008c3a61",
+    "f546354b44",
+    "fff1944c52"
+   ],
+   "hashed_classes": [
+    "f4008c3a61",
+    "f546354b44",
+    "fff1944c52"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] img[loading='lazy']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "loading"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"breadcrumb-link\"] span span",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 6,
+    "search": 4
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "h2.ddb12f4f86.pp-header__title",
+   "hand": false,
+   "data_attr": false,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "ddb12f4f86",
+    "pp-header__title"
+   ],
+   "hashed_classes": [
+    "ddb12f4f86"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": true
+  },
+  {
+   "selector": "[data-testid=\"GalleryUnifiedDesktop-wrapper\"] img",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 8,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"property-description\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreviewcard-text\"] .b99b6ef58f span:nth-child(2)",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreview-text\"] .b99b6ef58f span:nth-child(2)",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"rt-name-link\"] .b08850ce41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41"
+   ],
+   "hashed_classes": [
+    "b08850ce41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 16,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"brand-name\"] .b08850ce41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41"
+   ],
+   "hashed_classes": [
+    "b08850ce41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"brand-logo\"] img",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"poi-block-list\"] .d1bc97eb82",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d1bc97eb82"
+   ],
+   "hashed_classes": [
+    "d1bc97eb82"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 33,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"restaurant-title\"] .e7addce19e",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "e7addce19e"
+   ],
+   "hashed_classes": [
+    "e7addce19e"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "section[id=\"\"] [data-testid=\"property-section--content\"] .e01a413467 .c3bdfd4ac2 img",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "id"
+   ],
+   "id": false,
+   "classes": [
+    "c3bdfd4ac2",
+    "e01a413467"
+   ],
+   "hashed_classes": [
+    "c3bdfd4ac2",
+    "e01a413467"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "section[id=\"\"] [data-testid=\"property-section--content\"] .d4569c512a .b08850ce41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "id"
+   ],
+   "id": false,
+   "classes": [
+    "b08850ce41",
+    "d4569c512a"
+   ],
+   "hashed_classes": [
+    "b08850ce41",
+    "d4569c512a"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreviewcard-avatar\"] .a787c7cca4",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "a787c7cca4"
+   ],
+   "hashed_classes": [
+    "a787c7cca4"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreview-avatar\"] .b08850ce41.f546354b44",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "hashed_classes": [
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreviewcard-avatar\"] .d838fb5f41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreview-avatar\"] .d838fb5f41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"question\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 7,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"answer\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 7,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"ask-questions-entry-desktop\"] .b08850ce41 button span",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41"
+   ],
+   "hashed_classes": [
+    "b08850ce41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 4,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='web-core-property-card'] h3.e7addce19e",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "e7addce19e"
+   ],
+   "hashed_classes": [
+    "e7addce19e"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='webcore-carousel-image'] img",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='web-core-stacked-card'] h3[data-testid='webcore-carousel-title']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='title']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] [data-testid='title-link'] .b87c397a13.a3e0b4ffd1",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "a3e0b4ffd1",
+    "b87c397a13"
+   ],
+   "hashed_classes": [
+    "a3e0b4ffd1",
+    "b87c397a13"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] img[src]:not([alt=''])",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "alt",
+    "src"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"PropertyBadges-wrapper\"] [data-testid=\"brand-name\"] .b08850ce41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41"
+   ],
+   "hashed_classes": [
+    "b08850ce41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-capla-component-boundary] h2.ddb12f4f86.pp-header__title",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "ddb12f4f86",
+    "pp-header__title"
+   ],
+   "hashed_classes": [
+    "ddb12f4f86"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "a.fn[href=\"#availability\"]",
+   "hand": false,
+   "data_attr": false,
+   "other_attr": [
+    "href"
+   ],
+   "id": false,
+   "classes": [
+    "fn"
+   ],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"GalleryUnifiedDesktop-wrapper\"] img[alt]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "alt"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 8,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreviewcard-text\"] .b99b6ef58f.d14152e7c3.e01adb21c0",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f",
+    "d14152e7c3",
+    "e01adb21c0"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f",
+    "d14152e7c3",
+    "e01adb21c0"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"FeaturedReviewGalleryDesktop-wrapper\"] [data-testid=\"featuredreviewcard-text\"] .b99b6ef58f.d14152e7c3.e01adb21c0",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f",
+    "d14152e7c3",
+    "e01adb21c0"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f",
+    "d14152e7c3",
+    "e01adb21c0"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"FeaturedReviewGalleryDesktop-wrapper\"] [data-testid=\"featuredreviewcard-avatar\"] .a787c7cca4",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "a787c7cca4"
+   ],
+   "hashed_classes": [
+    "a787c7cca4"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreview-text\"] .b99b6ef58f.d14152e7c3",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f",
+    "d14152e7c3"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f",
+    "d14152e7c3"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"PropertyBrandInfo-wrapper\"] [data-testid=\"brand-logo\"] img",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"location-block-container\"] [data-location-block-list] .d1bc97eb82",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d1bc97eb82"
+   ],
+   "hashed_classes": [
+    "d1bc97eb82"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 33,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"restaurant-card\"] [data-testid=\"restaurant-title\"] .e7addce19e",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "e7addce19e"
+   ],
+   "hashed_classes": [
+    "e7addce19e"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"sustainability-banner-container\"] [aria-label=\"Certification name\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "aria-label"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"sustainability-banner-container\"] img[alt]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "alt"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"matchmaking-questions-answers-desktop\"] .aa225776f2.ca9d921c46.f6707cac49",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "aa225776f2",
+    "ca9d921c46",
+    "f6707cac49"
+   ],
+   "hashed_classes": [
+    "aa225776f2",
+    "ca9d921c46",
+    "f6707cac49"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"faq-accordion-left-card\"] [data-testid=\"answer\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 4,
+    "search": 5
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"faq-accordion-right-card\"] [data-testid=\"answer\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 3,
+    "search": 5
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[itemtype=\"https://schema.org/FAQPage\"] [data-testid=\"question\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "itemtype"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 7,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[itemtype=\"https://schema.org/FAQPage\"] [data-testid=\"answer\"]",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "itemtype"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 7,
+    "search": 10
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"FeaturedReviewGalleryDesktop-wrapper\"] .d838fb5f41.aea5eccb71",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreviewcard-avatar\"] .d838fb5f41.aea5eccb71",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"featuredreview-avatar\"] .d838fb5f41.aea5eccb71",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "aea5eccb71",
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid=\"restaurant-card\"] .fb14de7f14",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "fb14de7f14"
+   ],
+   "hashed_classes": [
+    "fb14de7f14"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 3,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='webcore-carousel-image'] img[alt='']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "alt"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='property-card'] .fff1944c52:not([data-testid='filters-group-label-container']):not([data-testid='address-link']):not([data-testid='distance']):not([role='button'])",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "role"
+   ],
+   "id": false,
+   "classes": [
+    "fff1944c52"
+   ],
+   "hashed_classes": [
+    "fff1944c52"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='PropertyBadges-wrapper'] h2.ddb12f4f86",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "ddb12f4f86"
+   ],
+   "hashed_classes": [
+    "ddb12f4f86"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='FeaturedReviewGalleryDesktop-wrapper'] [data-testid='featuredreviewcard-text'] .b99b6ef58f",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='FeaturedReviewGalleryDesktop-wrapper'] [data-testid='featuredreviewcard-avatar'] .a787c7cca4",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "a787c7cca4"
+   ],
+   "hashed_classes": [
+    "a787c7cca4"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreview-text'] .b99b6ef58f",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b99b6ef58f"
+   ],
+   "hashed_classes": [
+    "b99b6ef58f"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreview-avatar'] .b08850ce41.f546354b44",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "hashed_classes": [
+    "b08850ce41",
+    "f546354b44"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='PropertyBrandInfo-wrapper'] [data-testid='brand-name'] .b08850ce41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "b08850ce41"
+   ],
+   "hashed_classes": [
+    "b08850ce41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='PropertyBrandInfo-wrapper'] [data-testid='brand-logo'] img",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='location-block-container'] [data-location-block-list='true'] .d1bc97eb82",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d1bc97eb82"
+   ],
+   "hashed_classes": [
+    "d1bc97eb82"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 33,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='restaurant-card'] [data-testid='restaurant-title']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 1,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "section[id='questions-answers-desktop'] .aa225776f2.ca9d921c46.f6707cac49",
+   "hand": false,
+   "data_attr": false,
+   "other_attr": [
+    "id"
+   ],
+   "id": false,
+   "classes": [
+    "aa225776f2",
+    "ca9d921c46",
+    "f6707cac49"
+   ],
+   "hashed_classes": [
+    "aa225776f2",
+    "ca9d921c46",
+    "f6707cac49"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 10,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": true
+  },
+  {
+   "selector": "[data-testid='property-section--content'] .caad4610a8 h3 .e7addce19e",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "caad4610a8",
+    "e7addce19e"
+   ],
+   "hashed_classes": [
+    "caad4610a8",
+    "e7addce19e"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='faq-accordion-left-card'] h3[itemprop='name']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "itemprop"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 4,
+    "search": 5
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='faq-accordion-right-card'] h3[itemprop='name']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "itemprop"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 3,
+    "search": 5
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='featuredreview-avatar'] .d838fb5f41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='FeaturedReviewGalleryDesktop-wrapper'] [data-testid='featuredreviewcard-avatar'] .d838fb5f41",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [],
+   "id": false,
+   "classes": [
+    "d838fb5f41"
+   ],
+   "hashed_classes": [
+    "d838fb5f41"
+   ],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": false,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='faq-accordion-left-card'] [itemprop='text']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "itemprop"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 4,
+    "search": 5
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  },
+  {
+   "selector": "[data-testid='faq-accordion-right-card'] [itemprop='text']",
+   "hand": false,
+   "data_attr": true,
+   "other_attr": [
+    "itemprop"
+   ],
+   "id": false,
+   "classes": [],
+   "hashed_classes": [],
+   "class_attr_substring": false,
+   "live_nodes": {
+    "homepage": 0,
+    "hotel": 3,
+    "search": 5
+   },
+   "stripped_nodes": {
+    "homepage": 0,
+    "hotel": 0,
+    "search": 0
+   },
+   "matches_live": true,
+   "matches_stripped": false
+  }
+ ]
+}
