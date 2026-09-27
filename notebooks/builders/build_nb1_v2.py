@@ -54,7 +54,7 @@ Run top to bottom. `DRY_RUN` is on and no paid call happens until you turn it of
 # ---------------------------------------------------------------- config
 a(new_markdown_cell("""## Git and results (task 1.13)
 
-Results go to the branch `colab/<task-id>` of the research repo, never to main; Claude checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model key named in the secrets cell. Part 3's calls go through `src/llm.py` under the budget in `EXP_DIR/config.yaml`. For the live capture alone (task 2.7), set `TASK_ID = "2.7"`."""))
+Results go to the branch `colab/<task-id>` of the research repo, never to main; a reviewer checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model key named in the secrets cell. Part 3's calls go through `src/llm.py` under the budget in `EXP_DIR/config.yaml`. For the live capture alone (task 2.7), set `TASK_ID = "2.7"`."""))
 a(new_code_cell(git_config("2.8", "2026-10-12_2.8_ucm-detector-archive-vs-live")))
 a(new_code_cell(GIT_SETUP))
 a(new_code_cell(PUSH_HELPER))

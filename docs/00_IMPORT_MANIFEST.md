@@ -2,7 +2,7 @@
 
 # Import manifest
 
-What was imported into this repo at handoff on 25 Sep 2026, where it came from, and the order to read it in. The documents in `docs/context/` and `docs/history/` were copied byte for byte from the claude.ai project "MCP & Agentic AI Security" (files named `Idea3_*`) and from the 19 Sep audit report. They are frozen: never edit them. Corrections go in `research/CORRECTIONS.md`; new work goes in `research/` and `experiments/`.
+What was imported into this repo at handoff on 25 Sep 2026, where it came from, and the order to read it in. The documents in `docs/context/` and `docs/history/` were copied byte for byte from the dated Idea 3 project archive and the 19 Sep audit report. They are frozen: never edit them. Corrections go in `research/CORRECTIONS.md`; new work goes in `research/` and `experiments/`.
 
 ## Read in this order
 
@@ -22,7 +22,7 @@ What was imported into this repo at handoff on 25 Sep 2026, where it came from, 
 
 ## Known stale values
 
-Listed in `research/CORRECTIONS.md`. The main ones: 19.5% page-wide influence escape is the 16-site value (57-site: 43.4%); 74.65% vs 1.2% is withdrawn (use 49.93% vs 1.2%); "my sandbox" in doc 01 means the Cowork sandbox of 24 Sep, not Claude Code; doc 01's key-sending procedure is replaced by `docs/OPERATIONS.md`.
+Listed in `research/CORRECTIONS.md`. The main ones: 19.5% page-wide influence escape is the 16-site value (57-site: 43.4%); 74.65% vs 1.2% is withdrawn (use 49.93% vs 1.2%); the "my sandbox" reference in doc 01 describes the original 24 September environment; doc 01's key-sending procedure is replaced by `docs/OPERATIONS.md`.
 
 ## Code and results
 
@@ -39,4 +39,4 @@ Listed in `research/CORRECTIONS.md`. The main ones: 19.5% page-wide influence es
 
 ## Written at handoff
 
-`CLAUDE.md`, `README.md`, `HANDOFF_GUIDE.md`, `ONBOARDING_PROMPT.md`, `ROADMAP.md`, `STATUS.md`, `RESEARCH_LOG.md`, `research/*`, `docs/OPERATIONS.md`, `docs/EXTERNAL_SERVICES.md`, `docs/EXPERIMENT_PROTOCOL.md`, `docs/NOTEBOOK_GIT_CONVENTION.md`, `docs/reviews/`, `src/llm.py`, `scripts/scan_secrets.py`, `scripts/preflight.py`, `scripts/fetch_mind2web.py`, `scripts/session_start.sh`, `scripts/bootstrap_repo.sh`, `.claude/`, `.githooks/` (pre-commit and commit-msg), `.github/`, `tests/test_llm_budget.py`, `tests/test_secret_guards.py`, `experiments/`, `annotations/`, `outreach/`, `env.example`. The notebook builders gained fixed cell IDs so rebuilds are byte-identical; notebook content is unchanged.
+The imported tree included the research records, analysis code, tests, notebooks, experiments, annotations, outreach drafts, and repository configuration. Reviewer-facing setup material was consolidated or retired in PR #6; dated research inputs and outputs remain available for audit. The notebook builders gained fixed cell IDs so rebuilds are byte-identical; notebook content is unchanged.

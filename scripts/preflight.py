@@ -44,7 +44,7 @@ def state(v):
 
 
 def main():
-    rows = [("where", "cloud session" if os.environ.get("CLAUDE_CODE_REMOTE") == "true" else "local"),
+    rows = [("where", "remote session" if os.environ.get("CLAUDE_CODE_REMOTE") == "true" else "local"),
             ("python", sys.version.split()[0])]
     rows += [(f"env {v}", state(v)) for v in VARS]
 

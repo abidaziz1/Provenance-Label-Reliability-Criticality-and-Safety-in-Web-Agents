@@ -2,7 +2,7 @@
 
 ## Pre-registration (26 Sep 2026)
 
-Saved to the claude.ai project (`claude/Idea3_Recovery_Bundle_26Sep.md`) before any run. The run waits for `src/pipeline_v2.py`, which is in the kit zip and was lost with the workspace.
+Saved to the dated project record (`Idea3_Recovery_Bundle_26Sep.md`) before any run. The run waits for `src/pipeline_v2.py`, which was restored before analysis began.
 
 - **Question.** Prismata §3 counts a descendant as actionable if it is "a non-hidden form control, a link, a label target, an element with an interactive ARIA role, an onclick handler, an editable region, or a tabindex". It computes the 1.2% on archived pages, 65,416 of its 90,408 instances from Mind2Web. The Mind2Web archive removes `href`, `onclick`, `tabindex` and `contenteditable` on 57 of 57 sites (K21). Our rule counts every `<a>` as a link, and links are 74% of our clause hits (K12: 298,756 of 402,594). Suppose a count requires an `href` for a link, as a browser does for a hyperlink. On the archive, that count loses most of what makes an element actionable. How far does that move Prismata-style criticality on the same pages?
 - **Claims tested.** NOVELTY_LEDGER C7 (the Prismata side) and the open question whether the 1.2% reproduces (C1'); new row K26.

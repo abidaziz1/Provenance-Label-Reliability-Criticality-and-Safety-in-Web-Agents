@@ -1,6 +1,6 @@
 # Pre-registration (draft, task 1.6)
 
-Status: DRAFT by Claude, 26 Sep 2026. Alam files it on OSF ("Preregistration" template) after Gate N, because the hypotheses follow the contribution statement. After filing, this file is guarded: changes need Alam's review, and every deviation goes in the experiment README and the paper.
+Status: DRAFT, 26 Sep 2026. Abid Aziz files it on OSF ("Preregistration" template) after Gate N, because the hypotheses follow the contribution statement. After filing, this file is guarded: changes need maintainer review, and every deviation goes in the experiment README and the paper.
 
 Headings follow the OSF template. Claim IDs refer to `research/CLAIMS_LEDGER.md`, contribution IDs (P1 to P3) to `research/CONTRIBUTION_STATEMENT.md`.
 

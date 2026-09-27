@@ -70,7 +70,7 @@ Run top to bottom. `DRY_RUN` is on."""))
 
 a(new_markdown_cell("""## Git and results (task 1.13)
 
-Results go to the branch `colab/2.4` of the research repo, never to main; Claude checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model key named in the secrets cell. Every paid call goes through `src/llm.py` under the budget in `EXP_DIR/config.yaml`, and the agent calls go out as one Batch API job at half price (task 1.15)."""))
+Results go to the branch `colab/2.4` of the research repo, never to main; a reviewer checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model key named in the secrets cell. Every paid call goes through `src/llm.py` under the budget in `EXP_DIR/config.yaml`, and the agent calls go out as one Batch API job at half price (task 1.15)."""))
 a(new_code_cell(git_config("2.4", "2026-10-12_2.4_agent-compliance-pilot")))
 a(new_code_cell(GIT_SETUP))
 a(new_code_cell(PUSH_HELPER))
