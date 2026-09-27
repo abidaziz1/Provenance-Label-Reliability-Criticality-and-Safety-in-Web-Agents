@@ -1,28 +1,14 @@
-# Decisions
+# Current decisions
 
-One entry per decision: date, decision, who decided, why, evidence, what it changes. Newest at the bottom. Decisions before 25 Sep are reconstructed from `docs/context/` and cite it.
+This file records the decisions governing current work. The [historical decision record](../docs/history/DECISIONS_through_27Sep.md) retains earlier entries and their original provenance. Superseded plans do not override the decisions below.
 
-| Date | Decision | By | Why and evidence | Changes |
-| --- | --- | --- | --- | --- |
-| 2026-09-19 | Withdraw three findings: the sampling-frame explanation for the 1.2% gap; "the labeler cannot see the cue"; "0% to 100% on one label error". | Alam, after the independent audit | `docs/context/05_CORRECTIONS_19Sep2026.md`, `docs/history/Independent_Research_Audit_19Sep.md` | Paper framing; every figure recomputed |
-| 2026-09-19 | Headline comparison becomes 49.93% vs 1.2% with the definitional account, replacing 74.65% vs 1.2%. | Alam | `docs/context/02_Reconciliation_1.2pct.md` | Contribution C1 |
-| 2026-09-19 | Every criticality number states unit, whether the region root counts, and the gate. | Alam | The root rule alone moved results by 21.5 to 34.3 points | Reporting rule in CLAUDE.md |
-| 2026-09-24 | Venue: TMLR primary, IEEE TDSC stretch, ACM DTRAP floor. | Alam | Venue audit in `docs/context/01_Submission_Roadmap.md` | ROADMAP.md targets |
-| 2026-09-24 | The coupling study runs only on a go at Oct 30, with fixed thresholds. | Alam | Power table in ROADMAP.md | Task 3.1 |
-| 2026-09-25 | Hand the project to Claude Code with a GitHub repo as the system of record. | Alam | Handoff request | This repo |
-| 2026-09-25 | Phase 0 novelty audit comes first; Phase 3 spend waits for Gate N. | Alam | "The primary focus should be finding the true novelty and research contribution of this work." | ROADMAP.md Phase 0 |
-| 2026-09-25 | Park the external review's ideas until N0.4, except the random-gate control, which goes into the pre-registration. | Claude, at handoff; Alam confirms at Gate N | `research/BACKLOG_IDEAS.md` | Tasks 1.6, 3.6 |
-| 2026-09-25 | Research key is `RESEARCH_ANTHROPIC_API_KEY`, never `ANTHROPIC_API_KEY`, so Claude Code never bills its own requests to it. | Claude, at handoff | Claude Code reads `ANTHROPIC_API_KEY` for its own requests | `env.example`, `src/llm.py` |
-| 2026-09-25 | No Google Drive. Large Colab outputs go to orphan `data/<task-id>` branches in this repo. | Claude, at handoff | Keeps one system of record and no extra credentials | `docs/NOTEBOOK_GIT_CONVENTION.md` |
-| 2026-09-25 | Use only the GitHub token, the Claude key and the Gemini key. The Stripe, Resend and Slack keys have no use in this project; they were not stored, and Alam was told to revoke them. Keys never enter a repo file or an output. | Claude | Alam's 25 Sep message; `docs/EXTERNAL_SERVICES.md` | Key handling |
-| 2026-09-25 | No automatic merges. A workflow that merged Claude's PRs was refused as merging without review; Alam merges every PR, and the kit blocks `gh pr merge`, merge API calls and pushes to main. | Claude, after the permission system refused it | Session record | Merge flow |
-| 2026-09-25 | Withdraw C1 and C2 (as a claim about Prismata); add C1'; withdraw C4 as stated. | Claude (N0.2, N0.3), for Alam at Gate N | `research/NOVELTY_LEDGER.md`, `research/audit/` | Contribution candidates |
-| 2026-09-25 | Hold paid runs until Gate N, apart from a smoke test under $0.01 and a Batch API test under $0.05. | Claude | Alam: spend on the Claude API only where needed | Phase 1 spend |
-| 2026-09-26 | While the repo is unreachable from the session, save every unit of work to the claude.ai project and send it to Alam before starting the next. | Claude | The workspace reset lost 12 unpushed commits | Working rule |
-| 2026-09-26 | Do not recover keys from the session transcript; the permission system refused it. Alam supplied the keys again. | Claude, after the refusal | Session record | Key handling |
-| 2026-09-26 | Run C7c live: three page loads, no login, pre-registered in the claude.ai project at 12:46 UTC before the first load. Outcome: stripping alone disables 53 of 57 working selectors. | Claude | `experiments/2026-09-26_C7c_live-strip-vs-drift/` | C7 keeps its Booking result as an archive effect |
-| 2026-09-26 | N0.4 triage: promote E7, O1 (folded into the 1.7 audit), O2 and O3; merge E2 and E3; park E1, E4, E5, E6 and E8; reject E9; keep E10. | Claude, for Alam at Gate N | `research/BACKLOG_IDEAS.md` | Plan |
-| 2026-09-26 | Draft contribution statement: lead with P1 (archive fidelity and decay of defense inputs); P2 (exposure channel) conditional on 2.4; P3 (per-page and per-task exposure) conditional on the hand audit; drop 1.10, 2.3, 2.6, 3.1, 4.1 and 4.2 by default. | Claude, for Alam at Gate N | `research/CONTRIBUTION_STATEMENT.md` | Gate N |
-| 2026-09-26 | The Cowork session cannot push: its git proxy refuses writes to repositories outside the session's authorized set, even with Alam's token (reads work). Work is delivered as a git bundle for Alam to push. | Claude | Proxy message; open issue anthropics/claude-code#96075 | Delivery |
-| 2026-09-27 | Gate N passed. P1 (page archives and site drift remove what structural defenses read) is the paper's primary contribution. P2 (exposure channel) and P3 (per-page and per-task exposure) stay conditional on their validation: P2 on the real-agent pilot (2.4), P3 on the hand audit (1.7). Dropped: 1.10, 2.3, 2.6, 3.1, 4.1 and 4.2, with the coupling go/no-go, the venue call and the mechanism check. Target: TMLR, DTRAP as the floor. | Alam | `research/CONTRIBUTION_STATEMENT.md`; Alam's message of 27 Sep | Plan, gates, budget |
-| 2026-09-27 | The repo is public. Everything in it, including drafts, the pre-registration and the outreach drafts, is visible; the README now states the current findings, the withdrawn claims and third-party licenses. | Alam (public); Claude (README) | Alam's message of 27 Sep | Scoop exposure; annotators must be told not to browse the repo |
+| Date | Decision | Authority or evidence | Consequence |
+| --- | --- | --- | --- |
+| 2026-09-27 | Gate N passed: P1 primary; P2 conditional on task 2.4; P3 conditional on task 1.7. | Abid Aziz; [contribution statement](CONTRIBUTION_STATEMENT.md) | Focus subsequent work on validating the remaining contributions. |
+| 2026-09-27 | Drop 1.10, 2.3, 2.6, 3.1, 4.1, and 4.2; retire coupling, venue, and mechanism decisions. | Gate N decision | Do not run these tasks without a new recorded scope decision. |
+| 2026-09-27 | TMLR target, DTRAP alternative. | Gate N decision | Working submission target: 19 February 2027. |
+| 2026-09-27 | Public repository with third-party notices and explicit limitations. | Maintainer decision | Private correspondence stays private; prepare a separate anonymous review artifact when needed. |
+| 2026-09-27 | MIT for original code; CC BY 4.0 for original documentation. | Abid Aziz's explicit license selection | Follow the root license files; third-party terms remain unchanged. |
+| 2026-09-27 | Public maintainer and citation name: Abid Aziz. | Name supplied by the maintainer | Update current contact references and citation metadata without changing historical attribution. |
+
+Every reported number must state its unit, sampling frame, root rule, and gate where relevant. A passing test does not promote a claim to supported; the claims ledger's construct requirements still apply.

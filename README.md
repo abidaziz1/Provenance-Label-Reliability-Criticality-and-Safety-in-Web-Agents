@@ -1,67 +1,71 @@
-# What structural prompt-injection defenses read
+# Structural Defenses in Web Agents: Page Representation and Provenance
 
-A measurement study of how the page a web agent's defense sees changes what that defense can do. It covers two published structural defenses against indirect prompt injection in web agents: Prismata (arXiv:2607.08147) and Untrusted Content Masking (UCM, arXiv:2607.05277). This is work in progress, targeting TMLR in February 2027.
+[![Checks](https://github.com/abidaziz1/Provenance-Label-Reliability-Criticality-and-Safety-in-Web-Agents/actions/workflows/ci.yml/badge.svg)](https://github.com/abidaziz1/Provenance-Label-Reliability-Criticality-and-Safety-in-Web-Agents/actions/workflows/ci.yml)
 
-**Every number here is provisional.** A number is final only when `research/CLAIMS_LEDGER.md` marks it `supported`. Nothing in this repo claims that either paper's published results are wrong. Where our measurements differ from a published number, we say which of our choices could explain the difference and which details only the authors can confirm.
+Research code and evidence for a measurement study of how archived HTML and changing websites affect the inputs used by structural prompt-injection defenses.
 
-## Main result so far (P1 in `research/CONTRIBUTION_STATEMENT.md`)
+**Maintainer:** Abid Aziz · **Status:** work in progress, results provisional
 
-The archive behind Mind2Web, a widely used web-agent dataset, removes the page attributes structural defenses read. So does time.
+[Review guide](docs/REVIEW_GUIDE.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [Claims and evidence](research/CLAIMS_LEDGER.md) · [Current status](STATUS.md) · [Citation](CITATION.cff)
 
-| Finding | Value | Evidence |
+## Research question
+
+Structural defenses use the document object model (DOM) to identify untrusted regions and decide which controls an agent may act on. Does the page representation used in an evaluation preserve the attributes those rules need?
+
+This repository studies that question using Mind2Web pages, published Untrusted Content Masking (UCM) selectors, and a Prismata-style reconstruction. The primary contribution, P1, concerns preservation of defense inputs. P2 remains conditional on a real-agent pilot, and P3 on an independent annotation audit. See the [contribution statement](research/CONTRIBUTION_STATEMENT.md).
+
+## Current evidence
+
+These are measurements in the committed evidence, not final paper claims. A claim becomes supported only after it meets the requirements in the [claims ledger](research/CLAIMS_LEDGER.md).
+
+| Question | Observation | Evidence |
 | --- | --- | --- |
-| Attribute names the Mind2Web archive keeps (57 sites, 1,163 pages) | 21. No site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on any site | K21, `experiments/2026-09-25_1.8_attr-survival/` |
-| UCM's published Booking selectors that match UCM's captures but nothing on 131 archived Booking pages | 24 of 25 hand-written; 68 of 68 LLM-written | K22, `experiments/2026-09-25_C7_ucm-selectors-on-archive/` |
-| Same live Booking pages, attributes reduced to the archive's 21 names: working selectors disabled | 53 of 57 (drift held fixed) | K25, `experiments/2026-09-26_C7c_live-strip-vs-drift/` |
-| Prismata-style criticality per visible untrusted node, links counted with vs without an `href` | 9.40% vs 19.57% (ratio 0.48, interval 0.32 to 0.64) | K26, `experiments/2026-09-26_C7b_actionability-on-archive/` |
-| UCM Booking selectors that matched UCM's capture and no longer match today (one page) | 19% to 25% | `experiments/2026-09-26_C7c_live-strip-vs-drift/` |
+| Which attributes survive in the archive? | 21 attribute names across 1,163 pages from 57 sites; no site-authored `data-*`, `href`, `on*`, `tabindex`, `style`, or `hidden`. | [K21: attribute census](experiments/2026-09-25_1.8_attr-survival/README.md) |
+| Do published Booking selectors transfer to archived pages? | 24 of 25 hand-written and 68 of 68 model-generated selectors match nothing across 131 archived Booking pages. | [K22–K23: selector transfer](experiments/2026-09-25_C7_ucm-selectors-on-archive/README.md) |
+| Does attribute removal alone change selector matches? | Restricting the same live pages to the archive's attribute set disables 53 of 57 working selectors. | [K25: controlled stripping](experiments/2026-09-26_C7c_live-strip-vs-drift/README.md) |
+| Does the link rule affect measured criticality? | Requiring an `href` changes Prismata-style criticality from 19.57% to 9.40% per visible untrusted node; ratio 0.48, exploratory interval 0.32–0.64. | [K26: actionability](experiments/2026-09-26_C7b_actionability-on-archive/README.md) |
 
-**What these results do not show.**
-- They do not show that UCM fails on archived pages. UCM writes its selectors from the page it sees; that test is planned.
-- They do not show what Prismata's own count used. The paper does not state its page representation or link rule.
+The selector results concern reuse of existing selectors, not UCM generating fresh selectors on archived pages. Booking is one site, so these measurements do not establish a cross-site failure rate. The Prismata-style reconstruction does not establish which representation or link rule the original authors used. Nothing here establishes that either paper's published result is wrong.
 
-## Claims we withdrew
+## Run the checks
 
-Older documents in `docs/context/`, `docs/history/` and the git history contain claims we later found wrong. The novelty audit of 25 Sep withdrew them (`research/NOVELTY_LEDGER.md`, `research/CORRECTIONS.md`):
-
-- **"Prismata's 1.2% comes from a second, narrower definition."** Wrong: Prismata states one definition, three times.
-- **"Prismata's gate is an oracle."** Wrong: the oracle was in our own reconstruction.
-- **"A task-scoped envelope gives 0% effect."** Withdrawn as stated: our task-scoped envelope was the annotated target, so 0% held by construction.
-
-## Reproduce
+Python 3.11 is the CI reference environment. No API key or paid model call is needed for the test suite.
 
 ```bash
-pip install -r requirements.txt
-python3 -m pytest -q tests              # each claim's test recomputes it from the committed result file
-python3 scripts/fetch_mind2web.py       # 1.27 GB, pinned revision
-python3 scripts/attr_survival.py        # K21, a few minutes
-python3 scripts/actionability_on_archive.py   # K26, about 3 minutes
+git clone https://github.com/abidaziz1/Provenance-Label-Reliability-Criticality-and-Safety-in-Web-Agents.git
+cd Provenance-Label-Reliability-Criticality-and-Safety-in-Web-Agents
+python -m venv .venv
+source .venv/bin/activate
+python -m pip install -r requirements.txt
+python -m pytest -q tests
+python scripts/scan_secrets.py
 ```
 
-The UCM selector scripts need a clone of `github.com/ethz-spylab/untrusted-content-masking` at commit `acff2e4` (set `UCM_DIR`). `scripts/live_strip_test.py capture` loads three Booking pages; the captured pages are not in this repo.
+On PowerShell, use `.\.venv\Scripts\Activate.ps1` and set `$env:PYTHONUTF8='1'` before running checks. The [reproduction guide](docs/REPRODUCIBILITY.md) includes an activation-free alternative.
 
-## Layout
+Without external Mind2Web data, expect **47 passed and 1 skipped**. The skipped check compares notebook scoring paths on actual dataset pages. Passing tests verifies the checked computations; it does not replace construct review.
 
-| Path | What |
+## Repository map
+
+| Directory | Contents |
 | --- | --- |
-| `research/` | Contribution statement, novelty and claims ledgers, decisions, corrections, pre-registration draft, backlog |
-| `experiments/` | One folder per run from 25 Sep on, each with its pre-registration, results and deviations |
-| `scripts/`, `src/` | Analyses, the labeling pipeline, the budgeted LLM client (`src/llm.py`) |
-| `tests/` | Per-claim tests, pipeline regressions, budget and secret guards, notebook checks |
-| `results/` | Outputs up to 25 Sep, frozen |
-| `notebooks/` | Colab notebooks and the builders that generate them |
-| `annotations/` | Annotation guide and page (task 1.7) |
-| `docs/` | Operations; imported project documents (`docs/context/`, `docs/history/`, frozen, some superseded) |
-| `CLAUDE.md`, `ROADMAP.md`, `STATUS.md` | How the AI research assistant works in this repo, the plan, the current state |
+| [`research/`](research/) | Claim IDs, contribution scope, corrections, decisions, and pre-registration draft |
+| [`experiments/`](experiments/) | Dated methods, outputs, limitations, and deviations |
+| [`src/`](src/), [`scripts/`](scripts/) | Labeling, scoring, analysis, and budgeted model access |
+| [`tests/`](tests/) | Claim checks, pipeline regressions, credential guards, and notebook checks |
+| [`notebooks/`](notebooks/) | Colab notebooks and their source builders |
+| [`annotations/`](annotations/) | Annotation protocol, participant brief, and synthetic demonstration |
+| [`results/`](results/) | Earlier committed outputs; consult the ledger before interpreting them |
+| [`docs/`](docs/) | Review and reproduction guides, plus marked historical material |
 
-## Third-party data and code
+## Corrections and limitations
 
-- **Mind2Web** (osunlp/Mind2Web, revision `17ece8eb`), CC BY 4.0. The data is not redistributed here, except small derived excerpts in `results/legacy/`.
-- **UCM** (ethz-spylab/untrusted-content-masking, commit `acff2e4`), MIT License, copyright 2026 Nikolić, Zverev, Rando, Jagielski, Debenedetti and Tramèr. Its selectors are quoted in our result files.
-- **Prismata.** Only its paper is used; no code has been released.
+Earlier interpretations were withdrawn: the proposed second Prismata definition, the claim that Prismata's gate is an oracle, and the task-scoped zero-effect result as originally stated. The oracle and target-scoped assumptions belonged to our reconstruction. Read the [corrections](research/CORRECTIONS.md) and [novelty ledger](research/NOVELTY_LEDGER.md) before citing older material.
 
-The full attribution and license notices are in `THIRD_PARTY_NOTICES.md`.
+Historical plans and records remain available for audit. They do not override the current claims ledger. This public repository identifies its maintainer; it is not an anonymized submission artifact.
 
-## License
+## Citation and reuse
 
-Not chosen yet, so all rights are reserved for now. Open an issue if you want to reuse something.
+Use [CITATION.cff](CITATION.cff) and include the commit SHA used in your analysis. This is a research artifact in development, not a published paper or a DOI-backed release.
+
+Original code uses [MIT](LICENSE). Original documentation uses [CC BY 4.0](LICENSE-DOCUMENTATION.md). Third-party content retains its own terms; see [third-party notices](THIRD_PARTY_NOTICES.md). Report reproducibility problems through [GitHub issues](https://github.com/abidaziz1/Provenance-Label-Reliability-Criticality-and-Safety-in-Web-Agents/issues).

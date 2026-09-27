@@ -5,7 +5,7 @@ Human labels for task 1.7, the exposure audit that decides P3, and for 2.1 only 
 - `GUIDE.md`: the guide annotators read (version 0.1).
 - `../scripts/build_annotation_page.py`: builds one self-contained HTML page from an items file. Page text is escaped and rendered as plain text; `tests/test_annotation_page.py` checks this.
 - `demo_items.json` and `demo_page.html`: two invented items for trying the page. They are not study data.
-- `raw/<annotator>_<date>.json`: one file per annotator per session, as saved by the page. Annotators email their file to Alam, who commits it. The repo is public, but annotators must not browse it while labeling: it holds the labeler's rules and what we expect to find, which would unblind them. Never edited after commit.
+- `raw/<annotator>_<date>.json`: one file per annotator per session, as saved by the page. Annotators email their file to Abid Aziz, who commits it. The repo is public, but annotators must not browse it while labeling: it holds the labeler's rules and what we expect to find, which would unblind them. Never edited after commit.
 - Annotators are identified by a short code, not by name, in every committed file.
 - Adjudicated labels and agreement statistics are produced by a script and written to the experiment folder of the task that uses them.
 
@@ -21,4 +21,4 @@ The item sampler is the next piece to write. Its pre-registration goes in `exper
   - Per-page and per-task exposure recomputed with the audited seeds, with site-cluster 95% intervals.
   - The kill rule: keep P3 only if the lower bound of audited per-task exposure is above 25%.
   - Q3 gives the first per-page Case-3 estimate (backlog item O1).
-- **Agreement.** Cohen's kappa between the two annotators, with a site-cluster interval. Alam adjudicates disagreements blind.
+- **Agreement.** Cohen's kappa between the two annotators, with a site-cluster interval. Abid Aziz adjudicates disagreements blind.

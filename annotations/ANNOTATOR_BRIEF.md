@@ -1,6 +1,6 @@
 # Annotator brief (for the two people who help with task 1.7)
 
-Alam can forward this page as it is.
+Abid Aziz can forward this page as it is.
 
 ## What we need from you
 
@@ -40,7 +40,7 @@ There is a notes box if something seems odd.
 
 ## When you finish
 
-Type your initials at the top, click **Download my labels**, and email the downloaded file to Alam. Don't edit the file. You will be thanked by name in the paper's acknowledgments if you agree. Your labels are stored under a short code, not your name.
+Type your initials at the top, click **Download my labels**, and email the downloaded file to Abid Aziz. Don't edit the file. You will be thanked by name in the paper's acknowledgments if you agree. Your labels are stored under a short code, not your name.
 
 ## Who is a good fit
 

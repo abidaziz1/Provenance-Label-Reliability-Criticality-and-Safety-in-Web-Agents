@@ -1,6 +1,6 @@
 # Annotation guide, version 0.1 (draft, 26 Sep 2026)
 
-For annotators. You need no access to the research repo. You receive one HTML file, open it in a browser, answer three questions per item, and send the file it saves to Alam. An item takes about a minute.
+For annotators. You need no access to the research repo. You receive one HTML file, open it in a browser, answer three questions per item, and send the file it saves to Abid Aziz. An item takes about a minute.
 
 ## What you are looking at
 
@@ -53,8 +53,8 @@ Look at the region's text and the tag chain. Answer **yes** if a reader would se
 ## Saving and sending
 
 1. Click **Download my labels**. The file is named `labels_<your initials>_<batch>_<date>.json`.
-2. Email it to Alam. Do not edit the file.
-3. Alam commits it to `annotations/raw/` in the research repo.
+2. Email it to Abid Aziz. Do not edit the file.
+3. Abid Aziz commits it to `annotations/raw/` in the research repo.
 
 ## Changes to this guide
 

@@ -42,7 +42,7 @@ for _name, _fallback in (("RESEARCH_ANTHROPIC_API_KEY", "ANTHROPIC_API_KEY"),
     _v = get_key(_name, _fallback)
     if _v: os.environ[_name] = _v          # src/llm.py reads the environment
     print(f"{_name:27s}", "present" if _v else "missing")
-os.environ.pop("ANTHROPIC_API_KEY", None)   # the research key must never double as Claude Code's own key'''
+os.environ.pop("ANTHROPIC_API_KEY", None)   # keep research credentials separate from development tooling'''
 
 # ------------------------------------------------------------------ [1.13] git convention
 # docs/NOTEBOOK_GIT_CONVENTION.md: config, clone or pull, push() with metric-valued messages,
