@@ -55,7 +55,7 @@ Run top to bottom. `DRY_RUN` is on."""))
 
 a(new_markdown_cell("""## Git and results (task 1.13)
 
-Results go to the branch `colab/<task-id>` of the research repo, never to main; Claude checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model keys named in the secrets cell. Every paid call goes through `src/llm.py` under the budget in `EXP_DIR/config.yaml`. For the confirmatory run (task 3.1), set `TASK_ID = "3.1"`, `PHASE = "confirmatory"` and its own `EXP_DIR`."""))
+Results go to the branch `colab/<task-id>` of the research repo, never to main; a reviewer checks the branch and opens the PR. You need the Colab secret `GH_TOKEN_COLAB` (a fine-grained token for this repo, Contents read and write) and the model keys named in the secrets cell. Every paid call goes through `src/llm.py` under the budget in `EXP_DIR/config.yaml`. For the confirmatory run (task 3.1), set `TASK_ID = "3.1"`, `PHASE = "confirmatory"` and its own `EXP_DIR`."""))
 a(new_code_cell(git_config("2.2", "2026-10-12_2.2_vendor-labeling-pilot")))
 a(new_code_cell(GIT_SETUP))
 a(new_code_cell(PUSH_HELPER))

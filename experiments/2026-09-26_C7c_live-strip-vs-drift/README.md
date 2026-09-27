@@ -1,8 +1,8 @@
 # C7c: archive stripping versus site drift, on live Booking pages
 
-## Pre-registration (26 Sep 2026, saved to the claude.ai project before the first page load)
+## Pre-registration (26 Sep 2026, saved to the dated project record before the first page load)
 
-The repo could not be pushed from this session, so the timestamp for this pre-registration is the project doc `claude/Idea3_Prereg_C7c_26Sep.md`, written before `scripts/live_strip_test.py capture` ran.
+The repository was unavailable to the capture environment, so the timestamp for this pre-registration is the project record `Idea3_Prereg_C7c_26Sep.md`, written before `scripts/live_strip_test.py capture` ran.
 
 - **Question.** On 131 archived Mind2Web Booking pages, 24 of UCM's 25 hand selectors and all 68 matching LLM selectors match nothing (K22). Two causes are confounded: the archive strips every site `data-*` attribute (K21), and Booking's class names changed between the 2023 archive and UCM's captures. This test holds the page fixed and varies only the stripping.
 - **Claims tested.** NOVELTY_LEDGER C7 (archive fidelity) and C8 (selector decay); CLAIMS_LEDGER K22, K23; new row K25.

@@ -30,5 +30,5 @@ The full record of the 19 Sep 2026 corrections is `docs/context/05_CORRECTIONS_1
 These documents were imported as they stood on 24 and 25 Sep. They are not edited, so the stale values stay in them:
 
 - `docs/context/05`, `06` and `07` quote 19.5% for page-wide influence escape. Use 43.4% (57-site) and name the frame.
-- `docs/context/01` says "my sandbox" for the Cowork sandbox. Capabilities here come from `scripts/preflight.py`.
+- `docs/context/01` says "my sandbox" for the original 24 September environment. Capabilities here come from `scripts/preflight.py`.
 - `docs/context/01` describes sending keys in chat. That procedure is replaced by environment variables (`docs/OPERATIONS.md`).

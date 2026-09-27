@@ -10,7 +10,7 @@ Every paid model call in this repo goes through `LLM.complete` or the Batch API 
 - log token counts, cost, latency and a sha256 of the prompt, never keys, headers or prompt text.
 
 Key variables:
-  RESEARCH_ANTHROPIC_API_KEY  research key for Claude models. Deliberately NOT named
+  RESEARCH_ANTHROPIC_API_KEY  research key for Anthropic models. Deliberately NOT named
                               ANTHROPIC_API_KEY, to keep research and development credentials separate.
   OPENAI_API_KEY              or the literal value "proxy-injected" when a configured cloud
                               environment attaches the real key as an API credential.
@@ -36,7 +36,7 @@ from pathlib import Path
 
 # USD per 1M tokens (input, output). Verified list prices. Add a model only after checking its
 # official pricing page, and cite the page in the commit message.
-#   Claude: platform.claude.com/docs/en/about-claude/pricing (checked 26 Sep 2026)
+#   Anthropic pricing documentation (checked 26 Sep 2026)
 #   Gemini: ai.google.dev/gemini-api/docs/pricing (checked 26 Sep 2026; paid tier, text input)
 #   OpenAI: gpt-5.4-mini as verified at handoff (Sep 2026)
 PRICES = {
