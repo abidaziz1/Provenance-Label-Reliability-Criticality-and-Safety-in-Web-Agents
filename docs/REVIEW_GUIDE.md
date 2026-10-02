@@ -26,7 +26,8 @@ Start with the question, then follow each claim to its evidence. This is an ongo
 
 - Does UCM generate effective new selectors when given stripped pages?
 - Does the Booking result generalize to other sites and page types?
-- Which page representation and link rule did the original Prismata measurement use?
+- Which Mind2Web page representation did Prismata's §3 measurement use? The paper states its unit (one flagged untrusted node) and identifies `a[href]` and `role=link` in its link breakdown.
+- What happens when selectors stop matching untrusted content without a warning? UCM states that correct labels are required; the open check concerns detection of missing matches at runtime.
 - Do controller upper bounds predict behavior in the real-agent pilot?
 - Does independent annotation support the provenance labeler's exposure estimates?
 

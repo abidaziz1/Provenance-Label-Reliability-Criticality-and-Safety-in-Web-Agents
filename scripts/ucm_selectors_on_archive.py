@@ -2,7 +2,7 @@
 
 Pre-registered in experiments/2026-09-25_C7_ucm-selectors-on-archive/. Needs a clone of
 github.com/ethz-spylab/untrusted-content-masking (commit acff2e4) at $UCM_DIR
-(default /home/claude/work/ext/ucm) and the Mind2Web shards under data/mind2web.
+(default ext/ucm under this repository's root) and the Mind2Web shards under data/mind2web.
 """
 from pathlib import Path
 import collections, glob, json, os, re, sys
@@ -10,7 +10,7 @@ from lxml import html as LH
 from lxml.cssselect import CSSSelector
 
 ROOT = Path(__file__).resolve().parents[1]
-UCM = Path(os.environ.get("UCM_DIR", "/home/claude/work/ext/ucm"))
+UCM = Path(os.environ.get("UCM_DIR", ROOT / "ext" / "ucm"))
 ABD = UCM / "src" / "automatic_boundary_detection"
 OUT = ROOT / "experiments" / "2026-09-25_C7_ucm-selectors-on-archive" / "results" / "ucm_selectors_on_archive.json"
 SHARDS = [ROOT / "data" / "mind2web" / "data" / "train" / f for f in ("train_0.json", "train_1.json", "train_10.json")]

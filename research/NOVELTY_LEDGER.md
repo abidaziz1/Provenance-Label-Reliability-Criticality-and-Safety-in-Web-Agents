@@ -2,7 +2,7 @@
 
 Phase 0 decides what this paper claims. Each candidate gets a verdict from a fresh literature search (novelty auditor), survives or dies under attack (adversarial reviewer), and only then can enter `research/CONTRIBUTION_STATEMENT.md`.
 
-Audit reports: `research/audit/2026-09-25_C1_C2_C10.md`, `research/audit/2026-09-25_C3_C4_C5.md`, `research/audit/2026-09-25_C6_C7_C8_C9.md`. Analyses: `experiments/2026-09-25_N0.2_c1-robustness/`, `experiments/2026-09-25_N0.2_unit-ladder/`.
+Available audit reports: `research/audit/2026-09-25_C1_C2_C10.md` and `research/audit/2026-09-25_adversarial_C1prime_C4.md`. The reports formerly cited as `research/audit/2026-09-25_C3_C4_C5.md` and `research/audit/2026-09-25_C6_C7_C8_C9.md` were lost in the 26 Sep workspace reset and are unavailable. Their recorded verdicts remain below as historical assessments, not as independently inspectable audit evidence. Analyses: `experiments/2026-09-25_N0.2_c1-robustness/`, `experiments/2026-09-25_N0.2_unit-ladder/`.
 
 ## The four tests
 
@@ -17,7 +17,7 @@ The bar set by the 19 Sep independent audit: the measurements must "predict or e
 
 ## What the 25 Sep audit changed
 
-1. **C1 as written is false.** Prismata states one definition, three times (§1.1, §2.2 and §3; the critical-path sentence is in §2.2, not §2.1): an untrusted path instance is critical when it has a non-hidden actionable descendant, where "that element" is every interactive element on the page, not the task target. The "task-target reading" was our hypothesis, never Prismata's text. Whether the 1.2% reproduces depends on the unit: on our pages the rate runs from 1.6% (leaves, a labeler artifact) to 19.6% (every visible untrusted node). The question is open until we have Prismata's unit and labels.
+1. **C1 as written is false.** Prismata states one definition, three times (§1.1, §2.2 and §3; the critical-path sentence is in §2.2, not §2.1): an untrusted path instance is critical when it has a non-hidden actionable descendant, where "that element" is every interactive element on the page, not the task target. The "task-target reading" was our hypothesis, never Prismata's text. Our sensitivity analysis ranges from 1.6% (leaves, a labeler artifact) to 19.6% (every visible untrusted node). **Clarified 2 Oct:** Prismata's unit is one flagged untrusted node, 23.10 per Mind2Web page against our 143.55. Whether its 1.2% reproduces remains open because its Mind2Web representation and labels are unavailable, not because the unit is unstated.
 2. **C2 was about our own method.** The oracle (ranking by distance to the task target) is in our 18 Sep gate-width reconstruction, not in Prismata. Prismata's gate is `cap_gate(e) = ActionGate(path(e), task)`: task-scoped through an LLM, with no annotated target. The 1.8x is a correction to our instrument.
 3. **A new candidate, C1', replaced C1** and passed its pre-registered test, but the adversarial review then reduced it to a descriptive result (below).
 4. **C4 as stated rests on the same oracle.** Its task-scoped envelope is the annotated target; the adversarial review rated it fatal as stated.
@@ -30,6 +30,15 @@ The bar set by the 19 Sep independent audit: the measurements must "predict or e
 3. **A C7 claim was too broad.** Reused selectors fail on archives, but UCM writes selectors from the page it sees, so "UCM masks nothing on archives" is not shown. Task 2.8 tests UCM's generator on archived pages.
 4. **First decay datapoint for C8.** On Booking's hotel page, 13 of 16 hand selectors and 46 of 60 LLM selectors (43 of 57 without the 3 that duplicate hand selectors) that matched UCM's capture still match on 26 Sep 2026. The interval is unknown: UCM records no capture date.
 
+## What 2 Oct added
+
+A full reading of [Prismata v1](https://arxiv.org/html/2607.08147v1) and [UCM v1](https://arxiv.org/html/2607.05277v1) clarified four points. No result or claim status changed.
+
+1. **Prismata states the unit and identifies its link forms (§3).** It counts one path per flagged untrusted node, 23.10 per Mind2Web page against our 143.55. Its Case-3 link breakdown uses `a[href]` and `role=link`. R1 in C7b is therefore closer to the paper's plain-link rule than R0. The open question is the Mind2Web representation and labels, not an unstated unit or link rule.
+2. **Prismata controls exposure as well as admission (§2.2).** It labels provenance, prunes non-developer content the task does not need, restricts required non-developer content to read-only, and gates actions. Our gate-only controller is an instrument for isolating channels, not the whole defense.
+3. **UCM states its labeling assumptions and already tests one error (§3, Appendix E, B.2–B.3).** Its main setting uses owner-labeled live pages and requires correct labels. One mislabeled issue description gives 6±5% attack success against a Claude Sonnet 4 agent, versus 17±8% undefended. Masking does not prohibit task-related clicks on placeholders. O9 must test whether missing selector matches are detected at runtime, rather than claim label correctness was overlooked.
+4. **Both papers explicitly name inputs absent from the archive.** UCM's prompt recommends `data-testid` (Appendix G.5), while §7.2 attributes Booking's lower F1 to non-semantic classes and describes reliance on tags and layout. Prismata names class names and `href` (§6.3); five of its seven actionability clauses use deleted attribute signals. O4 remains the unrun test of generation on the same page before and after stripping.
+
 ## Candidates
 
 Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INCREMENTAL, KNOWN, or WITHDRAWN.
@@ -37,10 +46,10 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 ### C1'. Per page and per task, agents meet untrusted content around actionable elements far more often than a per-node statistic suggests
 
 - **Status after adversarial review: survives only as a reduced, descriptive result.** Under stricter heuristic labels, 24% to 31% of Mind2Web pages (about 17% after excluding five sites whose "ads" are first-party promotions, per a review snippet that was never committed) and 39% to 48% of tasks have a visible control inside ad, user or hosted content. Prismata reports no per-page or per-task rate.
-- **Withdrawn parts.** "The 1.2% reproduces at leaf granularity" (a labeler artifact: all 808 critical leaves exist because nested nav, menu, header or footer nodes are relabeled trusted); "the 1.2% is a per-leaf rate" (Prismata's unit is an LLM-flagged untrusted node, 23.10 per page, against our 143.55); the 18x and 28x ratios (they change unit and criterion at once; at a fixed criterion, node to page is 1.9x to 2.4x); the 9.19% element and 7.71% target rates as stated (mostly first-party false positives; stricter labels give 1.2% to 2.5% and 0.5% to 2.7%).
-- **Open question it leaves.** Prismata's 1.2% ranges over 1.6% to 19.6% of our untrusted units depending on the unit, so whether it reproduces depends on the density of nodes its labeler flags. Only Prismata's labels (task 1.1) or human labels settle it.
+- **Withdrawn parts.** "The 1.2% reproduces at leaf granularity" (a labeler artifact: all 808 critical leaves exist because nested nav, menu, header or footer nodes are relabeled trusted); "the 1.2% is a per-leaf rate" (Prismata's unit is an LLM-flagged untrusted node, 23.10 per Mind2Web page, against our 143.55); the 18x and 28x ratios (they change unit and criterion at once; at a fixed criterion, node to page is 1.9x to 2.4x); the 9.19% element and 7.71% target rates as stated (mostly first-party false positives; stricter labels give 1.2% to 2.5% and 0.5% to 2.7%).
+- **Open question it leaves.** Prismata counts one flagged untrusted node, not a leaf or maximal region. Its 23.10 nodes per Mind2Web page contrast with our 143.55, so a direct comparison needs its representation and labels (task 1.1). Human labels can audit our own construct, but cannot establish which labels Prismata used.
 - **Evidence.** `experiments/2026-09-25_N0.2_c1-robustness/`, `experiments/2026-09-25_N0.2_unit-ladder/`, `research/audit/2026-09-25_adversarial_C1prime_C4.md`.
-- **What upgrades it.** Fix the known labeler false positives (storefront, answer, adv, UUID and page-wrapper seeds) under a pre-registered rule; a blind hand audit of about 100 exposure-driving labels; a per-page Case-3 estimate; Prismata's unit definition and per-corpus counts.
+- **What upgrades it.** Fix the known labeler false positives (storefront, answer, adv, UUID and page-wrapper seeds) under a pre-registered rule; a blind hand audit of about 100 exposure-driving labels; a per-page Case-3 estimate; Prismata's Mind2Web representation, labels and per-corpus critical-path counts.
 - **Verdict.** NOVEL AS MEASUREMENT at most, descriptive; not a primary contribution in its current form.
 
 ### C1. The 1.2% is a definitional artifact
@@ -54,7 +63,7 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 ### C3. A label error needs a second failure to cause harm
 
 - **Verdict.** INCREMENTAL; the exposure sub-result (+33.3 points [15.0, 55.7] from a label error that un-prunes external content under a page-wide envelope) is NOVEL AS MEASUREMENT.
-- **Closest work.** Prismata's own guarantee that mislabelings are confined to elements whose critical paths contain the injection; UCM Appendix E, one mislabeled element, 6±5% attack success with real agents.
+- **Closest work.** Prismata's own guarantee that mislabelings are confined to elements whose critical paths contain the injection; UCM Appendix E, one mislabeled issue-description element, 6±5% attack success against a Claude Sonnet 4 agent versus 17±8% undefended on seeded, strengthened WASP GitLab attacks.
 - **Damaging reviewer line.** The 0.0% cell holds by construction for a deterministic controller that cannot act outside a fixed envelope.
 - **Adversarial note (25 Sep).** Its task-scoped arms use the same oracle envelope as C4 (the annotated target), so only the page-wide contrasts, including the exposure channel, stand.
 - **Keep as.** Supporting result, with the exposure channel as its point.
@@ -80,8 +89,8 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 
 - **Evidence (25 Sep, free).** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (`experiments/2026-09-25_1.8_attr-survival/`). UCM's own Booking selectors: 92% of hand and 96% of LLM selectors use a `data-*` attribute; 24 of 25 hand and 68 of 68 LLM selectors that match on UCM's captures match nothing on 131 archived Booking pages (`experiments/2026-09-25_C7_ucm-selectors-on-archive/`).
 - **Stripping versus drift (26 Sep, C7c, free).** On the same live DOM, the archive's attribute whitelist disables 53 of the 57 UCM Booking selectors that work live (hand 11 of 13, LLM 42 of 44). The four survivors rest on classes or `aria-label`. `experiments/2026-09-26_C7c_live-strip-vs-drift/`.
-- **Limit.** This shows that selectors do not survive archiving. It does not show that UCM fails on archives, because UCM regenerates selectors from the page it sees (task 2.8). UCM's paper, as extracted on 26 Sep (check against the PDF), discusses neither archives nor selector stability, and names non-semantic class names as the reason Booking scores lowest (F1 0.879, §7.2).
-- **The Prismata side (26 Sep, C7b, pre-registered).** Prismata's §3 actionability list names links, onclick handlers, editable regions and tabindex; the archive removes `href`, `onclick`, `contenteditable` and `tabindex` everywhere. Requiring an `href` for a link cuts Prismata-style criticality per visible untrusted node from 19.57% to 9.40% (ratio 0.48, exploratory site interval [0.32, 0.64]); trusting the stored `is_clickable` flag restores 20.57%. It does not explain the 1.2% alone: 9.40% is still about 8 times the published figure (K26, `experiments/2026-09-26_C7b_actionability-on-archive/`).
+- **Limit.** This shows that existing selectors do not survive archiving. It does not show that UCM fails on archives: its generator writes selectors from the page it sees (task 2.8), and its main setting uses correctly owner-labeled live pages (§3). Its paper names non-semantic class names as the reason Booking scores lowest (F1 0.879, §7.2), while its prompt explicitly recommends stable attributes such as `data-testid` (Appendix G.5). O4 tests generation before and after stripping on the same DOM.
+- **The Prismata side (26 Sep, C7b, pre-registered; reading clarified 2 Oct).** Prismata's §3 link breakdown identifies `a[href]` and `role=link`; its actionability list also names onclick handlers, editable regions and tabindex. The archive removes `href`, `onclick`, `contenteditable` and `tabindex` everywhere. Requiring an `href` for plain links, the rule closest to that breakdown, cuts our Prismata-style criticality per visible untrusted node from 19.57% to 9.40% (ratio 0.48, exploratory site interval [0.32, 0.64]); trusting the stored `is_clickable` flag restores 20.57%. It does not explain the 1.2% alone: 9.40% is still about 8 times the published figure (K26, `experiments/2026-09-26_C7b_actionability-on-archive/`).
 - **Verdict.** NOVEL AS MEASUREMENT. Online-Mind2Web and WebCanvas measure task drift, not dropped defense inputs. Prismata's own 1.2% is computed on archived Common Crawl and Mind2Web pages. Note from 25 Sep: the archive strips `onclick` but keeps a browser-computed `is_clickable` flag and rendered bounding boxes; adding `is_clickable` changes our rates by at most 0.2 points.
 
 ### C8. Selector-based masking costs and decays
@@ -103,7 +112,7 @@ Verdicts: NOVEL, NOVEL AS MEASUREMENT (principle known, quantification new), INC
 | ID | Verdict | Closest work | Delta in one line | Keep as |
 | --- | --- | --- | --- | --- |
 | C1' | descriptive only, after adversarial review | Prismata §3 | 17% to 31% of pages and 39% to 48% of tasks expose a visible control inside untrusted content (stricter heuristic labels) | P3 in the draft statement, conditional on its own novelty check and the 1.7 hand audit |
-| C1 | WITHDRAWN | Prismata §1.1, §2.2, §3 | Prismata states one definition; whether 1.2% reproduces depends on its unit (1.6% to 19.6% on our units) | drop; ask the authors (1.1) |
+| C1 | WITHDRAWN | Prismata §1.1, §2.2, §3 | One definition and one flagged-node unit (23.10 per Mind2Web page vs our 143.55); representation and labels remain open | drop; ask the authors (1.1) |
 | C2 | WITHDRAWN (about Prismata) | Prismata §2.2 | The oracle was ours | method correction |
 | C3 | INCREMENTAL (exposure sub-result NOVEL AS MEASUREMENT) | Prismata's guarantee; UCM App. E | Exposure is the only single-failure channel | exposure sub-result is P2 in the draft statement, conditional on task 2.4 |
 | C4 | WITHDRAWN as stated (oracle envelope) | Saltzer and Schroeder 1975; Progent | Needs a deployable envelope and real agents | re-test in 3.4 and 3.2 |
