@@ -23,3 +23,6 @@ __pycache__/
 .ipynb_checkpoints/
 .venv/
 .pytest_cache/
+
+# third-party source checkouts
+ext/

@@ -66,3 +66,9 @@ Criticality is per visible unit, with site-cluster 95% intervals.
 
 - **Wrong output folder.** The pre-registered script wrote to `experiments/2026-09-25_C7b_actionability-on-archive/`, a folder name left over from its first draft. The output was moved here and the path corrected. The computation did not change, and a rerun reproduced every pre-registered field exactly.
 - **The exploratory interval** for the primary ratio was added to the script after the first run.
+
+## Reading correction, 2 Oct 2026
+
+The pre-registration, results and original interpretation above are preserved as recorded on 26 Sep. A full reading of [Prismata v1, §3](https://arxiv.org/html/2607.08147v1) clarifies that its unit is one flagged untrusted node and its Case-3 link breakdown identifies `a[href]` and `role=link`. R1 is therefore the rule closest to the paper's treatment of plain links. In this record, R0's “as published” means our previously published reconstruction, not Prismata's rule.
+
+The unresolved comparison concerns which Mind2Web page representation the authors used and their provenance labels. The paper's unit and link forms are stated. No computation, output, interval or claim status changes with this note. Email 1.1 now asks about the representation and requests confirmation of our reading; it does not treat the unit or link rule as absent from the paper. See `research/CORRECTIONS.md`, 2 Oct.

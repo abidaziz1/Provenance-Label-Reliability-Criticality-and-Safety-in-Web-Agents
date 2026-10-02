@@ -4,7 +4,7 @@ Status: **approved at Gate N on 27 Sep 2026 by Abid Aziz.** P1 is the paper's pr
 
 ## The paper in one paragraph
 
-Structural defenses against prompt injection in web agents decide trust from the DOM. UCM masks untrusted regions with CSS selectors. Prismata gates each action by the ancestor chain of the element it touches. Both, and every evaluation of them, depend on which page representation the defense reads. We measure that dependence, and it is large. The archive behind Mind2Web, a widely used web-agent dataset, deletes the attributes these defenses read: no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites. That deletion alone disables 93% of UCM's working Booking selectors on the same live pages, and it halves Prismata-style criticality if a link must carry an `href`. We then separate the two ways a provenance error hurts under a gate: exposure and admission. Finally, we report how often agents meet actionable controls inside untrusted content, per page and per task. That is the quantity a per-node statistic hides.
+Structural defenses against prompt injection in web agents decide trust from the DOM. UCM hides labeled untrusted regions and lets the agent query their content through a quarantined model with restricted output types. Its main setting has website owners label live pages. Prismata labels content by provenance, prunes non-developer content the task does not need, restricts the rest to read-only, and gates actions using the target element's ancestor chain (§2.2). Both defenses depend on which page representation they read. We measure that dependence. The archive behind Mind2Web, a widely used web-agent dataset, deletes the attributes these defenses read: no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` survives on any of 57 sites. That deletion alone disables 93% of UCM's working Booking selectors on the same live pages, and requiring an `href` for plain links roughly halves our Prismata-style criticality. We then separate the two ways a provenance error hurts under a gate: exposure and admission. Finally, we report how often agents meet actionable controls inside untrusted content, per page and per task. That is the quantity a per-node statistic hides.
 
 ## Primary contributions
 
@@ -12,7 +12,7 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 ### P1. Page archives and site drift remove what structural defenses read (C7 with C8)
 
-**Sentence.** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (K21). On the same live Booking DOM, reducing attributes to that set disables 53 of the 57 UCM selectors that work live (K25). On the archive, whether a link needs an `href` halves Prismata-style criticality (19.57% to 9.40% per visible untrusted node, K26). Selectors written for Booking also break over time: 19% to 25% on one page (C8, exploratory).
+**Sentence.** The Mind2Web archive keeps 21 attribute names and no site-authored `data-*`, `href`, `on*`, `tabindex`, `style` or `hidden` on 57 of 57 sites (K21). On the same live Booking DOM, reducing attributes to that set disables 53 of the 57 UCM selectors that work live (K25). On the archive, requiring an `href` for plain links, consistent with Prismata's own §3 breakdown of `a[href]` and `role=link`, roughly halves our Prismata-style criticality (19.57% to 9.40% per visible untrusted node, K26). Selectors written for Booking also break over time: 19% to 25% on one page (C8, exploratory).
 
 - **Audit verdict.** NOVEL AS MEASUREMENT for both C7 and C8. Online-Mind2Web and WebCanvas measure task drift, not dropped defense inputs. Wrapper breakage itself is known (Kushmerick 2000; Lerman et al. 2003).
 - **Evidence now.**
@@ -20,6 +20,8 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
   - K22 and K23: 24 of 25 hand and 68 of 68 LLM selectors match nothing on 131 archived Booking pages.
   - K25: stripping alone, same DOM (C7c).
   - K26 (C7b, pre-registered): requiring an `href` gives a G3 ratio of 0.48, exploratory site interval [0.32, 0.64]; trusting the stored `is_clickable` flag restores the tag-rule numbers.
+- **Inputs.** UCM's boundary-identification prompt asks for stable attributes such as `data-testid` (Appendix G.5). Prismata names class names and `href` among its labeling inputs (§6.3). Five of its seven §3 actionability clauses depend on attributes absent from the archive: form-control visibility, plain links, `onclick`, editable regions and `tabindex`. This concerns missing attribute signals, not the disappearance of every form control or ARIA link.
+- **Scope.** P1's UCM side concerns archived evaluations, selector generation on different representations, and proxy labels. The measured failures use existing selectors. They do not establish a failure of correctly owner-labeled live pages; generation on stripped pages remains task 2.8.
 - **Reader who acts on it.**
   - A benchmark builder, who must say which defense inputs a corpus keeps.
   - A defense evaluator, who must not reuse selectors or actionability rules across representations.
@@ -37,12 +39,12 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 **Sentence.** In a worst-case controller bound on 159 Mind2Web pages, one wrong provenance label changes influence escape by different amounts depending on the channel. The change is 96.9 points [91.8, 100.0] when the envelope is recomputed from the wrong labels (K9). It is 33.3 points [15.0, 55.7] through exposure alone, with the admitted action set unchanged (K11). It is 0.0 points when the injection asks for a control that the fixed envelope does not admit (K8).
 
-- **Audit verdict.** C3 is INCREMENTAL overall. Its exposure sub-result is NOVEL AS MEASUREMENT. Closest work: Prismata's confinement guarantee, and UCM Appendix E, where one mislabeled element gives 6±5% attack success with real agents.
+- **Audit verdict.** C3 is INCREMENTAL overall. Its exposure sub-result is NOVEL AS MEASUREMENT. Closest work: Prismata's confinement guarantee, and UCM Appendix E, where one mislabeled issue-description element gives 6±5% attack success against a Claude Sonnet 4 agent, compared with 17±8% undefended on the seeded, strengthened WASP GitLab evaluation.
 - **Evidence now.** K8, K9 and K11, with site-bootstrap intervals from `scripts/ablation_contrasts.py`.
 - **Caveats.**
   - These are upper bounds from a controller that obeys every visible, admitted instruction.
   - Only the page-wide arms stand. The narrow arms use the annotated target as the envelope, which is an oracle (C4 withdrawn as stated).
-- **Reader who acts on it.** A defense designer choosing between masking (acts on exposure) and gating (acts on admission). The number says a gate alone leaves the exposure channel open under a wide envelope.
+- **Reader who acts on it.** A defense designer separating exposure controls from action admission. UCM masks exposure and permits typed queries; it does not use provenance to gate clicks, and the agent may click a masked placeholder to perform a task (Appendix B.3). Prismata controls both exposure, through pruning, and admission, through read-only capabilities and its action gate. Our gate-only controller isolates channels; it does not represent either complete deployed system.
 - **Falsification test.** Task 2.4, real agents, pre-registered. Suppose agents follow a visible injection in under 5% of trials in the exposure-only cell (fixed envelope, un-pruned injection). Then the channel exists in the bound only (ROADMAP stop condition 2), and P2 drops to a supporting mechanism result.
 - **Tasks that complete it.**
   - 2.4 real-agent pilot ($11 to $22 with the Batch API).
@@ -70,7 +72,7 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
   - Whether the region root counts: 21.5 to 34.3 points (K3 to K5).
   - Oracle against target-free gate: 1.85x (K6).
 
-  This is the methods section. It explains why we do not claim that Prismata's 1.2% fails to reproduce: its unit and labels are unknown until the authors answer (task 1.1).
+  This is the methods section. Prismata's unit is one flagged untrusted node: 23.10 per Mind2Web page, against our 143.55. The density difference is a labeler comparison, not an unknown unit definition. The Mind2Web representation and the authors' labels remain open (task 1.1), so we do not claim that their 1.2% fails to reproduce.
 - **C5**, the four-layer factorization, as method.
 - **C10**, the gap between the controller bound and real agents, needed for credibility.
 
@@ -84,7 +86,7 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 
 ## What the paper does not claim
 
-- That Prismata's 1.2% is wrong. We ask the authors for their unit, representation and labels.
+- That Prismata's 1.2% is wrong. Its unit is one flagged untrusted node, and §3 identifies the link forms. We ask which Mind2Web representation it used and seek labels for a direct comparison.
 - That UCM fails on archives. We show that its published selectors do not survive archiving. Its generator on archived pages is task 2.8.
 - Any error rate for our labeler before the hand audit. Before it, we report agreement rates only.
 
@@ -101,7 +103,7 @@ Each has one sentence, its evidence, the test that would falsify it, and the tas
 | Task | Feeds | Decision |
 | --- | --- | --- |
 | 0.1, 0.2, N0.1 to N0.6 | all | keep |
-| 1.1 Prismata email | P1 (which representation and link rule), supporting (unit, labels) | keep, send first |
+| 1.1 Prismata email | P1 (Mind2Web representation, confirmation of our link-rule reading), supporting (labels and per-corpus critical-path counts) | keep, send first |
 | 1.2 UCM email | P1 (capture date, saved HTML), Gate 1 | keep |
 | 1.3 notebook 02 coupling power | C6 only | keep only if C6 survives the Oct 30 go/no-go |
 | 1.4 model IDs | P2 (paid runs) | keep |
